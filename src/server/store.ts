@@ -7,7 +7,7 @@ export type Run = {
   question?: { id: string; resolve: (answer: string) => void };
 };
 const globalStore = globalThis as typeof globalThis & { partscoutRuns?: Map<string, Run> };
-export const runs = globalStore.partscoutRuns ??= new Map();
+export const runs: Map<string, Run> = globalStore.partscoutRuns ??= new Map<string, Run>();
 export function createRun(input: RunInput): Run {
   for (const [id, run] of runs) if (Date.now() - run.startedAt > 3600000) runs.delete(id);
   if (runs.size >= 30) {
