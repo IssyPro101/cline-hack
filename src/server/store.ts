@@ -57,5 +57,6 @@ export function emit(run: Run, event: AgentEvent) {
     run.bom = parsed.bom;
     run.finished = true;
   }
+  if (parsed.type === "bom_updated") run.bom = parsed.bom;
   run.listeners.forEach((listener) => listener(entry));
 }

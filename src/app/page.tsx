@@ -975,11 +975,34 @@ export default function Home() {
           onBom={(updated) => {
             if (activeRun.current && activeRun.current !== updated.runId)
               return;
+            if (!activeRun.current) {
+              setGoal(updated.input.goal);
+              setBudget(String(updated.input.budget));
+              setCurrency(updated.input.currency);
+              setShipTo(updated.input.shipTo);
+              setDeadlineDays(String(updated.input.deadlineDays));
+            }
             activeRun.current = updated.runId;
             setRunId(updated.runId);
             setBom(updated);
             setRows(updated.rows);
             setParts(updated.rows.map((r) => r.part));
+            setActivity(
+              Object.fromEntries(
+                updated.rows.map((row) => [
+                  row.part.id,
+                  {
+                    done: true,
+                    label:
+                      row.fields.price.status === "quoted"
+                        ? "Supplier quote received"
+                        : row.needsQuote
+                          ? "Supplier drafts prepared"
+                          : "Evidence checked · watching",
+                  },
+                ]),
+              ),
+            );
             setDemo(updated.demo);
             setSelected((old) =>
               old
@@ -997,7 +1020,7 @@ export default function Home() {
             {demo && (
               <span className="demo-label">
                 <FlaskConical size={12} />
-                Illustrative demo data
+                Demo / replay data
               </span>
             )}
             {(busy || bom) && (
@@ -1058,9 +1081,9 @@ export default function Home() {
                 <div className="demo-notice">
                   <FlaskConical size={15} />
                   <p>
-                    Illustrative demo. Values and quotes are fixture data, not
-                    fetched supplier prices. Example evidence domains are
-                    intentionally non-live.
+                    {bom?.input.replay
+                      ? "Replayed run. Quotes and checked times belong to the saved evidence; this is not a fresh lookup."
+                      : "Scripted / illustrative demo. Values and quotes are fixture data, not fetched supplier prices. Example evidence domains are intentionally non-live."}
                   </p>
                 </div>
               )}

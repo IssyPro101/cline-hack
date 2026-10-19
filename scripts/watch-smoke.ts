@@ -55,9 +55,9 @@ async function main() {
     Date.now() < until &&
     !events.some(
       (e) =>
-        e.type === "change_detected" &&
-        e.bomId === runId &&
-        e.field === "supplierQuote",
+        e.type === "bom_updated" &&
+        e.bom.runId === runId &&
+        e.bom.rows.some((r) => r.status === "quoted"),
     )
   )
     await new Promise((r) => setTimeout(r, 200));

@@ -7,6 +7,8 @@ a quotation, source link, and checked time. Missing values stay unknown. Finishe
 BOMs become Watch baselines automatically; background checks update the workspace
 and notify only your own Slack DM when material facts change.
 
+![PartScout workspace with sourced parts, supplier RFQ drafts, and the autonomous Changes feed](docs/workspace.png)
+
 ## Run locally
 
 Requires Node.js 22.12+ and npm.
@@ -239,12 +241,14 @@ SSE, both goals, verification statuses, RFQs, CSV content, replay in USD, and re
 Watch tests cover strict material thresholds, atomic persistence, corrupted-file
 preservation, no overlapping checks, and supplier/integration failure isolation.
 Slack tests verify that only the authenticated user's own DM can be targeted.
+The v2 build was also checked in a real browser: evidence drawer, supplier RFQ
+expansion, verification guide, and 1280/1024/375 px layouts without page overflow.
 
 For the dedicated Watch HTTP smoke test, start a separate process with `MOCK=1`,
 `DEMO_SCRIPT=1`, `WATCH_INTERVAL_SECONDS=2`, empty Composio keys, and
 `PARTSCOUT_WATCH_FILE` pointing to a temporary JSON file. Then run
 `PARTSCOUT_URL=http://localhost:3002 npm run test:watch-smoke`. This checks two
-automatic cycles, RFQs, change evidence, Slack fallback, and reconnect snapshots.
+automatic cycles, RFQs, change evidence, quoted values, Slack fallback, and reconnect snapshots.
 `PARTSCOUT_WATCH_FILE` is a test isolation override; normal storage stays in `data/`.
 
 For production, use `npm run build && npm start` on a **single long-lived Node

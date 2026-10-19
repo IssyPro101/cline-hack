@@ -15,6 +15,7 @@ import { agentEventSchema, type Bom, type Change } from "@/lib/schema";
 type Props = { onBom: (bom: Bom) => void };
 export function WatchFeed({ onBom }: Props) {
   const callback = useRef(onBom);
+  const seenChanges = useRef(new Set<string>());
   callback.current = onBom;
   const [changes, setChanges] = useState<Change[]>([]),
     [unread, setUnread] = useState(0);
@@ -44,9 +45,14 @@ export function WatchFeed({ onBom }: Props) {
       if (event.type === "watch_snapshot") {
         const history = event.boms
           .flatMap((b) => b.watch?.changes ?? [])
-          .sort((a, b) => b.detectedAt.localeCompare(a.detectedAt));
+          .sort((a, b) => b.detectedAt.localeCompare(a.detectedAt))
+          .slice(0, 100);
         setChanges(history);
-        setUnread(history.length);
+        const unseen = history.filter(
+          (change) => !seenChanges.current.has(change.id),
+        );
+        history.forEach((change) => seenChanges.current.add(change.id));
+        setUnread((n) => n + unseen.length);
         const latest = event.boms
           .flatMap((b) => (b.watch?.notification ? [b.watch.notification] : []))
           .sort((a, b) => b.at.localeCompare(a.at))[0];
@@ -66,7 +72,10 @@ export function WatchFeed({ onBom }: Props) {
         setChanges((old) =>
           [change, ...old.filter((c) => c.id !== change.id)].slice(0, 100),
         );
-        setUnread((n) => n + 1);
+        if (!seenChanges.current.has(change.id)) {
+          seenChanges.current.add(change.id);
+          setUnread((n) => n + 1);
+        }
       }
       if (event.type === "bom_updated") callback.current(event.bom);
       if (event.type === "notification_fallback")

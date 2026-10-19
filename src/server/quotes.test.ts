@@ -52,6 +52,24 @@ const llm = () =>
     conditions: "Excludes shipping.",
   });
 describe("received supplier quote evidence", () => {
+  it("drops untraceable email evidence", () => {
+    const b = fixture(),
+      quote: CandidateListing = {
+        ...b.rows[0].candidates[0],
+        evidence: [
+          {
+            field: "price",
+            value: 1,
+            quote: "AUD 1.00",
+            sourceType: "email_quote",
+            sourceUrl: "https://mail.google.com",
+            checkedAt: new Date().toISOString(),
+          },
+        ],
+        price: { amount: 1, currency: "AUD", qty: 1 },
+      };
+    expect(verifyField([quote], "price", b.exchange).status).toBe("unknown");
+  });
   it("matches a recorded thread and verified sender only", () => {
     expect(supplierSender(reply, draft)).toBe("quotes@supplier.example");
     expect(

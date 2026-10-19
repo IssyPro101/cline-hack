@@ -65,6 +65,7 @@ export async function replay(run: Run) {
           ),
         )
       : [];
+  const playedChanges: import("../lib/schema").Change[] = [];
   let previous = 0;
   for (const entry of log.events) {
     await new Promise((resolve) =>
@@ -75,22 +76,66 @@ export async function replay(run: Run) {
     );
     previous = entry.at;
     let event = entry.event;
+    let published = false;
     if (event.type === "run_started") event = { ...event, runId: run.id };
     if (event.type === "change_detected") {
       const { partId, field } = event;
-      const actual = archivedChanges.find(
+      const index = log.events.indexOf(entry);
+      const following = log.events
+        .slice(index + 1)
+        .map((e) => e.event)
+        .find((e) => e.type === "bom_updated");
+      const candidates =
+        following?.type === "bom_updated" && run.bom
+          ? diffBoms(
+              run.bom,
+              report(
+                run.id,
+                run.input,
+                rerank(following.bom.rows),
+                exchange,
+                true,
+              ),
+            )
+          : archivedChanges;
+      const actual = candidates.find(
         (c) => c.partId === partId && c.field === field,
       );
       if (!actual) continue;
+      playedChanges.push(actual);
       event = { type: "change_detected", ...actual, change: actual };
       publish(event);
+      published = true;
     }
     if (event.type === "notification_fallback") {
       event = { ...event, bomId: run.id };
       publish(event);
+      published = true;
     }
     // A recorded delivery is history, never a claim that a message was sent now.
     if (event.type === "notification_sent") continue;
+    if (event.type === "bom_updated") {
+      const metadata = event.bom.watch;
+      const bom = report(
+        run.id,
+        run.input,
+        rerank(event.bom.rows),
+        exchange,
+        true,
+      );
+      if (metadata)
+        bom.watch = {
+          ...metadata,
+          changes: [...playedChanges].reverse(),
+          lastCheckedAt: new Date().toISOString(),
+          nextCheckAt: new Date(
+            Date.now() + config().WATCH_INTERVAL_SECONDS * 1000,
+          ).toISOString(),
+        };
+      event = { type: "bom_updated", bom };
+      publish(event);
+      published = true;
+    }
     if (event.type === "part_result")
       event = {
         ...event,
@@ -112,20 +157,22 @@ export async function replay(run: Run) {
           run.input,
           fitBudget(rows, run.input, exchange),
           exchange,
-          log.illustrative,
+          true,
         ),
       };
       event.bom = await ensureRfqDrafts(event.bom, (e) => emit(run, e));
       if (cachedWatch)
         event.bom.watch = {
           ...cachedWatch,
-          changes: archivedChanges,
+          changes: playedChanges.length
+            ? [...playedChanges].reverse()
+            : archivedChanges,
           lastCheckedAt: new Date().toISOString(),
           nextCheckAt: new Date(
             Date.now() + config().WATCH_INTERVAL_SECONDS * 1000,
           ).toISOString(),
         };
     }
-    emit(run, event);
+    if (!published || !run.finished) emit(run, event);
   }
 }

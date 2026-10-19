@@ -55,6 +55,11 @@ function supportedValue(
   exchange: ExchangeRates,
 ) {
   if (
+    evidence.sourceType === "email_quote" &&
+    (!evidence.messageId || !evidence.supplierEmail || !listing.quoteReceivedAt)
+  )
+    return undefined;
+  if (
     !evidence.quote ||
     !sourceDomain(evidence.sourceUrl) ||
     evidence.field !== field
