@@ -26,12 +26,26 @@ export interface Drafts {
   }): Promise<{ id: string; url?: string }>;
 }
 export interface Mail {
-  createDraft(args:{to?:string;subject:string;body:string}):Promise<{id:string;threadId?:string;url?:string}>;
-  listReplies?(args:{threadIds:string[]}):Promise<{threadId:string;from:string;receivedAt:string;text:string;url?:string}[]>;
+  createDraft(args: {
+    to?: string;
+    subject: string;
+    body: string;
+  }): Promise<{ id: string; threadId?: string; url?: string }>;
+  listReplies?(args: { threadIds: string[] }): Promise<MailReply[]>;
 }
+export type MailReply = {
+  threadId: string;
+  messageId?: string;
+  from: string;
+  receivedAt: string;
+  text: string;
+  url?: string;
+};
 export interface WatchStore {
   save(bom: Bom): Promise<void>;
   getAll(): Promise<Bom[]>;
   getLast(bomId: string): Promise<Bom | null>;
 }
-export interface Notifier { notifySelf(text: string): Promise<{ url?: string }>; }
+export interface Notifier {
+  notifySelf(text: string): Promise<{ url?: string }>;
+}

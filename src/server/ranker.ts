@@ -35,8 +35,16 @@ export function rankPart(
       );
       const pick =
         sorted.find(
+          (c) =>
+            c.quoteReceivedAt &&
+            c.evidence.some(
+              (e) => e.sourceType === "email_quote" && e.field === "price",
+            ),
+        ) ??
+        sorted.find(
           (c) => c.evidence.some((e) => e.field === "price") && c.price,
-        ) ?? sorted[0];
+        ) ??
+        sorted[0];
       const disqualified =
         verified.shipsToDestination.evidence.some((e) => e.value === false) ||
         verified.stock.evidence.some((e) => e.value === "out") ||
@@ -74,7 +82,8 @@ export function rankPart(
   const best = options[0];
   const verified = best?.verified ?? verifyGroup([], exchange);
   const needsQuote =
-    part.category === "custom-fabricated" ||
+    (part.category === "custom-fabricated" &&
+      verified.price.status !== "quoted") ||
     verified.price.status === "unknown";
   return {
     part,

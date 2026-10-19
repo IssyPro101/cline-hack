@@ -128,7 +128,12 @@ export function groundListing(
       (e) =>
         quoteInText(e.quote, text) && supportsEvidence(e, listing, destination),
     )
-    .map((e) => ({ ...e, sourceType:"web" as const, sourceUrl: url, checkedAt: fetchedAt }));
+    .map((e) => ({
+      ...e,
+      sourceType: "web" as const,
+      sourceUrl: url,
+      checkedAt: fetchedAt,
+    }));
   const has = (field: Evidence["field"]) =>
     evidence.some((e) => e.field === field);
   return {

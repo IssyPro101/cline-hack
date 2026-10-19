@@ -1,10 +1,12 @@
 import { z } from "zod";
 import { config } from "../config";
 import type { Drafts, Mail } from "./interfaces";
+import { parseGmailThread } from "./gmail-thread";
 
 // Email is draft-only. Slack tools are used solely by notifySelf().
 const allowedTools = [
   "GMAIL_CREATE_EMAIL_DRAFT",
+  "GMAIL_FETCH_MESSAGE_BY_THREAD_ID",
   "SLACK_TEST_AUTH",
   "SLACK_LIST_ALL_CHANNELS",
   "SLACK_SEND_MESSAGE",
@@ -55,20 +57,25 @@ export class ComposioClient {
       .parse(
         typeof result.data === "string" ? JSON.parse(result.data) : result.data,
       );
-    if(data.ok===false)throw new Error("The connected service rejected this action. Check its OAuth scopes.");
-    return data;
+    if (data.ok === false)
+      throw new Error(
+        "The connected service rejected this action. Check its OAuth scopes.",
+      );
+    return data.response_data && typeof data.response_data === "object"
+      ? (data.response_data as Record<string, unknown>)
+      : data;
   }
 }
 export class ComposioDrafts implements Drafts, Mail {
   async createEmailDraft(args: { to?: string; subject: string; body: string }) {
     return this.createDraft(args);
   }
-  async createDraft(args: {to?:string;subject:string;body:string}) {
+  async createDraft(args: { to?: string; subject: string; body: string }) {
     const data = await new ComposioClient().execute(
       "GMAIL_CREATE_EMAIL_DRAFT",
       config().COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID,
       {
-        ...(args.to ? {recipient_email: args.to} : {}),
+        ...(args.to ? { recipient_email: args.to } : {}),
         subject: args.subject,
         body: args.body,
         is_html: false,
@@ -76,9 +83,28 @@ export class ComposioDrafts implements Drafts, Mail {
       },
     );
     const id = z.string().parse(data.draft_id ?? data.id);
-    const message = data.message && typeof data.message==="object" ? data.message as Record<string,unknown> : {};
-    const threadId = z.string().optional().parse(data.thread_id ?? data.threadId ?? message.threadId);
+    const message =
+      data.message && typeof data.message === "object"
+        ? (data.message as Record<string, unknown>)
+        : {};
+    const threadId = z
+      .string()
+      .optional()
+      .parse(data.thread_id ?? data.threadId ?? message.threadId);
     return { id, threadId, url: "https://mail.google.com/mail/u/0/#drafts" };
+  }
+  async listReplies({ threadIds }: { threadIds: string[] }) {
+    const replies: import("./interfaces").MailReply[] = [];
+    // Call one thread at a time here; the caller isolates each supplier's failure.
+    for (const threadId of [...new Set(threadIds)]) {
+      const data = await new ComposioClient().execute(
+        "GMAIL_FETCH_MESSAGE_BY_THREAD_ID",
+        config().COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID,
+        { thread_id: threadId, user_id: "me" },
+      );
+      replies.push(...parseGmailThread(data, threadId));
+    }
+    return replies;
   }
 }
 export class MockDrafts implements Drafts {

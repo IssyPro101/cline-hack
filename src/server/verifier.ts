@@ -89,6 +89,7 @@ export function verifyField(
     value: string | number | boolean;
     evidence: Evidence;
     domain: string;
+    receivedAt?: string;
   }[] = [];
   for (const listing of listings.filter((l) => !l.rejectedReason))
     for (const e of listing.evidence) {
@@ -98,6 +99,7 @@ export function verifyField(
           value,
           evidence: e,
           domain: sourceDomain(e.sourceUrl),
+          receivedAt: listing.quoteReceivedAt,
         });
     }
   const independent = new Map<string, (typeof observations)[number]>();
@@ -111,6 +113,34 @@ export function verifyField(
   const evidence = observations.map((o) => o.evidence);
   if (!values.length)
     return { status: "unknown", evidence: [], sourceCount: 0 };
+  // Only received, grounded supplier quotes take precedence, while every web
+  // observation remains visible as evidence. They do not corroborate web domains.
+  if (field === "price" || field === "leadTimeDays") {
+    const quoted = [...observations]
+      .sort((a, b) => (b.receivedAt ?? "").localeCompare(a.receivedAt ?? ""))
+      .find(
+        (o) =>
+          o.evidence.sourceType === "email_quote" &&
+          o.evidence.messageId &&
+          o.evidence.supplierEmail,
+      );
+    if (quoted)
+      return {
+        status: "quoted",
+        value: quoted.value,
+        ...(typeof quoted.value === "number"
+          ? { min: quoted.value, max: quoted.value }
+          : {}),
+        evidence,
+        sourceCount: new Set(
+          observations.map((o) =>
+            o.evidence.sourceType === "email_quote"
+              ? `email:${o.evidence.supplierEmail}`
+              : o.domain,
+          ),
+        ).size,
+      };
+  }
   let status: VerificationStatus = "single_source";
   const numeric = values.every((v) => typeof v === "number");
   const min = numeric ? Math.min(...(values as number[])) : undefined;
@@ -145,6 +175,7 @@ export function overallStatus(
   verified: Record<Field, VerifiedField>,
 ): VerificationStatus {
   const statuses = Object.values(verified).map((v) => v.status);
+  if (verified.price.status === "quoted") return "quoted";
   if (statuses.includes("conflicting")) return "conflicting";
   if (statuses.every((s) => s === "unknown")) return "unknown";
   if (statuses.includes("single_source") || statuses.includes("unknown"))

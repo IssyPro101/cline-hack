@@ -1,8 +1,79 @@
 "use client";
-import {useState} from "react";
-import {FileText,ArrowUpRight,Copy,Check} from "lucide-react";
-import type {RfqDraft} from "@/lib/schema";
-export function RfqList({drafts,compact=false}:{drafts:RfqDraft[];compact?:boolean}) {
-  const [copied,setCopied]=useState("");
-  return <div className={`rfq-list ${compact?"rfq-list-compact":""}`}><div className="rfq-list-title"><FileText size={13}/>{drafts.length} supplier draft{drafts.length===1?"":"s"}<span>DRAFTS ONLY · NEVER SENT</span></div>{drafts.map(d=><details key={d.id} id={`rfq-${d.id}`} className="supplier-draft"><summary><span><strong>{d.supplier}</strong><small>{d.mode==="gmail"?"Saved in Gmail":d.mode==="demo"?"Demo · copyable draft":"Copyable draft · Gmail unavailable"}</small></span>{d.url?<a href={d.url} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}>Gmail<ArrowUpRight size={12}/></a>:<span className="rfq-fallback">Review text</span>}</summary><div className="supplier-draft-body"><h4>{d.subject}</h4><p>To: {d.to??"Not published — check the supplier contact page"}</p><pre>{d.body}</pre><button className="small-primary" onClick={()=>void navigator.clipboard.writeText(`Subject: ${d.subject}\n\n${d.body}`).then(()=>setCopied(d.id)).catch(()=>setCopied("unavailable"))}>{copied===d.id?<Check size={12}/>:<Copy size={12}/>} {copied===d.id?"Copied":"Copy draft"}</button><a href={d.supplierUrl} target="_blank" rel="noopener noreferrer">Supplier contact<ArrowUpRight size={12}/></a>{copied==="unavailable"&&<p role="status">Select the text above to copy; clipboard access is unavailable.</p>}</div></details>)}</div>;
+import { useState } from "react";
+import { FileText, ArrowUpRight, Copy, Check } from "lucide-react";
+import type { RfqDraft } from "@/lib/schema";
+export function RfqList({
+  drafts,
+  compact = false,
+}: {
+  drafts: RfqDraft[];
+  compact?: boolean;
+}) {
+  const [copied, setCopied] = useState("");
+  return (
+    <div className={`rfq-list ${compact ? "rfq-list-compact" : ""}`}>
+      <div className="rfq-list-title">
+        <FileText size={13} />
+        {drafts.length} supplier draft{drafts.length === 1 ? "" : "s"}
+        <span>DRAFTS ONLY · NEVER SENT</span>
+      </div>
+      {drafts.map((d) => (
+        <details key={d.id} id={`rfq-${d.id}`} className="supplier-draft">
+          <summary>
+            <span>
+              <strong>{d.supplier}</strong>
+              <small>
+                {d.mode === "gmail"
+                  ? "Saved in Gmail"
+                  : d.mode === "demo"
+                    ? "Demo · copyable draft"
+                    : "Copyable draft · Gmail unavailable"}
+              </small>
+            </span>
+            {d.url ? (
+              <a
+                href={d.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Gmail
+                <ArrowUpRight size={12} />
+              </a>
+            ) : (
+              <span className="rfq-fallback">Review text</span>
+            )}
+          </summary>
+          <div className="supplier-draft-body">
+            <h4>{d.subject}</h4>
+            <p>
+              To: {d.to ?? "Not published — check the supplier contact page"}
+            </p>
+            <pre>{d.body}</pre>
+            <button
+              className="small-primary"
+              onClick={() =>
+                void navigator.clipboard
+                  .writeText(`Subject: ${d.subject}\n\n${d.body}`)
+                  .then(() => setCopied(d.id))
+                  .catch(() => setCopied("unavailable"))
+              }
+            >
+              {copied === d.id ? <Check size={12} /> : <Copy size={12} />}{" "}
+              {copied === d.id ? "Copied" : "Copy draft"}
+            </button>
+            <a href={d.supplierUrl} target="_blank" rel="noopener noreferrer">
+              Supplier contact
+              <ArrowUpRight size={12} />
+            </a>
+            {copied === "unavailable" && (
+              <p role="status">
+                Select the text above to copy; clipboard access is unavailable.
+              </p>
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+  );
 }

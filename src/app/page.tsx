@@ -40,7 +40,7 @@ import {
 } from "@/lib/schema";
 import { money, priceLabel, statusLabels, toCsv } from "@/lib/format";
 import { WatchFeed } from "./components/watch-feed";
-import {RfqList} from "./components/rfq-list";
+import { RfqList } from "./components/rfq-list";
 
 type Activity = { label: string; done: boolean; error?: string };
 type Question = { id: string; text: string };
@@ -117,7 +117,7 @@ export default function Home() {
   const [gmail, setGmail] = useState(false);
   const [recipient, setRecipient] = useState("");
   const stream = useRef<EventSource | null>(null);
-  const activeRun=useRef("");
+  const activeRun = useRef("");
   const startTime = useRef(0);
   const drawerRef = useRef<HTMLDialogElement>(null);
   const guideRef = useRef<HTMLDialogElement>(null);
@@ -166,7 +166,7 @@ export default function Home() {
     setSelected(null);
     setDraft(null);
     setBusy(true);
-    activeRun.current="pending";
+    activeRun.current = "pending";
     setElapsed(0);
     startTime.current = Date.now();
     try {
@@ -185,7 +185,7 @@ export default function Home() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
       setRunId(data.runId);
-      activeRun.current=data.runId;
+      activeRun.current = data.runId;
       setDemo(data.demo);
       const source = new EventSource(`/api/runs/${data.runId}/events`);
       stream.current = source;
@@ -227,7 +227,8 @@ export default function Home() {
             }));
           }
           if (event.type === "error") {
-            if(event.scope==="rfq")setAssumptions((old)=>[...old,event.message]);
+            if (event.scope === "rfq")
+              setAssumptions((old) => [...old, event.message]);
             else if (event.partId)
               setActivity((a) => ({
                 ...a,
@@ -730,94 +731,100 @@ export default function Home() {
                 <tbody>
                   {displayRows.map((row, i) => (
                     <Fragment key={row.part.id}>
-                    <tr
-                      className="bom-row"
-                      tabIndex={0}
-                      onClick={() => {
-                        setSelected(row);
-                        setDraft(null);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
+                      <tr
+                        className="bom-row"
+                        tabIndex={0}
+                        onClick={() => {
                           setSelected(row);
                           setDraft(null);
-                        }
-                      }}
-                      aria-label={`View evidence for ${row.part.name}`}
-                    >
-                      <td>
-                        <div className="part-name">
-                          <span className="row-number">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <div>
-                            <strong>{row.part.name}</strong>
-                            <span className="part-category">
-                              {row.part.category === "custom-fabricated"
-                                ? "CUSTOM FABRICATION"
-                                : row.part.critical
-                                  ? "CRITICAL COMPONENT"
-                                  : "OFF-THE-SHELF"}
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <strong className="product-name">
-                          {row.pick?.productName ??
-                            "Made to your specifications"}
-                        </strong>
-                        <span className="supplier-name">
-                          {row.pick?.supplier ??
-                            `${row.suppliers.length} fabrication partners`}
-                        </span>
-                      </td>
-                      <td className="qty-cell">{row.part.quantity}</td>
-                      <td>
-                        <strong
-                          className={
-                            row.fields.price.status === "conflicting"
-                              ? "price conflict-text"
-                              : "price"
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelected(row);
+                            setDraft(null);
                           }
-                        >
-                          {priceLabel(row, displayCurrency)}
-                        </strong>
-                        <Checked row={row} field="price" />
-                      </td>
-                      <td>
-                        <span className="lead-value">
-                          {row.fields.leadTimeDays.status === "conflicting"
-                            ? `${row.fields.leadTimeDays.min}–${row.fields.leadTimeDays.max} days`
-                            : row.fields.leadTimeDays.value !== undefined
-                              ? `${row.fields.leadTimeDays.value} days`
-                              : "Unknown"}
-                        </span>
-                        <Checked row={row} field="leadTimeDays" />
-                      </td>
-                      <td>
-                        {row.needsQuote ? (
-                          <button
-                            className="quote-button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              void draftRfq(row);
-                            }}
-                            disabled={actionBusy}
+                        }}
+                        aria-label={`View evidence for ${row.part.name}`}
+                      >
+                        <td>
+                          <div className="part-name">
+                            <span className="row-number">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <div>
+                              <strong>{row.part.name}</strong>
+                              <span className="part-category">
+                                {row.part.category === "custom-fabricated"
+                                  ? "CUSTOM FABRICATION"
+                                  : row.part.critical
+                                    ? "CRITICAL COMPONENT"
+                                    : "OFF-THE-SHELF"}
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <strong className="product-name">
+                            {row.pick?.productName ??
+                              "Made to your specifications"}
+                          </strong>
+                          <span className="supplier-name">
+                            {row.pick?.supplier ??
+                              `${row.suppliers.length} fabrication partners`}
+                          </span>
+                        </td>
+                        <td className="qty-cell">{row.part.quantity}</td>
+                        <td>
+                          <strong
+                            className={
+                              row.fields.price.status === "conflicting"
+                                ? "price conflict-text"
+                                : "price"
+                            }
                           >
-                            <FileText size={12} />
-                            Draft RFQ
-                          </button>
-                        ) : (
-                          <Status status={row.status} />
-                        )}
-                      </td>
-                      <td className="row-arrow">
-                        <ChevronRight size={14} />
-                      </td>
-                    </tr>
-                    {row.drafts && row.drafts.length>0 && <tr className="rfq-table-row"><td colSpan={7}><RfqList drafts={row.drafts} compact/></td></tr>}
+                            {priceLabel(row, displayCurrency)}
+                          </strong>
+                          <Checked row={row} field="price" />
+                        </td>
+                        <td>
+                          <span className="lead-value">
+                            {row.fields.leadTimeDays.status === "conflicting"
+                              ? `${row.fields.leadTimeDays.min}–${row.fields.leadTimeDays.max} days`
+                              : row.fields.leadTimeDays.value !== undefined
+                                ? `${row.fields.leadTimeDays.value} days`
+                                : "Unknown"}
+                          </span>
+                          <Checked row={row} field="leadTimeDays" />
+                        </td>
+                        <td>
+                          {row.needsQuote ? (
+                            <button
+                              className="quote-button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void draftRfq(row);
+                              }}
+                              disabled={actionBusy}
+                            >
+                              <FileText size={12} />
+                              Draft RFQ
+                            </button>
+                          ) : (
+                            <Status status={row.status} />
+                          )}
+                        </td>
+                        <td className="row-arrow">
+                          <ChevronRight size={14} />
+                        </td>
+                      </tr>
+                      {row.drafts && row.drafts.length > 0 && (
+                        <tr className="rfq-table-row">
+                          <td colSpan={7}>
+                            <RfqList drafts={row.drafts} compact />
+                          </td>
+                        </tr>
+                      )}
                     </Fragment>
                   ))}
                 </tbody>
@@ -928,6 +935,7 @@ export default function Home() {
               <div>
                 <Status status="agreed" />
                 <Status status="single_source" />
+                <Status status="quoted" />
                 <Status status="conflicting" />
                 <Status status="unknown" label="Unknown" />
               </div>
@@ -963,11 +971,23 @@ export default function Home() {
             </div>
           </section>
         )}
-        <WatchFeed onBom={(updated)=>{
-          if(activeRun.current && activeRun.current!==updated.runId)return;
-          activeRun.current=updated.runId;setRunId(updated.runId);setBom(updated);setRows(updated.rows);setParts(updated.rows.map((r)=>r.part));setDemo(updated.demo);
-          setSelected((old)=>old?updated.rows.find((r)=>r.part.id===old.part.id)??old:null);
-        }}/>
+        <WatchFeed
+          onBom={(updated) => {
+            if (activeRun.current && activeRun.current !== updated.runId)
+              return;
+            activeRun.current = updated.runId;
+            setRunId(updated.runId);
+            setBom(updated);
+            setRows(updated.rows);
+            setParts(updated.rows.map((r) => r.part));
+            setDemo(updated.demo);
+            setSelected((old) =>
+              old
+                ? (updated.rows.find((r) => r.part.id === old.part.id) ?? old)
+                : null,
+            );
+          }}
+        />
         <footer className="workspace-footer">
           <span>
             <ShieldCheck size={13} />
@@ -1081,7 +1101,9 @@ export default function Home() {
                   <small>Drafts only. Nothing is sent.</small>
                 </div>
               )}
-              {selected.drafts&&selected.drafts.length>0&&<RfqList drafts={selected.drafts}/>}
+              {selected.drafts && selected.drafts.length > 0 && (
+                <RfqList drafts={selected.drafts} />
+              )}
               {draft && (
                 <div className="draft-card">
                   <span className="eyebrow">YOUR RFQ DRAFT</span>
@@ -1261,6 +1283,24 @@ export default function Home() {
                               : String(e.value).replaceAll("_", " ")}
                         </strong>
                       </div>
+                      {candidate.quoteReceivedAt && (
+                        <div className="rejection">
+                          <span className="email-source-badge">
+                            SUPPLIER EMAIL QUOTE
+                          </span>
+                          <span>
+                            Received{" "}
+                            {new Date(
+                              candidate.quoteReceivedAt,
+                            ).toLocaleString()}
+                          </span>
+                        </div>
+                      )}
+                      {candidate.quoteConditions && (
+                        <p className="exchange-note">
+                          Conditions: {candidate.quoteConditions}
+                        </p>
+                      )}
                       {e.quote && <blockquote>“{e.quote}”</blockquote>}
                       <a
                         href={e.sourceUrl}
@@ -1344,6 +1384,14 @@ export default function Home() {
             <p>
               No supported value was found. It stays unknown and is excluded
               from the total.
+            </p>
+          </div>
+          <div>
+            <Status status="quoted" />
+            <p>
+              A received supplier quote supports price and lead time. Its exact
+              email evidence takes precedence; website observations remain
+              visible.
             </p>
           </div>
           <p className="guide-footnote">

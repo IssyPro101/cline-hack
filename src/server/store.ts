@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import {withEvidenceTypes} from "../lib/provenance";
+import { withEvidenceTypes } from "../lib/provenance";
 import {
   agentEventSchema,
   type AgentEvent,

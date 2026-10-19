@@ -8,29 +8,91 @@ import { report } from "../reporter";
 import type { Run } from "../store";
 import { publish } from "./events";
 import { scriptedCheck } from "./demo";
+import { refreshQuotes } from "../quotes";
+import { ComposioDrafts } from "../adapters/composio";
 
-export async function recheck(baseline:Bom):Promise<Bom> {
-  const env=config();
-  if(env.DEMO_SCRIPT==="1")return scriptedCheck(baseline);
+export async function recheck(baseline: Bom): Promise<Bom> {
+  const env = config();
+  if (env.DEMO_SCRIPT === "1") return scriptedCheck(baseline);
   // Archived/illustrative pages never masquerade as a live lookup.
-  if(baseline.demo || baseline.input.replay)return structuredClone(baseline);
-  if(!env.PARALLEL_API_KEY || !env.LLM_API_KEY)throw new Error("Watch needs Parallel and LLM credentials. Previous evidence was preserved.");
-  const run:Run={id:baseline.runId,input:baseline.input,events:[],startedAt:Date.now(),started:true,finished:false,listeners:new Set()};
-  const remainingInput={...baseline.input,deadlineDays:Math.max(0,Math.ceil((Date.parse(baseline.createdAt)+baseline.input.deadlineDays*86400000-Date.now())/86400000))};
-  const llm=new CompatibleLLM(),research=new ParallelResearch();
-  const rows:BomRow[]=[];
-  await withConcurrency(baseline.rows,5,async old=>{
-    if(old.part.category==="custom-fabricated"){rows.push(old);return;}
+  if (baseline.demo || baseline.input.replay) return structuredClone(baseline);
+  if (!env.PARALLEL_API_KEY || !env.LLM_API_KEY)
+    throw new Error(
+      "Watch needs Parallel and LLM credentials. Previous evidence was preserved.",
+    );
+  const run: Run = {
+    id: baseline.runId,
+    input: baseline.input,
+    events: [],
+    startedAt: Date.now(),
+    started: true,
+    finished: false,
+    listeners: new Set(),
+  };
+  const remainingInput = {
+    ...baseline.input,
+    deadlineDays: Math.max(
+      0,
+      Math.ceil(
+        (Date.parse(baseline.createdAt) +
+          baseline.input.deadlineDays * 86400000 -
+          Date.now()) /
+          86400000,
+      ),
+    ),
+  };
+  const llm = new CompatibleLLM(),
+    research = new ParallelResearch();
+  const rows: BomRow[] = [];
+  await withConcurrency(baseline.rows, 5, async (old) => {
+    if (old.part.category === "custom-fabricated") {
+      rows.push(old);
+      return;
+    }
     try {
-      const result=await crawl(run,old.part,research,llm);
-      if(!result.candidates.some((c)=>!c.rejectedReason))throw new Error("No comparable listings were fetched.");
-      const row=rankPart(old.part,result.candidates,result.suppliers,remainingInput,baseline.exchange);
-      row.drafts=old.drafts;rows.push(row);
+      const result = await crawl(run, old.part, research, llm);
+      if (!result.candidates.some((c) => !c.rejectedReason))
+        throw new Error("No comparable listings were fetched.");
+      const previousQuotes = old.candidates.filter((c) =>
+        c.evidence.some((e) => e.sourceType === "email_quote"),
+      );
+      const row = rankPart(
+        old.part,
+        [...result.candidates, ...previousQuotes],
+        result.suppliers,
+        remainingInput,
+        baseline.exchange,
+      );
+      row.drafts = old.drafts;
+      rows.push(row);
     } catch {
       rows.push(old);
-      publish({type:"error",scope:"watch",bomId:baseline.runId,partId:old.part.id,message:`${old.part.name}: re-check failed; prior evidence retained.`});
+      publish({
+        type: "error",
+        scope: "watch",
+        bomId: baseline.runId,
+        partId: old.part.id,
+        message: `${old.part.name}: re-check failed; prior evidence retained.`,
+      });
     }
   });
-  rows.sort((a,b)=>baseline.rows.findIndex((r)=>r.part.id===a.part.id)-baseline.rows.findIndex((r)=>r.part.id===b.part.id));
-  return {...report(baseline.runId,remainingInput,fitBudget(rows,remainingInput,baseline.exchange),baseline.exchange,false),input:baseline.input,createdAt:baseline.createdAt};
+  rows.sort(
+    (a, b) =>
+      baseline.rows.findIndex((r) => r.part.id === a.part.id) -
+      baseline.rows.findIndex((r) => r.part.id === b.part.id),
+  );
+  let updated = {
+    ...report(
+      baseline.runId,
+      remainingInput,
+      fitBudget(rows, remainingInput, baseline.exchange),
+      baseline.exchange,
+      false,
+    ),
+    input: baseline.input,
+    createdAt: baseline.createdAt,
+  };
+  if (env.COMPOSIO_API_KEY && env.COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID)
+    updated = await refreshQuotes(updated, new ComposioDrafts(), llm, publish);
+  return updated;
 }

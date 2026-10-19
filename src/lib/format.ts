@@ -3,6 +3,7 @@ export const statusLabels: Record<VerificationStatus, string> = {
   agreed: "Agreed",
   conflicting: "Conflicting",
   single_source: "Single source",
+  quoted: "Quoted",
   unknown: "Needs quote",
 };
 export function money(value: number, currency = "AUD", compact = false) {

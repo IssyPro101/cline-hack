@@ -33,7 +33,8 @@ WATCH_INTERVAL_SECONDS=60
 ```
 
 After a run finishes, wait: the next cycle applies one illustrative price drop,
-the following cycle changes stock. Changes arrive without clicking anything.
+the following cycle changes stock, and the third simulates a supplier quote.
+Changes arrive without clicking anything.
 Every scripted or replayed value is visibly labeled **Demo data**. The default
 interval is 86400 seconds (daily). `DEMO_SCRIPT=0` uses real crawlers for live BOMs;
 illustrative/archived BOMs remain unchanged unless the scripted demo is enabled.
@@ -112,6 +113,17 @@ Emails remain drafts; no orders, payments, or messages to third parties are supp
 CSV neutralizes formula-leading values. If OAuth setup takes more than 15 minutes,
 use the copyable draft/UI summary fallback and finish the demo first.
 
+Reply tracking reads only recorded RFQ thread IDs using
+`GMAIL_FETCH_MESSAGE_BY_THREAD_ID`, so the Gmail connection also needs thread-read
+access. Sent messages, drafts, spam, and trash are excluded. A reply must match
+the recorded thread, arrive after the RFQ draft, and match the known recipient
+email (or the verified supplier's domain when the recipient was unpublished).
+Exact email quotations are checked by the same grounding logic. Matched prices,
+lead times, and conditions are retained as `email_quote` evidence, shown in blue
+as **Quoted**, and included in totals. Website evidence stays visible. Repeated
+checks do not ingest the same message twice; an unrelated sender is never accepted.
+Replies on a new thread after a human changes the subject cannot be matched.
+
 ## Autonomous Watch and storage
 
 Next.js `src/instrumentation.ts` starts one process-wide scheduler on server boot.
@@ -148,6 +160,7 @@ also occur in the quote; ambiguous bare dollar signs are dropped.
 | Agreed        | 2+ independent domains; prices within 5%, lead times within 3 calendar days, or matching categorical/boolean values |
 | Conflicting   | Independent sources disagree; all evidence is retained, with a numeric range                                        |
 | Single source | Exactly one independent domain supports the field                                                                   |
+| Quoted        | A matched received supplier email supports the price/lead time; takes precedence while web evidence stays visible   |
 | Unknown       | No supported value; unpriced parts require a quote and are excluded from the subtotal                               |
 
 Only the newest observation per domain votes in a comparison, while every quote
@@ -163,7 +176,8 @@ Shipping charges and unknown taxes are excluded. A subtotal is therefore an
 estimate, not a supplier quote or guaranteed landed cost. Stock, destination
 coverage, missing specs, and delivery uncertainties appear as rule-based risks.
 Candidates that clearly fail requirements stay in the evidence drawer with the
-rejection reason. Custom fabrication never receives a generated price.
+rejection reason. Custom fabrication has no price until a received quote supports
+one. A scripted quote is always labeled Demo data and never claimed as received mail.
 
 ## Architecture
 

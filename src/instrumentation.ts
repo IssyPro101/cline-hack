@@ -1,6 +1,9 @@
 export async function register() {
-  if(process.env.NEXT_RUNTIME==="nodejs" && process.env.NEXT_PHASE!=="phase-production-build") {
-    const {startWatcher}=await import("./server/watch/service");
+  if (
+    process.env.NEXT_RUNTIME === "nodejs" &&
+    process.env.NEXT_PHASE !== "phase-production-build"
+  ) {
+    const { startWatcher } = await import("./server/watch/service");
     await startWatcher();
   }
 }

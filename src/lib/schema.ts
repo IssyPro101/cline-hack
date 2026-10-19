@@ -5,6 +5,7 @@ export const statusSchema = z.enum([
   "agreed",
   "conflicting",
   "single_source",
+  "quoted",
   "unknown",
 ]);
 export const fieldSchema = z.enum([
@@ -20,6 +21,8 @@ export const evidenceSchema = z.object({
   value: z.union([z.string(), z.number().finite(), z.boolean()]),
   sourceUrl: z.url().refine((url) => /^https?:\/\//.test(url)),
   quote: z.string().max(1000).optional(),
+  messageId: z.string().optional(),
+  supplierEmail: z.email().optional(),
   checkedAt: z.iso.datetime(),
 });
 export const partSchema = z.object({
@@ -52,6 +55,9 @@ export const listingSchema = z.object({
   specsFound: z.record(z.string(), z.string()),
   evidence: z.array(evidenceSchema),
   rejectedReason: z.string().optional(),
+  quoteReceivedAt: z.iso.datetime().optional(),
+  quoteThreadId: z.string().optional(),
+  quoteConditions: z.string().optional(),
 });
 export const supplierSchema = z.object({
   name: z.string(),
@@ -60,9 +66,15 @@ export const supplierSchema = z.object({
   evidence: z.array(evidenceSchema),
 });
 export const rfqDraftSchema = z.object({
-  supplier: z.string(), supplierUrl: z.url(), to: z.email().optional(),
-  subject: z.string(), body: z.string(), id: z.string(), threadId: z.string().optional(),
-  url: z.url().optional(), mode: z.enum(["gmail", "clipboard", "demo"]),
+  supplier: z.string(),
+  supplierUrl: z.url(),
+  to: z.email().optional(),
+  subject: z.string(),
+  body: z.string(),
+  id: z.string(),
+  threadId: z.string().optional(),
+  url: z.url().optional(),
+  mode: z.enum(["gmail", "clipboard", "demo"]),
   createdAt: z.iso.datetime(),
 });
 export const verifiedFieldSchema = z.object({
@@ -114,15 +126,31 @@ export const exchangeSchema = z.object({
   fallback: z.boolean(),
 });
 export const changeSchema = z.object({
-  id: z.string(), bomId: z.string(), partId: z.string(), partName: z.string(),
-  field: z.string(), oldValue: z.string(), newValue: z.string(),
-  evidenceUrl: z.url().optional(), detectedAt: z.iso.datetime(), demo: z.boolean(),
+  id: z.string(),
+  bomId: z.string(),
+  partId: z.string(),
+  partName: z.string(),
+  field: z.string(),
+  oldValue: z.string(),
+  newValue: z.string(),
+  evidenceUrl: z.url().optional(),
+  detectedAt: z.iso.datetime(),
+  demo: z.boolean(),
 });
 export const watchMetaSchema = z.object({
-  lastCheckedAt: z.iso.datetime().optional(), nextCheckAt: z.iso.datetime(),
+  lastCheckedAt: z.iso.datetime().optional(),
+  nextCheckAt: z.iso.datetime(),
   cycle: z.number().int().nonnegative().default(0),
   changes: z.array(changeSchema).default([]),
-  notification: z.object({ summary: z.string(), status: z.enum(["sent", "fallback"]), at: z.iso.datetime(), url: z.url().optional(), error: z.string().optional() }).optional(),
+  notification: z
+    .object({
+      summary: z.string(),
+      status: z.enum(["sent", "fallback"]),
+      at: z.iso.datetime(),
+      url: z.url().optional(),
+      error: z.string().optional(),
+    })
+    .optional(),
 });
 export const bomSchema = z.object({
   watch: watchMetaSchema.optional(),
@@ -157,13 +185,59 @@ export const agentEventSchema = z.discriminatedUnion("type", [
     suppliers: z.array(supplierSchema),
   }),
   z.object({ type: z.literal("run_finished"), bom: bomSchema }),
-  z.object({ type: z.literal("rfq_drafted"), partId: z.string(), supplier: z.string(), draftId: z.string(), url: z.url().optional() }),
-  z.object({ type: z.literal("watch_status"), watching: z.number().int(), lastCheckedAt: z.iso.datetime().optional(), nextCheckAt: z.iso.datetime().optional(), checking: z.boolean().optional(), demo: z.boolean().optional() }),
-  z.object({ type: z.literal("change_detected"), bomId: z.string(), partId: z.string(), field: z.string(), oldValue: z.string(), newValue: z.string(), evidenceUrl: z.url().optional(), change: changeSchema.optional() }),
-  z.object({ type: z.literal("notification_sent"), bomId: z.string(), channel: z.literal("slack"), url: z.url().optional() }),
+  z.object({
+    type: z.literal("rfq_drafted"),
+    partId: z.string(),
+    supplier: z.string(),
+    draftId: z.string(),
+    url: z.url().optional(),
+  }),
+  z.object({
+    type: z.literal("reply_found"),
+    partId: z.string(),
+    supplier: z.string(),
+    threadId: z.string(),
+  }),
+  z.object({
+    type: z.literal("quote_extracted"),
+    partId: z.string(),
+    supplier: z.string(),
+    price: z.number(),
+    currency: z.string(),
+    leadTimeDays: z.number().optional(),
+  }),
+  z.object({
+    type: z.literal("watch_status"),
+    watching: z.number().int(),
+    lastCheckedAt: z.iso.datetime().optional(),
+    nextCheckAt: z.iso.datetime().optional(),
+    checking: z.boolean().optional(),
+    demo: z.boolean().optional(),
+  }),
+  z.object({
+    type: z.literal("change_detected"),
+    bomId: z.string(),
+    partId: z.string(),
+    field: z.string(),
+    oldValue: z.string(),
+    newValue: z.string(),
+    evidenceUrl: z.url().optional(),
+    change: changeSchema.optional(),
+  }),
+  z.object({
+    type: z.literal("notification_sent"),
+    bomId: z.string(),
+    channel: z.literal("slack"),
+    url: z.url().optional(),
+  }),
   z.object({ type: z.literal("watch_snapshot"), boms: z.array(bomSchema) }),
   z.object({ type: z.literal("bom_updated"), bom: bomSchema }),
-  z.object({ type: z.literal("notification_fallback"), bomId: z.string(), summary: z.string(), reason: z.string() }),
+  z.object({
+    type: z.literal("notification_fallback"),
+    bomId: z.string(),
+    summary: z.string(),
+    reason: z.string(),
+  }),
   z.object({
     type: z.literal("error"),
     partId: z.string().optional(),
