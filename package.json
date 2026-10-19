@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:smoke": "tsx scripts/smoke.ts",
+    "test:watch-smoke": "tsx scripts/watch-smoke.ts",
     "demo:record": "tsx scripts/record-demo.ts"
   },
   "dependencies": {

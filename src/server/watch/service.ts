@@ -10,7 +10,7 @@ type Runtime = {engine:WatchEngine;store:FileWatchStore;timer?:ReturnType<typeof
 const globals=globalThis as typeof globalThis & {partscoutWatcher?:Runtime};
 export function watchRuntime():Runtime {
   if(globals.partscoutWatcher)return globals.partscoutWatcher;
-  const store=new FileWatchStore();
+  const store=new FileWatchStore(process.env.PARTSCOUT_WATCH_FILE || undefined);
   const engine=new WatchEngine({store,publish,recheck,intervalSeconds:config().WATCH_INTERVAL_SECONDS,notifier:new ComposioNotifier()});
   return globals.partscoutWatcher={store,engine};
 }

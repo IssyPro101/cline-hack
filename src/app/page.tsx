@@ -23,7 +23,6 @@ import {
   LoaderCircle,
   MapPin,
   Play,
-  Plus,
   Radio,
   Search,
   ShieldCheck,
@@ -115,7 +114,6 @@ export default function Home() {
     url?: string;
   } | null>(null);
   const [actionBusy, setActionBusy] = useState(false);
-  const [sheets, setSheets] = useState(false);
   const [gmail, setGmail] = useState(false);
   const [recipient, setRecipient] = useState("");
   const stream = useRef<EventSource | null>(null);
@@ -149,7 +147,6 @@ export default function Home() {
     fetch("/api/integrations")
       .then((r) => r.json())
       .then((data) => {
-        setSheets(Boolean(data.sheets));
         setGmail(Boolean(data.gmail));
         setDemo(Boolean(data.mock));
       })
@@ -325,22 +322,6 @@ export default function Home() {
     link.click();
     URL.revokeObjectURL(url);
     setToast("Bill of materials exported.");
-  }
-  async function exportSheets() {
-    setActionBusy(true);
-    try {
-      const response = await fetch(`/api/runs/${runId}/sheets`, {
-        method: "POST",
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error);
-      window.open(data.url, "_blank", "noopener,noreferrer");
-      setToast("Google Sheet created.");
-    } catch (e) {
-      setToast((e as Error).message);
-    } finally {
-      setActionBusy(false);
-    }
   }
   const ordered = parts
     .map((p) => rows.find((r) => r.part.id === p.id))
@@ -723,16 +704,6 @@ export default function Home() {
                 </span>
               </h2>
               <div className="table-actions">
-                {sheets && bom && (
-                  <button
-                    className="export-button"
-                    onClick={() => void exportSheets()}
-                    disabled={actionBusy}
-                  >
-                    <Plus size={13} />
-                    Sheets
-                  </button>
-                )}
                 <button
                   className="export-button"
                   disabled={!bom}

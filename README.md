@@ -1,9 +1,11 @@
 # PartScout
 
-**Every part. Every source.** An MIT-licensed sourcing agent for hardware builders.
+**Every part. Every source. Always watching.** PartScout spec v2: an MIT-licensed personal sourcing agent for hardware builders.
 Describe a project, set a budget, destination, and deadline, and watch a bill of
 materials arrive alongside live research activity. Each sourced value carries
-a quotation, source link, and checked time. Missing values stay unknown.
+a quotation, source link, and checked time. Missing values stay unknown. Finished
+BOMs become Watch baselines automatically; background checks update the workspace
+and notify only your own Slack DM when material facts change.
 
 ## Run locally
 
@@ -20,7 +22,21 @@ no service credentials or external requests are needed. Fonts are bundled locall
 Click **Find my parts** for a streamed illustrative run, or **Replay demo** for
 the cached event log. The example chips select a robot arm or a weather station.
 Open any BOM row to inspect the evidence. The custom fixture or enclosure has no
-invented price: use **Draft RFQ** to get copyable text. **Export CSV** works locally.
+invented price. Supplier-specific RFQ drafts appear below its row automatically;
+expand each to review and copy it. **Export CSV** works locally.
+
+For the three-minute autonomous demo, add these to `.env.local` and restart:
+
+```dotenv
+DEMO_SCRIPT=1
+WATCH_INTERVAL_SECONDS=60
+```
+
+After a run finishes, wait: the next cycle applies one illustrative price drop,
+the following cycle changes stock. Changes arrive without clicking anything.
+Every scripted or replayed value is visibly labeled **Demo data**. The default
+interval is 86400 seconds (daily). `DEMO_SCRIPT=0` uses real crawlers for live BOMs;
+illustrative/archived BOMs remain unchanged unless the scripted demo is enabled.
 
 The shipped fixtures are explicitly **illustrative**, not recorded supplier prices.
 Their second evidence domain uses the reserved `.example` TLD. Real supplier
@@ -54,14 +70,14 @@ continue. The planner asks at most two material clarifications and supports skip
 
 ## Optional Composio integrations
 
-Copyable RFQs and CSV need no integration. For Gmail drafts or Sheets, connect
-**your own** Google account in Composio using its managed OAuth flow, then put
+Copyable RFQs and CSV need no integration. For Gmail drafts and Slack notifications,
+connect **your own** Google and Slack accounts using Composio-managed OAuth, then put
 the API key and the appropriate connected account IDs in `.env.local`:
 
 ```dotenv
 COMPOSIO_API_KEY=your-key
 COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID=your-connected-account
-COMPOSIO_SHEETS_CONNECTED_ACCOUNT_ID=your-connected-account
+COMPOSIO_SLACK_CONNECTED_ACCOUNT_ID=your-slack-user-connected-account
 COMPOSIO_TOOL_VERSION=latest
 ```
 
@@ -70,13 +86,54 @@ and [connected account API](https://docs.composio.dev/reference/api-reference/co
 describe the auth configuration and redirect flow. This app consumes pre-connected
 account IDs; it has no login system or in-app OAuth callback.
 
-The human first creates an RFQ, then supplies the recipient and explicitly clicks
-**Save Gmail draft**. Nothing is sent. The adapter allows only
-`GMAIL_CREATE_EMAIL_DRAFT`, `GOOGLESHEETS_CREATE_GOOGLE_SHEET1`, and
-`GOOGLESHEETS_VALUES_UPDATE`. No sending tool is available to the agent.
-Sheets writes values as `RAW`; CSV neutralizes formula-leading values. If an
-integration fails, copyable text and CSV remain available. Mock and replay runs
-never write to Google accounts.
+In Composio, create an Auth Config for toolkit **gmail**, connect your Google account,
+and use the resulting connected account ID. `GMAIL_CREATE_EMAIL_DRAFT` needs
+draft/compose access. One personalized draft is created per found supplier, with
+returned draft and thread IDs stored on the BOM. A published contact email is used
+only when it appears in fetched text. If no email is published, the adapter attempts
+a recipient-free draft; if Composio requires a recipient, it keeps copyable text
+instead. It never invents an address. Gmail failures do not stop other suppliers.
+Mock and replay runs never create real Gmail drafts. No email-send tool exists.
+
+For Slack choose toolkit **slack**, using a **user OAuth** connection, not **slackbot**.
+Grant the scopes needed for `SLACK_TEST_AUTH`, `SLACK_LIST_ALL_CHANNELS` (IM listing,
+including `im:read`), and `SLACK_SEND_MESSAGE` (message posting). Open your own DM
+in Slack at least once. The adapter obtains your user ID from `SLACK_TEST_AUTH`,
+pages through `types=im` conversations, and selects only a `D…` channel whose
+`user` matches the authenticated identity. No recipient or channel setting is
+accepted. Bot identities, public channels, group DMs, and other users are refused.
+If Slack cannot be authenticated or your self DM cannot be verified, the exact
+summary stays in the UI and persistent Watch metadata. A cached notification is
+never presented as a newly sent message. Real scripted Watch cycles may notify
+your own DM, with `[DEMO DATA]` clearly included.
+
+The **only** automatic outbound message is a Watch summary to your own Slack DM.
+Emails remain drafts; no orders, payments, or messages to third parties are supported.
+CSV neutralizes formula-leading values. If OAuth setup takes more than 15 minutes,
+use the copyable draft/UI summary fallback and finish the demo first.
+
+## Autonomous Watch and storage
+
+Next.js `src/instrumentation.ts` starts one process-wide scheduler on server boot.
+Every completed run is saved automatically to `data/watched-boms.json`. `WatchStore`
+uses a serialized read/modify/write queue, a private temporary file, then an atomic
+rename. A corrupt existing file is preserved rather than silently replaced. `data/`
+and all `.env` files are ignored by Git; keep this folder local and private.
+
+One BOM is checked at a time and overlapping ticks are ignored. Watch does not
+re-plan: it reuses the original requirements and the same crawler, grounding,
+verifier, and reporter. Failed crawlers retain previous evidence and emit an error.
+Price movement must exceed 5%, lead time must move by more than 3 days, or stock,
+shipping, or verification status must change. Timestamp-only updates do not alert.
+After reporting, the refreshed BOM becomes the baseline. Slack failure never rolls
+back verified values or repeats the same change on every subsequent tick.
+
+`/api/watch/events` stays open independently of the initial run stream. It sends
+Watch status/countdown, changes with old/new values and evidence links, notification
+results, updated BOMs, and a persisted snapshot on reconnect. The Changes feed has
+an unread badge. Watch survives a browser close and a server restart; checks only
+run while the local server is running. Run **one long-lived Node process**. There
+is no database, distributed scheduler, serverless deployment, or third-party inbox.
 
 ## Verification
 
@@ -122,13 +179,20 @@ flowchart TD
   Verify --> Rank[Ranker and rule-based reporter]
   Rank -->|SSE events| UI
   UI --> Evidence[Evidence drawer]
-  UI --> RFQ[Copyable RFQ / optional Gmail draft]
-  UI --> Export[CSV / optional Google Sheets]
+  Rank --> Store[Atomic local WatchStore]
+  Store --> Loop[Background scheduler]
+  Loop --> Pool
+  Loop --> Diff[Material-change diff]
+  Diff -->|Watch SSE| UI
+  Diff --> Slack[Composio: authenticated own Slack DM only]
+  Rank --> RFQ[Supplier-specific Gmail drafts / copyable fallback]
+  UI --> Export[Client-side CSV]
 ```
 
 All shared requests, data models, and stream events use Zod schemas. The small
-`WebResearch`, `LLM`, `Drafts`, and `SheetsExport` interfaces each have real and
-mock implementations. There is no database. The process-global map keeps up to
+`WebResearch`, `LLM`, `Mail`, `Notifier`, and `WatchStore` interfaces isolate external
+services and persistence. No new full mock layer is required. There is no database.
+The process-global map keeps up to
 30 runs and prunes runs older than an hour on the next creation. SSE supports
 event IDs, reconnecting from `Last-Event-ID`, and heartbeat comments.
 
@@ -137,6 +201,8 @@ src/app/           Workspace UI and App Router API handlers
 src/lib/           Shared Zod models, formatting, example goals, fixture builder
 src/server/        Planner, crawlers, grounding, verifier, ranker, reporter
 src/server/adapters/  Parallel, chat-completion, and Composio adapters
+src/server/watch/  Scheduler, atomic store, diffs, scripted changes, Watch SSE bus
+data/              Private watched BOM baselines and evidence (gitignored)
 fixtures/          Complete timed illustrative event logs for both example goals
 scripts/           Demo recorder and HTTP smoke test
 ```
@@ -156,6 +222,16 @@ tax, absent evidence, rejected candidates, grounded quotations, conservative
 totals, budget risks, crawler concurrency/failure isolation, clarifications, model
 retry behavior, and CSV formula escaping. The HTTP smoke test checks progressive
 SSE, both goals, verification statuses, RFQs, CSV content, replay in USD, and resume.
+Watch tests cover strict material thresholds, atomic persistence, corrupted-file
+preservation, no overlapping checks, and supplier/integration failure isolation.
+Slack tests verify that only the authenticated user's own DM can be targeted.
+
+For the dedicated Watch HTTP smoke test, start a separate process with `MOCK=1`,
+`DEMO_SCRIPT=1`, `WATCH_INTERVAL_SECONDS=2`, empty Composio keys, and
+`PARTSCOUT_WATCH_FILE` pointing to a temporary JSON file. Then run
+`PARTSCOUT_URL=http://localhost:3002 npm run test:watch-smoke`. This checks two
+automatic cycles, RFQs, change evidence, Slack fallback, and reconnect snapshots.
+`PARTSCOUT_WATCH_FILE` is a test isolation override; normal storage stays in `data/`.
 
 For production, use `npm run build && npm start` on a **single long-lived Node
 process** with streaming enabled. Keep requests for the same run on that process.
@@ -185,7 +261,8 @@ npm run demo:record -- --illustrative
 ## Decisions and limitations
 
 - The explicit Next.js App Router requirement is preserved; no database,
-  authentication, ordering, checkout, or automated messaging was added.
+  authentication, ordering, or checkout was added. Automatic Slack messaging is
+  restricted to the connected user's own DM. Google Sheets was removed per v2.
 - Composio uses pre-connected accounts so OAuth cannot block the main demo.
 - Source agreement is conservative: different seller/product groups are never
   combined just to produce a green label. Unknowns are expected in real research.
@@ -200,7 +277,7 @@ npm run demo:record -- --illustrative
 - The supplied cache is illustrative because live API credentials were not
   available during this build. Live and Google integrations require your keys
   and connected accounts for an end-to-end service check.
-- PDF/image specialists and a recorded browser demo are left as stretch work.
+- CRM, chat panels, Sheets, PDF/image specialists, and serverless hosting are out of scope.
 - Use public supplier pages through the research API and respect site terms and
   access restrictions. A source link is evidence for review, not permission to buy.
 
@@ -210,7 +287,7 @@ npm run demo:record -- --illustrative
 - [Parallel Extract](https://docs.parallel.ai/api-reference/extract/extract)
 - [Parallel OpenAPI schema](https://docs.parallel.ai/public-openapi.json)
 - [Composio Gmail](https://docs.composio.dev/toolkits/gmail)
-- [Composio Google Sheets](https://docs.composio.dev/toolkits/googlesheets)
+- [Composio Slack](https://docs.composio.dev/toolkits/slack)
 - [Composio tool execution](https://docs.composio.dev/reference/api-reference/tools/postToolsExecuteByToolSlug)
 
 MIT License © 2026 PartScout contributors. See [LICENSE](LICENSE).

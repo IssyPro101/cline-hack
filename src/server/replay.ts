@@ -57,7 +57,8 @@ export async function replay(run: Run) {
     let event = entry.event;
     if (event.type === "run_started") event = { ...event, runId: run.id };
     if(event.type==="change_detected") {
-      const actual=archivedChanges.find((c)=>c.partId===event.partId&&c.field===event.field);
+      const {partId,field}=event;
+      const actual=archivedChanges.find((c)=>c.partId===partId&&c.field===field);
       if(!actual)continue;
       event={type:"change_detected",...actual,change:actual};publish(event);
     }

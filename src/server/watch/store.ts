@@ -11,7 +11,7 @@ const queues = globalQueues.partscoutFileQueues ??= new Map();
 export class FileWatchStore implements WatchStore {
   constructor(readonly path = join(process.cwd(), "data", "watched-boms.json")) {}
   private async read(): Promise<Bom[]> {
-    try { return z.array(bomSchema).parse(JSON.parse(await readFile(this.path,"utf8"))); }
+    try { return z.array(bomSchema).parse(withEvidenceTypes(JSON.parse(await readFile(this.path,"utf8")))); }
     catch (error) { if ((error as NodeJS.ErrnoException).code === "ENOENT") return []; throw new Error("Watch storage could not be read. The existing file has been preserved."); }
   }
   async getAll() { await (queues.get(this.path) ?? Promise.resolve()).catch(()=>{}); return this.read(); }

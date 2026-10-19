@@ -13,12 +13,14 @@ import { emit, type Run } from "./store";
 import type { LLM, WebResearch } from "./adapters/interfaces";
 import { watchBom } from "./watch/service";
 import { ensureRfqDrafts } from "./rfq-drafts";
+import {publish} from "./watch/events";
+async function baseline(run:Run) {if(run.bom)try{await watchBom(run.bom);}catch{publish({type:"error",scope:"watch",bomId:run.id,message:"This BOM finished, but its Watch baseline could not be saved. Check data directory access."});}}
 export async function startRun(run: Run) {
   if (run.started) return;
   run.started = true;
   if (run.input.replay) {
     await replay(run);
-    if(run.bom)await watchBom(run.bom);
+    await baseline(run);
     return;
   }
   if (config().MOCK === "1") {
@@ -36,11 +38,11 @@ export async function startRun(run: Run) {
       if(event.type==="run_finished")event.bom=await ensureRfqDrafts(event.bom,e=>emit(run,e));
       emit(run, event);
     }
-    if(run.bom)await watchBom(run.bom);
+    await baseline(run);
     return;
   }
   await researchRun(run, new CompatibleLLM(), new ParallelResearch());
-  if(run.bom)await watchBom(run.bom);
+  await baseline(run);
 }
 
 export async function researchRun(run: Run, llm: LLM, research: WebResearch) {

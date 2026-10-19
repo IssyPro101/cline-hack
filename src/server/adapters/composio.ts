@@ -1,16 +1,11 @@
 import { z } from "zod";
-import { bomCells } from "../../lib/format";
 import { config } from "../config";
-import type { Bom } from "../../lib/schema";
-import type { Drafts, Mail, SheetsExport } from "./interfaces";
+import type { Drafts, Mail } from "./interfaces";
 
 // Email is draft-only. Slack tools are used solely by notifySelf().
 const allowedTools = [
   "GMAIL_CREATE_EMAIL_DRAFT",
-  "GOOGLESHEETS_CREATE_GOOGLE_SHEET1",
-  "GOOGLESHEETS_VALUES_UPDATE",
   "SLACK_TEST_AUTH",
-  "SLACK_OPEN_DM",
   "SLACK_LIST_ALL_CHANNELS",
   "SLACK_SEND_MESSAGE",
 ] as const;
@@ -86,42 +81,8 @@ export class ComposioDrafts implements Drafts, Mail {
     return { id, threadId, url: "https://mail.google.com/mail/u/0/#drafts" };
   }
 }
-export class ComposioSheets implements SheetsExport {
-  async exportBom(bom: Bom) {
-    const client = new ComposioClient(),
-      account = config().COMPOSIO_SHEETS_CONNECTED_ACCOUNT_ID;
-    const data = await client.execute(
-      "GOOGLESHEETS_CREATE_GOOGLE_SHEET1",
-      account,
-      { title: `PartScout — ${bom.input.goal.slice(0, 80)}` },
-    );
-    const nested =
-      data.response_data && typeof data.response_data === "object"
-        ? (data.response_data as Record<string, unknown>)
-        : data;
-    const id = z
-      .string()
-      .min(1)
-      .parse(nested.spreadsheetId ?? nested.spreadsheet_id ?? nested.id);
-    await client.execute("GOOGLESHEETS_VALUES_UPDATE", account, {
-      spreadsheet_id: id,
-      range: `A1:T${bom.rows.length + 1}`,
-      values: bomCells(bom),
-      value_input_option: "RAW",
-      major_dimension: "ROWS",
-    });
-    return {
-      url: `https://docs.google.com/spreadsheets/d/${encodeURIComponent(id)}/edit`,
-    };
-  }
-}
 export class MockDrafts implements Drafts {
   async createEmailDraft() {
     return { id: "local-copyable-draft" };
-  }
-}
-export class MockSheets implements SheetsExport {
-  async exportBom(): Promise<{ url: string }> {
-    throw new Error("Sheets is offline in demo mode. Use Export CSV.");
   }
 }
