@@ -11,11 +11,13 @@ import { report } from "./reporter";
 import { replay } from "./replay";
 import { emit, type Run } from "./store";
 import type { LLM, WebResearch } from "./adapters/interfaces";
+import { watchBom } from "./watch/service";
 export async function startRun(run: Run) {
   if (run.started) return;
   run.started = true;
   if (run.input.replay) {
     await replay(run);
+    if(run.bom)await watchBom(run.bom);
     return;
   }
   if (config().MOCK === "1") {
@@ -32,9 +34,11 @@ export async function startRun(run: Run) {
       );
       emit(run, event);
     }
+    if(run.bom)await watchBom(run.bom);
     return;
   }
   await researchRun(run, new CompatibleLLM(), new ParallelResearch());
+  if(run.bom)await watchBom(run.bom);
 }
 
 export async function researchRun(run: Run, llm: LLM, research: WebResearch) {

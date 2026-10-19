@@ -1,6 +1,7 @@
 @import "@fontsource-variable/dm-sans";
 @import "@fontsource/dm-mono/400.css";
 @import "tailwindcss";
+@import "./watch.css";
 
 :root {
   --bg: #f8f9f6;

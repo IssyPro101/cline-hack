@@ -15,6 +15,7 @@ export const fieldSchema = z.enum([
   "spec",
 ]);
 export const evidenceSchema = z.object({
+  sourceType: z.enum(["web", "email_quote"]).optional(),
   field: fieldSchema,
   value: z.union([z.string(), z.number().finite(), z.boolean()]),
   sourceUrl: z.url().refine((url) => /^https?:\/\//.test(url)),
@@ -55,7 +56,14 @@ export const listingSchema = z.object({
 export const supplierSchema = z.object({
   name: z.string(),
   url: z.url(),
+  email: z.email().optional(),
   evidence: z.array(evidenceSchema),
+});
+export const rfqDraftSchema = z.object({
+  supplier: z.string(), supplierUrl: z.url(), to: z.email().optional(),
+  subject: z.string(), body: z.string(), id: z.string(), threadId: z.string().optional(),
+  url: z.url().optional(), mode: z.enum(["gmail", "clipboard", "demo"]),
+  createdAt: z.iso.datetime(),
 });
 export const verifiedFieldSchema = z.object({
   status: statusSchema,
@@ -66,6 +74,7 @@ export const verifiedFieldSchema = z.object({
   sourceCount: z.number().int(),
 });
 export const bomRowSchema = z.object({
+  drafts: z.array(rfqDraftSchema).optional(),
   part: partSchema,
   pick: listingSchema.optional(),
   candidates: z.array(listingSchema),
@@ -104,7 +113,19 @@ export const exchangeSchema = z.object({
   checkedAt: z.iso.datetime(),
   fallback: z.boolean(),
 });
+export const changeSchema = z.object({
+  id: z.string(), bomId: z.string(), partId: z.string(), partName: z.string(),
+  field: z.string(), oldValue: z.string(), newValue: z.string(),
+  evidenceUrl: z.url().optional(), detectedAt: z.iso.datetime(), demo: z.boolean(),
+});
+export const watchMetaSchema = z.object({
+  lastCheckedAt: z.iso.datetime().optional(), nextCheckAt: z.iso.datetime(),
+  cycle: z.number().int().nonnegative().default(0),
+  changes: z.array(changeSchema).default([]),
+  notification: z.object({ summary: z.string(), status: z.enum(["sent", "fallback"]), at: z.iso.datetime(), url: z.url().optional(), error: z.string().optional() }).optional(),
+});
 export const bomSchema = z.object({
+  watch: watchMetaSchema.optional(),
   runId: z.string(),
   input: runInputSchema,
   rows: z.array(bomRowSchema),
@@ -136,10 +157,19 @@ export const agentEventSchema = z.discriminatedUnion("type", [
     suppliers: z.array(supplierSchema),
   }),
   z.object({ type: z.literal("run_finished"), bom: bomSchema }),
+  z.object({ type: z.literal("rfq_drafted"), partId: z.string(), supplier: z.string(), draftId: z.string(), url: z.url().optional() }),
+  z.object({ type: z.literal("watch_status"), watching: z.number().int(), lastCheckedAt: z.iso.datetime().optional(), nextCheckAt: z.iso.datetime().optional(), checking: z.boolean().optional(), demo: z.boolean().optional() }),
+  z.object({ type: z.literal("change_detected"), bomId: z.string(), partId: z.string(), field: z.string(), oldValue: z.string(), newValue: z.string(), evidenceUrl: z.url().optional(), change: changeSchema.optional() }),
+  z.object({ type: z.literal("notification_sent"), bomId: z.string(), channel: z.literal("slack"), url: z.url().optional() }),
+  z.object({ type: z.literal("watch_snapshot"), boms: z.array(bomSchema) }),
+  z.object({ type: z.literal("bom_updated"), bom: bomSchema }),
+  z.object({ type: z.literal("notification_fallback"), bomId: z.string(), summary: z.string(), reason: z.string() }),
   z.object({
     type: z.literal("error"),
     partId: z.string().optional(),
     message: z.string(),
+    bomId: z.string().optional(),
+    scope: z.enum(["watch", "slack", "rfq"]).optional(),
   }),
 ]);
 export type Evidence = z.infer<typeof evidenceSchema>;
@@ -154,3 +184,5 @@ export type Bom = z.infer<typeof bomSchema>;
 export type AgentEvent = z.infer<typeof agentEventSchema>;
 export type ExchangeRates = z.infer<typeof exchangeSchema>;
 export type Risk = z.infer<typeof riskSchema>;
+export type Change = z.infer<typeof changeSchema>;
+export type RfqDraft = z.infer<typeof rfqDraftSchema>;

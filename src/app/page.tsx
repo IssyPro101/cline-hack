@@ -40,6 +40,7 @@ import {
   type VerificationStatus,
 } from "@/lib/schema";
 import { money, priceLabel, statusLabels, toCsv } from "@/lib/format";
+import { WatchFeed } from "./components/watch-feed";
 
 type Activity = { label: string; done: boolean; error?: string };
 type Question = { id: string; text: string };
@@ -117,6 +118,7 @@ export default function Home() {
   const [gmail, setGmail] = useState(false);
   const [recipient, setRecipient] = useState("");
   const stream = useRef<EventSource | null>(null);
+  const activeRun=useRef("");
   const startTime = useRef(0);
   const drawerRef = useRef<HTMLDialogElement>(null);
   const guideRef = useRef<HTMLDialogElement>(null);
@@ -166,6 +168,7 @@ export default function Home() {
     setSelected(null);
     setDraft(null);
     setBusy(true);
+    activeRun.current="pending";
     setElapsed(0);
     startTime.current = Date.now();
     try {
@@ -184,6 +187,7 @@ export default function Home() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
       setRunId(data.runId);
+      activeRun.current=data.runId;
       setDemo(data.demo);
       const source = new EventSource(`/api/runs/${data.runId}/events`);
       stream.current = source;
@@ -984,6 +988,11 @@ export default function Home() {
             </div>
           </section>
         )}
+        <WatchFeed onBom={(updated)=>{
+          if(activeRun.current && activeRun.current!==updated.runId)return;
+          activeRun.current=updated.runId;setRunId(updated.runId);setBom(updated);setRows(updated.rows);setParts(updated.rows.map((r)=>r.part));setDemo(updated.demo);
+          setSelected((old)=>old?updated.rows.find((r)=>r.part.id===old.part.id)??old:null);
+        }}/>
         <footer className="workspace-footer">
           <span>
             <ShieldCheck size={13} />

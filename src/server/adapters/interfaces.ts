@@ -28,3 +28,9 @@ export interface Drafts {
 export interface SheetsExport {
   exportBom(bom: Bom): Promise<{ url: string }>;
 }
+export interface WatchStore {
+  save(bom: Bom): Promise<void>;
+  getAll(): Promise<Bom[]>;
+  getLast(bomId: string): Promise<Bom | null>;
+}
+export interface Notifier { notifySelf(text: string): Promise<{ url?: string }>; }
