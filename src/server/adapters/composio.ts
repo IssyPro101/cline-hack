@@ -4,11 +4,14 @@ import { config } from "../config";
 import type { Bom } from "../../lib/schema";
 import type { Drafts, SheetsExport } from "./interfaces";
 
-// Intentionally closed: the agent has no messaging/sending capability.
+// Email is draft-only. Slack tools are used solely by notifySelf().
 const allowedTools = [
   "GMAIL_CREATE_EMAIL_DRAFT",
   "GOOGLESHEETS_CREATE_GOOGLE_SHEET1",
   "GOOGLESHEETS_VALUES_UPDATE",
+  "SLACK_TEST_AUTH",
+  "SLACK_OPEN_DM",
+  "SLACK_SEND_MESSAGE",
 ] as const;
 type AllowedTool = (typeof allowedTools)[number];
 export class ComposioClient {
@@ -51,11 +54,13 @@ export class ComposioClient {
       throw new Error(
         "The connected integration could not complete this action. Use the local draft or CSV.",
       );
-    return z
+    const data = z
       .record(z.string(), z.unknown())
       .parse(
         typeof result.data === "string" ? JSON.parse(result.data) : result.data,
       );
+    if(data.ok===false)throw new Error("The connected service rejected this action. Check its OAuth scopes.");
+    return data;
   }
 }
 export class ComposioDrafts implements Drafts {

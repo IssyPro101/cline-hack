@@ -8,6 +8,7 @@ const envSchema = z.object({
   LLM_MODEL: z.string().default("llama-3.3-70b-versatile"),
   PARALLEL_API_KEY: z.string().default(""),
   COMPOSIO_API_KEY: z.string().default(""),
+  COMPOSIO_SLACK_CONNECTED_ACCOUNT_ID: z.string().default(""),
   COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID: z.string().default(""),
   COMPOSIO_SHEETS_CONNECTED_ACCOUNT_ID: z.string().default(""),
   COMPOSIO_TOOL_VERSION: z.string().default("latest"),
