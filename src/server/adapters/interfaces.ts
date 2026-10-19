@@ -25,6 +25,10 @@ export interface Drafts {
     body: string;
   }): Promise<{ id: string; url?: string }>;
 }
+export interface Mail {
+  createDraft(args:{to?:string;subject:string;body:string}):Promise<{id:string;threadId?:string;url?:string}>;
+  listReplies?(args:{threadIds:string[]}):Promise<{threadId:string;from:string;receivedAt:string;text:string;url?:string}[]>;
+}
 export interface SheetsExport {
   exportBom(bom: Bom): Promise<{ url: string }>;
 }

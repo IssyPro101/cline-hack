@@ -2,7 +2,7 @@ import { z } from "zod";
 import { bomCells } from "../../lib/format";
 import { config } from "../config";
 import type { Bom } from "../../lib/schema";
-import type { Drafts, SheetsExport } from "./interfaces";
+import type { Drafts, Mail, SheetsExport } from "./interfaces";
 
 // Email is draft-only. Slack tools are used solely by notifySelf().
 const allowedTools = [
@@ -11,6 +11,7 @@ const allowedTools = [
   "GOOGLESHEETS_VALUES_UPDATE",
   "SLACK_TEST_AUTH",
   "SLACK_OPEN_DM",
+  "SLACK_LIST_ALL_CHANNELS",
   "SLACK_SEND_MESSAGE",
 ] as const;
 type AllowedTool = (typeof allowedTools)[number];
@@ -63,17 +64,16 @@ export class ComposioClient {
     return data;
   }
 }
-export class ComposioDrafts implements Drafts {
+export class ComposioDrafts implements Drafts, Mail {
   async createEmailDraft(args: { to?: string; subject: string; body: string }) {
-    if (!args.to)
-      throw new Error(
-        "A recipient email is required to save a Gmail draft. The copyable draft is ready below.",
-      );
+    return this.createDraft(args);
+  }
+  async createDraft(args: {to?:string;subject:string;body:string}) {
     const data = await new ComposioClient().execute(
       "GMAIL_CREATE_EMAIL_DRAFT",
       config().COMPOSIO_GMAIL_CONNECTED_ACCOUNT_ID,
       {
-        recipient_email: args.to,
+        ...(args.to ? {recipient_email: args.to} : {}),
         subject: args.subject,
         body: args.body,
         is_html: false,
@@ -81,7 +81,9 @@ export class ComposioDrafts implements Drafts {
       },
     );
     const id = z.string().parse(data.draft_id ?? data.id);
-    return { id, url: "https://mail.google.com/mail/u/0/#drafts" };
+    const message = data.message && typeof data.message==="object" ? data.message as Record<string,unknown> : {};
+    const threadId = z.string().optional().parse(data.thread_id ?? data.threadId ?? message.threadId);
+    return { id, threadId, url: "https://mail.google.com/mail/u/0/#drafts" };
   }
 }
 export class ComposioSheets implements SheetsExport {

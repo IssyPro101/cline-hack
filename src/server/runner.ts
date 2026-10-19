@@ -12,6 +12,7 @@ import { replay } from "./replay";
 import { emit, type Run } from "./store";
 import type { LLM, WebResearch } from "./adapters/interfaces";
 import { watchBom } from "./watch/service";
+import { ensureRfqDrafts } from "./rfq-drafts";
 export async function startRun(run: Run) {
   if (run.started) return;
   run.started = true;
@@ -32,6 +33,7 @@ export async function startRun(run: Run) {
               : 170,
         ),
       );
+      if(event.type==="run_finished")event.bom=await ensureRfqDrafts(event.bom,e=>emit(run,e));
       emit(run, event);
     }
     if(run.bom)await watchBom(run.bom);
@@ -92,13 +94,9 @@ export async function researchRun(run: Run, llm: LLM, research: WebResearch) {
           : "Planning failed. Check the research configuration.",
     });
   }
+  const bom=await ensureRfqDrafts(report(run.id,run.input,fitBudget(rows,run.input,exchange),exchange),e=>emit(run,e));
   emit(run, {
     type: "run_finished",
-    bom: report(
-      run.id,
-      run.input,
-      fitBudget(rows, run.input, exchange),
-      exchange,
-    ),
+    bom,
   });
 }

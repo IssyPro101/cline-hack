@@ -8,6 +8,7 @@ import {
 import type { LLM, WebResearch } from "./adapters/interfaces";
 import { groundListing, quoteInText } from "./evidence";
 import { emit, type Run } from "./store";
+import { sourceDomain } from "./verifier";
 
 const extractionSchema = z.object({
   listing: listingSchema.nullable(),
@@ -61,7 +62,9 @@ export async function crawl(
     );
   if (part.category === "custom-fabricated") {
     const suppliers: Supplier[] = [];
-    for (const hit of hits.slice(0, 3)) {
+    for (const hit of hits) {
+      if(suppliers.length>=3)break;
+      if(suppliers.some((s)=>sourceDomain(s.url)===sourceDomain(hit.url)))continue;
       try {
         emit(run, {
           type: "step",
@@ -90,9 +93,11 @@ export async function crawl(
           suppliers.push({
             name: data.supplier.name,
             url: hit.url,
+            email: page.text.match(/[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9-]+(?:\.[A-Z0-9-]+)+/i)?.[0],
             evidence: [
               {
                 field: "spec",
+                sourceType: "web",
                 value: "Fabrication service",
                 sourceUrl: hit.url,
                 quote: data.supplier.quote,

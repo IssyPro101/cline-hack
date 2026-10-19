@@ -7,6 +7,7 @@ import { emit, type Run } from "./store";
 import { fitBudget, rankPart } from "./ranker";
 import { exchangeRates } from "./exchange";
 import { report } from "./reporter";
+import {ensureRfqDrafts} from "./rfq-drafts";
 
 export const replaySchema = z.object({
   version: z.literal(1),
@@ -73,6 +74,7 @@ export async function replay(run: Run) {
           log.illustrative,
         ),
       };
+      event.bom=await ensureRfqDrafts(event.bom,e=>emit(run,e));
     }
     emit(run, event);
   }

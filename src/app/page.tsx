@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import {
   ArrowDownToLine,
   ArrowRight,
@@ -41,6 +41,7 @@ import {
 } from "@/lib/schema";
 import { money, priceLabel, statusLabels, toCsv } from "@/lib/format";
 import { WatchFeed } from "./components/watch-feed";
+import {RfqList} from "./components/rfq-list";
 
 type Activity = { label: string; done: boolean; error?: string };
 type Question = { id: string; text: string };
@@ -229,7 +230,8 @@ export default function Home() {
             }));
           }
           if (event.type === "error") {
-            if (event.partId)
+            if(event.scope==="rfq")setAssumptions((old)=>[...old,event.message]);
+            else if (event.partId)
               setActivity((a) => ({
                 ...a,
                 [event.partId!]: {
@@ -756,8 +758,8 @@ export default function Home() {
                 </thead>
                 <tbody>
                   {displayRows.map((row, i) => (
+                    <Fragment key={row.part.id}>
                     <tr
-                      key={row.part.id}
                       className="bom-row"
                       tabIndex={0}
                       onClick={() => {
@@ -844,6 +846,8 @@ export default function Home() {
                         <ChevronRight size={14} />
                       </td>
                     </tr>
+                    {row.drafts && row.drafts.length>0 && <tr className="rfq-table-row"><td colSpan={7}><RfqList drafts={row.drafts} compact/></td></tr>}
+                    </Fragment>
                   ))}
                 </tbody>
               </table>
@@ -1106,6 +1110,7 @@ export default function Home() {
                   <small>Drafts only. Nothing is sent.</small>
                 </div>
               )}
+              {selected.drafts&&selected.drafts.length>0&&<RfqList drafts={selected.drafts}/>}
               {draft && (
                 <div className="draft-card">
                   <span className="eyebrow">YOUR RFQ DRAFT</span>
