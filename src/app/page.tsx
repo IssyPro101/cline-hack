@@ -118,6 +118,8 @@ export default function Home() {
   const [recipient, setRecipient] = useState("");
   const stream = useRef<EventSource | null>(null);
   const activeRun = useRef("");
+  // This is synchronous so a late Watch snapshot cannot win against an edit.
+  const briefEdited = useRef(false);
   const startTime = useRef(0);
   const drawerRef = useRef<HTMLDialogElement>(null);
   const guideRef = useRef<HTMLDialogElement>(null);
@@ -396,6 +398,9 @@ export default function Home() {
         </div>
         <form
           className="brief-card"
+          onChangeCapture={() => {
+            briefEdited.current = true;
+          }}
           onSubmit={(e) => {
             e.preventDefault();
             void start();
@@ -509,6 +514,7 @@ export default function Home() {
             <button
               disabled={busy}
               onClick={() => {
+                briefEdited.current = true;
                 setGoal(ROBOT_GOAL);
                 setBudget("3500");
                 setCurrency("AUD");
@@ -522,6 +528,7 @@ export default function Home() {
             <button
               disabled={busy}
               onClick={() => {
+                briefEdited.current = true;
                 setGoal(WEATHER_GOAL);
                 setBudget("200");
                 setCurrency("AUD");
@@ -973,6 +980,7 @@ export default function Home() {
         )}
         <WatchFeed
           onBom={(updated) => {
+            if (!activeRun.current && briefEdited.current) return;
             if (activeRun.current && activeRun.current !== updated.runId)
               return;
             if (!activeRun.current) {

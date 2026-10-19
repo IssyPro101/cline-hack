@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:browser": "tsx scripts/browser-smoke.ts",
     "test:smoke": "tsx scripts/smoke.ts",
     "test:watch-smoke": "tsx scripts/watch-smoke.ts",
     "demo:record": "tsx scripts/record-demo.ts"
@@ -30,6 +31,7 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "playwright": "^1.64.1",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
     "vitest": "^5.0.5"

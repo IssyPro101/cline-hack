@@ -49,19 +49,33 @@ mode for arbitrary goals.
 
 ## Live research
 
-In `.env.local`, set `MOCK=0`, `PARALLEL_API_KEY`, and the following fields:
+In `.env.local`, configure Claude through Anthropic's native Messages API and
+Parallel for supplier research:
 
 ```dotenv
-LLM_BASE_URL=https://api.groq.com/openai/v1
-LLM_API_KEY=your-key
-LLM_MODEL=llama-3.3-70b-versatile
+MOCK=0
+DEMO_SCRIPT=0
+PARALLEL_API_KEY=your-parallel-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
+ANTHROPIC_MODEL=claude-sonnet-5-5
 ```
 
-Restart the server after changing environment values. The endpoint must support
-OpenAI-compatible chat completions and `response_format: { type: "json_object" }`.
-The default reasoning model is open-source Llama 3.3 70B; use any compatible
-open-source model your provider supports. Output is validated with Zod, with
-one retry for malformed JSON or schema failures. Invalid output is never used.
+Restart the server after changing environment values, then start a fresh run with
+**Find my parts**. Replay and existing demo BOMs remain illustrative.
+The default model is Claude Sonnet 5.5; `ANTHROPIC_MODEL` can select another Claude
+model available to your API account. The application code is MIT-licensed;
+the hosted AI model does not have to be open source. See Anthropic's
+[model reference](https://platform.claude.com/docs/en/models/overview).
+Old `LLM_BASE_URL`, `LLM_API_KEY`, and `LLM_MODEL` settings are no longer used;
+Groq credentials are never sent to Anthropic.
+
+The adapter calls `POST https://api.anthropic.com/v1/messages` with an
+`x-api-key` header and a separate system prompt. Claude returns JSON text,
+which is validated against the original Zod schema, including refinements.
+There is one retry for malformed JSON, schema failures, or incomplete output;
+the output token allowance increases on a truncated response. Refusals and
+HTTP errors are explicit failures. Thinking blocks never enter the BOM.
+Invalid output is never used.
 No keys are exposed to the browser. Missing live credentials cause an explicit
 configuration error; PartScout never silently substitutes mock prices.
 
@@ -186,7 +200,7 @@ one. A scripted quote is always labeled Demo data and never claimed as received 
 ```mermaid
 flowchart TD
   UI[Next.js workspace] -->|POST /api/runs| Run[In-memory run]
-  Run --> Planner[Open-source LLM planner]
+  Run --> Planner[Claude planner]
   Planner -->|At most 12 parts| Pool[5 concurrent crawlers]
   Pool --> Search[Parallel search]
   Search --> Extract[Parallel extract]
@@ -216,7 +230,7 @@ event IDs, reconnecting from `Last-Event-ID`, and heartbeat comments.
 src/app/           Workspace UI and App Router API handlers
 src/lib/           Shared Zod models, formatting, example goals, fixture builder
 src/server/        Planner, crawlers, grounding, verifier, ranker, reporter
-src/server/adapters/  Parallel, chat-completion, and Composio adapters
+src/server/adapters/  Parallel, Claude Messages, and Composio adapters
 src/server/watch/  Scheduler, atomic store, diffs, scripted changes, Watch SSE bus
 data/              Private watched BOM baselines and evidence (gitignored)
 fixtures/          Complete timed illustrative event logs for both example goals

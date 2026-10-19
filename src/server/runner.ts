@@ -1,7 +1,7 @@
 import { mockEvents } from "../lib/demo";
 import { type BomRow } from "../lib/schema";
 import { config } from "./config";
-import { CompatibleLLM } from "./adapters/llm";
+import { ClaudeLLM } from "./adapters/llm";
 import { ParallelResearch } from "./adapters/parallel";
 import { crawl, withConcurrency } from "./crawler";
 import { plan } from "./planner";
@@ -55,7 +55,7 @@ export async function startRun(run: Run) {
     await baseline(run);
     return;
   }
-  await researchRun(run, new CompatibleLLM(), new ParallelResearch());
+  await researchRun(run, new ClaudeLLM(), new ParallelResearch());
   await baseline(run);
 }
 

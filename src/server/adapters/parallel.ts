@@ -45,9 +45,14 @@ export class ParallelResearch implements WebResearch {
     return responseSchema.parse(await response.json());
   }
   async search(query: string, opts?: { country?: string; limit?: number }) {
+    const normalized = query.replace(/\s+/g, " ").trim();
+    // Keep both ends for other callers; never silently erase trailing intent.
+    const keywords = normalized.length > 200
+      ? `${normalized.slice(0, 134)} ${normalized.slice(-65)}`
+      : normalized;
     const result = await this.request("search", {
-      objective: query,
-      search_queries: [query.slice(0, 200)],
+      objective: `Find supplier product or fabrication-service pages for: ${normalized}. Prefer purchasable listings with explicit unit pricing and currency, stock and delivery information. Avoid datasheets, manuals, category indexes and news when relevant supplier pages are available.`,
+      search_queries: [keywords],
       mode: "fast",
       advanced_settings: {
         max_results: opts?.limit ?? 4,

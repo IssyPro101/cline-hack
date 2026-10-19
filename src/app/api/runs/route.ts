@@ -14,12 +14,12 @@ export async function POST(request: Request) {
     if (
       env.MOCK === "0" &&
       !parsed.data.replay &&
-      (!env.PARALLEL_API_KEY || !env.LLM_API_KEY)
+      (!env.PARALLEL_API_KEY || !env.ANTHROPIC_API_KEY)
     )
       return Response.json(
         {
           error:
-            "Live research needs PARALLEL_API_KEY and LLM_API_KEY. Configure .env.local, or use Replay demo.",
+            "Live research needs PARALLEL_API_KEY and ANTHROPIC_API_KEY. Configure .env.local, or use Replay demo.",
         },
         { status: 503 },
       );

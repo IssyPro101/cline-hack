@@ -8,9 +8,8 @@ const envSchema = z.object({
     .min(1)
     .max(604800)
     .default(86400),
-  LLM_BASE_URL: z.url().default("https://api.groq.com/openai/v1"),
-  LLM_API_KEY: z.string().default(""),
-  LLM_MODEL: z.string().default("llama-3.3-70b-versatile"),
+  ANTHROPIC_API_KEY: z.string().trim().default(""),
+  ANTHROPIC_MODEL: z.string().trim().min(1).default("claude-sonnet-5-5"),
   PARALLEL_API_KEY: z.string().default(""),
   COMPOSIO_API_KEY: z.string().default(""),
   COMPOSIO_SLACK_CONNECTED_ACCOUNT_ID: z.string().default(""),

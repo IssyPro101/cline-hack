@@ -1,6 +1,6 @@
 import type { Bom, BomRow } from "../../lib/schema";
 import { config } from "../config";
-import { CompatibleLLM } from "../adapters/llm";
+import { ClaudeLLM } from "../adapters/llm";
 import { ParallelResearch } from "../adapters/parallel";
 import { crawl, withConcurrency } from "../crawler";
 import { rankPart, fitBudget } from "../ranker";
@@ -16,9 +16,9 @@ export async function recheck(baseline: Bom): Promise<Bom> {
   if (env.DEMO_SCRIPT === "1") return scriptedCheck(baseline);
   // Archived/illustrative pages never masquerade as a live lookup.
   if (baseline.demo || baseline.input.replay) return structuredClone(baseline);
-  if (!env.PARALLEL_API_KEY || !env.LLM_API_KEY)
+  if (!env.PARALLEL_API_KEY || !env.ANTHROPIC_API_KEY)
     throw new Error(
-      "Watch needs Parallel and LLM credentials. Previous evidence was preserved.",
+      "Watch needs PARALLEL_API_KEY and ANTHROPIC_API_KEY. Previous evidence was preserved.",
     );
   const run: Run = {
     id: baseline.runId,
@@ -41,7 +41,7 @@ export async function recheck(baseline: Bom): Promise<Bom> {
       ),
     ),
   };
-  const llm = new CompatibleLLM(),
+  const llm = new ClaudeLLM(),
     research = new ParallelResearch();
   const rows: BomRow[] = [];
   await withConcurrency(baseline.rows, 5, async (old) => {

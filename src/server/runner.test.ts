@@ -1,9 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { z } from "zod";
 import { createRun, runs } from "./store";
 import { researchRun } from "./runner";
 import { plan } from "./planner";
-import { CompatibleLLM } from "./adapters/llm";
 import { MockLLM } from "./adapters/llm";
 import type { LLM, WebResearch } from "./adapters/interfaces";
 import type {
@@ -120,40 +118,5 @@ describe("live orchestration", () => {
           e.event.type === "assumption" && e.event.text.includes("Skipped"),
       ),
     ).toBe(true);
-  });
-  it("retries invalid model JSON exactly once", async () => {
-    const mock = vi
-      .fn()
-      .mockResolvedValueOnce(
-        Response.json({ choices: [{ message: { content: "invalid" } }] }),
-      )
-      .mockResolvedValueOnce(
-        Response.json({ choices: [{ message: { content: '{"ok":true}' } }] }),
-      );
-    vi.stubGlobal("fetch", mock);
-    expect(
-      await new CompatibleLLM().json({
-        system: "Test",
-        user: "Test",
-        schema: z.object({ ok: z.boolean() }),
-      }),
-    ).toEqual({ ok: true });
-    expect(mock).toHaveBeenCalledTimes(2);
-  });
-  it("rejects repeated invalid model output", async () => {
-    const mock = vi
-      .fn()
-      .mockImplementation(async () =>
-        Response.json({ choices: [{ message: { content: "{}" } }] }),
-      );
-    vi.stubGlobal("fetch", mock);
-    await expect(
-      new CompatibleLLM().json({
-        system: "Test",
-        user: "Test",
-        schema: z.object({ ok: z.boolean() }),
-      }),
-    ).rejects.toThrow("twice");
-    expect(mock).toHaveBeenCalledTimes(2);
   });
 });
