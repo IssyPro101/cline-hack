@@ -8,6 +8,9 @@ import { fitBudget, rankPart } from "./ranker";
 import { exchangeRates } from "./exchange";
 import { report } from "./reporter";
 import {ensureRfqDrafts} from "./rfq-drafts";
+import {diffBoms} from "./watch/diff";
+import {publish} from "./watch/events";
+import {config} from "./config";
 
 export const replaySchema = z.object({
   version: z.literal(1),
@@ -38,6 +41,10 @@ export async function replay(run: Run) {
   const exchange = exchangeRates(run.input.currency);
   if (log.illustrative)
     exchange.source = "Illustrative demo · " + exchange.source;
+  const finalEntry=log.events.map((e)=>e.event).find((e)=>e.type==="run_finished");
+  const rerank=(rows: import("../lib/schema").BomRow[])=>rows.map((r)=>({...rankPart(r.part,r.candidates,r.suppliers,run.input,exchange),drafts:r.drafts}));
+  const initialRows=log.events.flatMap((e)=>e.event.type==="part_result"?[e.event.row]:[]);
+  const archivedChanges=finalEntry?.type==="run_finished"?diffBoms(report(run.id,run.input,rerank(initialRows),exchange,true),report(run.id,run.input,rerank(finalEntry.bom.rows),exchange,true)):[];
   let previous = 0;
   for (const entry of log.events) {
     await new Promise((resolve) =>
@@ -49,6 +56,14 @@ export async function replay(run: Run) {
     previous = entry.at;
     let event = entry.event;
     if (event.type === "run_started") event = { ...event, runId: run.id };
+    if(event.type==="change_detected") {
+      const actual=archivedChanges.find((c)=>c.partId===event.partId&&c.field===event.field);
+      if(!actual)continue;
+      event={type:"change_detected",...actual,change:actual};publish(event);
+    }
+    if(event.type==="notification_fallback") {event={...event,bomId:run.id};publish(event);}
+    // A recorded delivery is history, never a claim that a message was sent now.
+    if(event.type==="notification_sent")continue;
     if (event.type === "part_result")
       event = {
         ...event,
@@ -61,9 +76,8 @@ export async function replay(run: Run) {
         ),
       };
     if (event.type === "run_finished") {
-      const rows = event.bom.rows.map((r) =>
-        rankPart(r.part, r.candidates, r.suppliers, run.input, exchange),
-      );
+      const cachedWatch=event.bom.watch;
+      const rows = rerank(event.bom.rows);
       event = {
         type: "run_finished",
         bom: report(
@@ -75,6 +89,7 @@ export async function replay(run: Run) {
         ),
       };
       event.bom=await ensureRfqDrafts(event.bom,e=>emit(run,e));
+      if(cachedWatch)event.bom.watch={...cachedWatch,changes:archivedChanges,lastCheckedAt:new Date().toISOString(),nextCheckAt:new Date(Date.now()+config().WATCH_INTERVAL_SECONDS*1000).toISOString()};
     }
     emit(run, event);
   }

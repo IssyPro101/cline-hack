@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import {withEvidenceTypes} from "../lib/provenance";
 import {
   agentEventSchema,
   type AgentEvent,
@@ -45,7 +46,7 @@ export function createRun(input: RunInput): Run {
   return run;
 }
 export function emit(run: Run, event: AgentEvent) {
-  const parsed = agentEventSchema.parse(event);
+  const parsed = agentEventSchema.parse(withEvidenceTypes(event));
   const entry = {
     id: run.events.length + 1,
     at: Date.now() - run.startedAt,

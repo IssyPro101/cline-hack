@@ -20,7 +20,9 @@ export class WatchEngine {
   async baseline(bom:Bom){
     if(!bom.rows.length)return;
     const previous=await this.deps.store.getLast(bom.runId);
-    await this.deps.store.save({...bom,watch:previous?.watch??{nextCheckAt:new Date(this.now()+this.deps.intervalSeconds*1000).toISOString(),cycle:0,changes:[]}});
+    const saved={...bom,watch:bom.watch??previous?.watch??{nextCheckAt:new Date(this.now()+this.deps.intervalSeconds*1000).toISOString(),cycle:0,changes:[]}};
+    await this.deps.store.save(saved);
+    this.deps.publish({type:"bom_updated",bom:saved});
     this.deps.publish(await this.status());
   }
   async tick(){

@@ -3,6 +3,12 @@ import { join } from "node:path";
 import { mockEvents } from "../src/lib/demo";
 import { ROBOT_GOAL, WEATHER_GOAL } from "../src/lib/examples";
 import { replaySchema } from "../src/server/replay";
+import {ensureRfqDrafts} from "../src/server/rfq-drafts";
+import {scriptedCheck} from "../src/server/watch/demo";
+import {diffBoms} from "../src/server/watch/diff";
+import {summaryFor} from "../src/server/watch/engine";
+import {withEvidenceTypes} from "../src/lib/provenance";
+import type {AgentEvent} from "../src/lib/schema";
 
 async function main() {
   const fixtureDir = join(process.cwd(), "fixtures");
@@ -36,7 +42,7 @@ async function main() {
     ["demo-run.json", ROBOT_GOAL, 3500],
     ["weather-run.json", WEATHER_GOAL, 200],
   ] as const) {
-    const events = mockEvents("cached-demo", {
+    const events:AgentEvent[] = mockEvents("cached-demo", {
       goal,
       budget,
       currency: "AUD",
@@ -44,11 +50,21 @@ async function main() {
       deadlineDays: 21,
       replay: false,
     });
-    const log = replaySchema.parse({
+    const final=events.pop()!;
+    if(final.type!=="run_finished")throw new Error("Demo has no completed BOM.");
+    await ensureRfqDrafts(final.bom,(e)=>events.push(e));
+    const updated=scriptedCheck(final.bom);
+    const changes=diffBoms(final.bom,updated,"2026-10-18T09:31:00.000Z");
+    const summary=summaryFor(updated,changes);
+    updated.watch={cycle:1,lastCheckedAt:"2026-10-18T09:31:00.000Z",nextCheckAt:"2026-10-18T09:32:00.000Z",changes,notification:{status:"fallback",at:"2026-10-18T09:31:00.000Z",summary,error:"Archived demo: no real Slack delivery is claimed."}};
+    changes.forEach((change)=>events.push({type:"change_detected",...change,change}));
+    events.push({type:"notification_fallback",bomId:updated.runId,summary,reason:"Archived demo: no real Slack delivery is claimed."});
+    events.push({type:"run_finished",bom:updated});
+    const log = replaySchema.parse(withEvidenceTypes({
       version: 1,
       illustrative: true,
       events: events.map((event, i) => ({ at: i * 600, event })),
-    });
+    }));
     await writeFile(
       join(fixtureDir, name),
       JSON.stringify(log, null, 2) + "\n",

@@ -225,6 +225,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 19,
               "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -232,6 +233,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "low",
               "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -239,6 +241,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 4,
               "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -246,6 +249,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -280,6 +284,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 19,
               "sourceUrl": "https://evidence.partscout.example/controller",
@@ -287,6 +292,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "low",
               "sourceUrl": "https://evidence.partscout.example/controller",
@@ -294,6 +300,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 4,
               "sourceUrl": "https://evidence.partscout.example/controller",
@@ -301,6 +308,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://evidence.partscout.example/controller",
@@ -349,6 +357,7 @@
             },
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "price",
                 "value": 19,
                 "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -356,6 +365,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "stock",
                 "value": "low",
                 "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -363,6 +373,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "leadTimeDays",
                 "value": 4,
                 "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -370,6 +381,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "shipsToDestination",
                 "value": true,
                 "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -399,6 +411,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 19,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -406,6 +419,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "low",
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -413,6 +427,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -420,6 +435,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -448,6 +464,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 19,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -455,6 +472,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "low",
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -462,6 +480,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -469,6 +488,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -488,6 +508,7 @@
               "max": 19,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 19,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -495,6 +516,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 19,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -509,6 +531,7 @@
               "value": "low",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "low",
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -516,6 +539,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "low",
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -532,6 +556,7 @@
               "max": 4,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -539,6 +564,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -553,6 +579,7 @@
               "value": true,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -560,6 +587,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/controller",
@@ -607,6 +635,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 24,
               "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -614,6 +643,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -621,6 +651,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 5,
               "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -628,6 +659,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -662,6 +694,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 24,
               "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -669,6 +702,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -676,6 +710,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 5,
               "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -683,6 +718,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -731,6 +767,7 @@
             },
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "price",
                 "value": 24,
                 "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -738,6 +775,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "stock",
                 "value": "in_stock",
                 "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -745,6 +783,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "leadTimeDays",
                 "value": 5,
                 "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -752,6 +791,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "shipsToDestination",
                 "value": true,
                 "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -781,6 +821,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 24,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -788,6 +829,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -795,6 +837,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 5,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -802,6 +845,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -830,6 +874,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 24,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -837,6 +882,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -844,6 +890,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 5,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -851,6 +898,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -870,6 +918,7 @@
               "max": 24,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 24,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -877,6 +926,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 24,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -891,6 +941,7 @@
               "value": "in_stock",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -898,6 +949,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -914,6 +966,7 @@
               "max": 5,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 5,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -921,6 +974,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 5,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -935,6 +989,7 @@
               "value": true,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -942,6 +997,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -989,6 +1045,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 39,
               "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -996,6 +1053,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1003,6 +1061,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 7,
               "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1010,6 +1069,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1044,6 +1104,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 46.019999999999996,
               "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1051,6 +1112,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1058,6 +1120,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 7,
               "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1065,6 +1128,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1113,6 +1177,7 @@
             },
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "price",
                 "value": 39,
                 "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1120,6 +1185,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "stock",
                 "value": "in_stock",
                 "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1127,6 +1193,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "leadTimeDays",
                 "value": 7,
                 "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1134,6 +1201,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "shipsToDestination",
                 "value": true,
                 "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1163,6 +1231,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 39,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1170,6 +1239,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1177,6 +1247,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 7,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1184,6 +1255,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1212,6 +1284,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 46.019999999999996,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1219,6 +1292,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1226,6 +1300,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 7,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1233,6 +1308,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1252,6 +1328,7 @@
               "max": 46.019999999999996,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 39,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1259,6 +1336,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 46.019999999999996,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1273,6 +1351,7 @@
               "value": "in_stock",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1280,6 +1359,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1296,6 +1376,7 @@
               "max": 7,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 7,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1303,6 +1384,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 7,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1317,6 +1399,7 @@
               "value": true,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -1324,6 +1407,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/rain",
@@ -1371,6 +1455,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 36,
               "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1378,6 +1463,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1385,6 +1471,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 8,
               "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1392,6 +1479,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1426,6 +1514,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 36,
               "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1433,6 +1522,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1440,6 +1530,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 8,
               "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1447,6 +1538,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1495,6 +1587,7 @@
             },
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "price",
                 "value": 36,
                 "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1502,6 +1595,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "stock",
                 "value": "in_stock",
                 "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1509,6 +1603,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "leadTimeDays",
                 "value": 8,
                 "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1516,6 +1611,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "shipsToDestination",
                 "value": true,
                 "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1545,6 +1641,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 36,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1552,6 +1649,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1559,6 +1657,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 8,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1566,6 +1665,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1594,6 +1694,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 36,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1601,6 +1702,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1608,6 +1710,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 8,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1615,6 +1718,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1634,6 +1738,7 @@
               "max": 36,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 36,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1641,6 +1746,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 36,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1655,6 +1761,7 @@
               "value": "in_stock",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1662,6 +1769,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1678,6 +1786,7 @@
               "max": 8,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 8,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1685,6 +1794,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 8,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1699,6 +1809,7 @@
               "value": true,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -1706,6 +1817,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://evidence.partscout.example/solar",
@@ -1753,6 +1865,7 @@
           },
           "evidence": [
             {
+              "sourceType": "web",
               "field": "price",
               "value": 17,
               "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1760,6 +1873,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "stock",
               "value": "in_stock",
               "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1767,6 +1881,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "leadTimeDays",
               "value": 4,
               "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1774,6 +1889,7 @@
               "checkedAt": "2026-10-18T09:30:00.000Z"
             },
             {
+              "sourceType": "web",
               "field": "shipsToDestination",
               "value": true,
               "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1822,6 +1938,7 @@
             },
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "price",
                 "value": 17,
                 "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1829,6 +1946,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "stock",
                 "value": "in_stock",
                 "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1836,6 +1954,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "leadTimeDays",
                 "value": 4,
                 "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1843,6 +1962,7 @@
                 "checkedAt": "2026-10-18T09:30:00.000Z"
               },
               {
+                "sourceType": "web",
                 "field": "shipsToDestination",
                 "value": true,
                 "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1872,6 +1992,7 @@
               },
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 17,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1879,6 +2000,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1886,6 +2008,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1893,6 +2016,7 @@
                   "checkedAt": "2026-10-18T09:30:00.000Z"
                 },
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1912,6 +2036,7 @@
               "max": 17,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "price",
                   "value": 17,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1926,6 +2051,7 @@
               "value": "in_stock",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "stock",
                   "value": "in_stock",
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1942,6 +2068,7 @@
               "max": 4,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "leadTimeDays",
                   "value": 4,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1956,6 +2083,7 @@
               "value": true,
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "shipsToDestination",
                   "value": true,
                   "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -1990,6 +2118,7 @@
             "url": "https://www.hubs.com/3d-printing/",
             "evidence": [
               {
+                "sourceType": "web",
                 "field": "spec",
                 "value": "Custom fabrication services",
                 "sourceUrl": "https://www.hubs.com/3d-printing/",
@@ -2012,6 +2141,26 @@
         "type": "part_result",
         "partId": "enclosure",
         "row": {
+          "drafts": [
+            {
+              "supplier": "Protolabs Network",
+              "supplierUrl": "https://www.hubs.com/3d-printing/",
+              "subject": "PartScout RFQ: Weatherproof sensor housing (qty 1) — Protolabs Network",
+              "body": "Hello Protolabs Network team,\n\nCould you please provide a quote for the following part?\n\nPart: Weatherproof sensor housing\nPurpose: Protect electronics without trapping heat\nQuantity: 1\n\nKey specifications:\n• protection: Rain shield\n• material: UV-resistant ASA\n\nShip to: Sydney, Australia\nNeeded by: 9 November 2026\n\nPlease include unit and total pricing, currency, taxes, shipping cost, material/process recommendations, and estimated delivery time. Let me know which drawings or files you need before confirming the quote.\n\nThank you.",
+              "id": "local-1442e989-d248-40bc-b927-739496ab8f53",
+              "mode": "demo",
+              "createdAt": "2026-10-19T20:37:16.379Z"
+            },
+            {
+              "supplier": "Xometry",
+              "supplierUrl": "https://www.xometry.com/",
+              "subject": "PartScout RFQ: Weatherproof sensor housing (qty 1) — Xometry",
+              "body": "Hello Xometry team,\n\nCould you please provide a quote for the following part?\n\nPart: Weatherproof sensor housing\nPurpose: Protect electronics without trapping heat\nQuantity: 1\n\nKey specifications:\n• protection: Rain shield\n• material: UV-resistant ASA\n\nShip to: Sydney, Australia\nNeeded by: 9 November 2026\n\nPlease include unit and total pricing, currency, taxes, shipping cost, material/process recommendations, and estimated delivery time. Let me know which drawings or files you need before confirming the quote.\n\nThank you.",
+              "id": "local-7323bc89-28c7-4d82-9075-65dadef261d0",
+              "mode": "demo",
+              "createdAt": "2026-10-19T20:37:16.379Z"
+            }
+          ],
           "part": {
             "id": "enclosure",
             "name": "Weatherproof sensor housing",
@@ -2031,6 +2180,7 @@
               "url": "https://www.hubs.com/3d-printing/",
               "evidence": [
                 {
+                  "sourceType": "web",
                   "field": "spec",
                   "value": "Custom fabrication services",
                   "sourceUrl": "https://www.hubs.com/3d-printing/",
@@ -2075,8 +2225,84 @@
     {
       "at": 22800,
       "event": {
+        "type": "rfq_drafted",
+        "partId": "enclosure",
+        "supplier": "Protolabs Network",
+        "draftId": "local-1442e989-d248-40bc-b927-739496ab8f53"
+      }
+    },
+    {
+      "at": 23400,
+      "event": {
+        "type": "rfq_drafted",
+        "partId": "enclosure",
+        "supplier": "Xometry",
+        "draftId": "local-7323bc89-28c7-4d82-9075-65dadef261d0"
+      }
+    },
+    {
+      "at": 24000,
+      "event": {
+        "type": "change_detected",
+        "bomId": "cached-demo",
+        "partId": "controller",
+        "field": "price",
+        "oldValue": "19 (agreed)",
+        "newValue": "17.1 (agreed)",
+        "evidenceUrl": "https://core-electronics.com.au/esp32.html",
+        "change": {
+          "id": "0f471031-124a-4851-98bb-e108a087de8f",
+          "bomId": "cached-demo",
+          "partId": "controller",
+          "partName": "Wi-Fi microcontroller",
+          "field": "price",
+          "oldValue": "19 (agreed)",
+          "newValue": "17.1 (agreed)",
+          "evidenceUrl": "https://core-electronics.com.au/esp32.html",
+          "detectedAt": "2026-10-18T09:31:00.000Z",
+          "demo": true
+        }
+      }
+    },
+    {
+      "at": 24600,
+      "event": {
+        "type": "notification_fallback",
+        "bomId": "cached-demo",
+        "summary": "[DEMO DATA] PartScout Watch — A solar-powered weather station that measures temperature, humidity and rainfall, with Wi-Fi, for A$200.\n• Wi-Fi microcontroller / price: 19 (agreed) → 17.1 (agreed)\n  https://core-electronics.com.au/esp32.html\nDecision: review changed availability, costs, and delivery before purchasing. No order or email was sent.",
+        "reason": "Archived demo: no real Slack delivery is claimed."
+      }
+    },
+    {
+      "at": 25200,
+      "event": {
         "type": "run_finished",
         "bom": {
+          "watch": {
+            "lastCheckedAt": "2026-10-18T09:31:00.000Z",
+            "nextCheckAt": "2026-10-18T09:32:00.000Z",
+            "cycle": 1,
+            "changes": [
+              {
+                "id": "0f471031-124a-4851-98bb-e108a087de8f",
+                "bomId": "cached-demo",
+                "partId": "controller",
+                "partName": "Wi-Fi microcontroller",
+                "field": "price",
+                "oldValue": "19 (agreed)",
+                "newValue": "17.1 (agreed)",
+                "evidenceUrl": "https://core-electronics.com.au/esp32.html",
+                "detectedAt": "2026-10-18T09:31:00.000Z",
+                "demo": true
+              }
+            ],
+            "notification": {
+              "summary": "[DEMO DATA] PartScout Watch — A solar-powered weather station that measures temperature, humidity and rainfall, with Wi-Fi, for A$200.\n• Wi-Fi microcontroller / price: 19 (agreed) → 17.1 (agreed)\n  https://core-electronics.com.au/esp32.html\nDecision: review changed availability, costs, and delivery before purchasing. No order or email was sent.",
+              "status": "fallback",
+              "at": "2026-10-18T09:31:00.000Z",
+              "error": "Archived demo: no real Slack delivery is claimed."
+            }
+          },
           "runId": "cached-demo",
           "input": {
             "goal": "A solar-powered weather station that measures temperature, humidity and rainfall, with Wi-Fi, for A$200.",
@@ -2107,7 +2333,7 @@
                 "productUrl": "https://core-electronics.com.au/esp32.html",
                 "productKey": "controller",
                 "price": {
-                  "amount": 19,
+                  "amount": 17.1,
                   "currency": "AUD",
                   "qty": 1
                 },
@@ -2120,13 +2346,15 @@
                 },
                 "evidence": [
                   {
+                    "sourceType": "web",
                     "field": "price",
-                    "value": 19,
+                    "value": 17.1,
                     "sourceUrl": "https://core-electronics.com.au/esp32.html",
-                    "quote": "Demo fixture: AUD 19.00 per unit.",
-                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                    "quote": "Scripted demo: AUD 17.10 per 1 unit(s).",
+                    "checkedAt": "2026-10-19T20:37:16.379Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "stock",
                     "value": "low",
                     "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2134,6 +2362,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "leadTimeDays",
                     "value": 4,
                     "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2141,6 +2370,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "shipsToDestination",
                     "value": true,
                     "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2157,7 +2387,7 @@
                   "productUrl": "https://core-electronics.com.au/esp32.html",
                   "productKey": "controller",
                   "price": {
-                    "amount": 19,
+                    "amount": 17.1,
                     "currency": "AUD",
                     "qty": 1
                   },
@@ -2170,13 +2400,15 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
-                      "value": 19,
+                      "value": 17.1,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
-                      "quote": "Demo fixture: AUD 19.00 per unit.",
-                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                      "quote": "Scripted demo: AUD 17.10 per 1 unit(s).",
+                      "checkedAt": "2026-10-19T20:37:16.379Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "low",
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2184,6 +2416,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2191,6 +2424,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2206,7 +2440,7 @@
                   "productUrl": "https://evidence.partscout.example/controller",
                   "productKey": "controller",
                   "price": {
-                    "amount": 19,
+                    "amount": 17.1,
                     "currency": "AUD",
                     "qty": 1
                   },
@@ -2219,13 +2453,15 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
-                      "value": 19,
+                      "value": 17.1,
                       "sourceUrl": "https://evidence.partscout.example/controller",
-                      "quote": "Demo fixture: AUD 19.00 per unit.",
-                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                      "quote": "Scripted demo: AUD 17.10 per 1 unit(s).",
+                      "checkedAt": "2026-10-19T20:37:16.379Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "low",
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2233,6 +2469,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2240,6 +2477,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2254,23 +2492,25 @@
               "fields": {
                 "price": {
                   "status": "agreed",
-                  "value": 19,
-                  "min": 19,
-                  "max": 19,
+                  "value": 17.1,
+                  "min": 17.1,
+                  "max": 17.1,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
-                      "value": 19,
+                      "value": 17.1,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
-                      "quote": "Demo fixture: AUD 19.00 per unit.",
-                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                      "quote": "Scripted demo: AUD 17.10 per 1 unit(s).",
+                      "checkedAt": "2026-10-19T20:37:16.379Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "price",
-                      "value": 19,
+                      "value": 17.1,
                       "sourceUrl": "https://evidence.partscout.example/controller",
-                      "quote": "Demo fixture: AUD 19.00 per unit.",
-                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                      "quote": "Scripted demo: AUD 17.10 per 1 unit(s).",
+                      "checkedAt": "2026-10-19T20:37:16.379Z"
                     }
                   ],
                   "sourceCount": 2
@@ -2280,6 +2520,7 @@
                   "value": "low",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "low",
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2287,6 +2528,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "low",
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2303,6 +2545,7 @@
                   "max": 4,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2310,6 +2553,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2324,6 +2568,7 @@
                   "value": true,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://core-electronics.com.au/esp32.html",
@@ -2331,6 +2576,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/controller",
@@ -2377,6 +2623,7 @@
                 },
                 "evidence": [
                   {
+                    "sourceType": "web",
                     "field": "price",
                     "value": 24,
                     "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2384,6 +2631,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "stock",
                     "value": "in_stock",
                     "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2391,6 +2639,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "leadTimeDays",
                     "value": 5,
                     "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2398,6 +2647,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "shipsToDestination",
                     "value": true,
                     "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2427,6 +2677,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 24,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2434,6 +2685,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2441,6 +2693,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 5,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2448,6 +2701,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2476,6 +2730,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 24,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2483,6 +2738,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2490,6 +2746,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 5,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2497,6 +2754,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2516,6 +2774,7 @@
                   "max": 24,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 24,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2523,6 +2782,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 24,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2537,6 +2797,7 @@
                   "value": "in_stock",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2544,6 +2805,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2560,6 +2822,7 @@
                   "max": 5,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 5,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2567,6 +2830,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 5,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2581,6 +2845,7 @@
                   "value": true,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.adafruit.com/product/2857",
@@ -2588,6 +2853,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/sensor",
@@ -2634,6 +2900,7 @@
                 },
                 "evidence": [
                   {
+                    "sourceType": "web",
                     "field": "price",
                     "value": 39,
                     "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2641,6 +2908,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "stock",
                     "value": "in_stock",
                     "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2648,6 +2916,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "leadTimeDays",
                     "value": 7,
                     "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2655,6 +2924,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "shipsToDestination",
                     "value": true,
                     "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2684,6 +2954,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 39,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2691,6 +2962,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2698,6 +2970,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 7,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2705,6 +2978,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2733,6 +3007,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 46.019999999999996,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2740,6 +3015,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2747,6 +3023,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 7,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2754,6 +3031,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2773,6 +3051,7 @@
                   "max": 46.019999999999996,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 39,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2780,6 +3059,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 46.019999999999996,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2794,6 +3074,7 @@
                   "value": "in_stock",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2801,6 +3082,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2817,6 +3099,7 @@
                   "max": 7,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 7,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2824,6 +3107,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 7,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2838,6 +3122,7 @@
                   "value": true,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
@@ -2845,6 +3130,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/rain",
@@ -2891,6 +3177,7 @@
                 },
                 "evidence": [
                   {
+                    "sourceType": "web",
                     "field": "price",
                     "value": 36,
                     "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2898,6 +3185,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "stock",
                     "value": "in_stock",
                     "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2905,6 +3193,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "leadTimeDays",
                     "value": 8,
                     "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2912,6 +3201,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "shipsToDestination",
                     "value": true,
                     "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2941,6 +3231,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 36,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2948,6 +3239,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2955,6 +3247,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 8,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2962,6 +3255,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -2990,6 +3284,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 36,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -2997,6 +3292,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3004,6 +3300,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 8,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3011,6 +3308,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3030,6 +3328,7 @@
                   "max": 36,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 36,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -3037,6 +3336,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 36,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3051,6 +3351,7 @@
                   "value": "in_stock",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -3058,6 +3359,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3074,6 +3376,7 @@
                   "max": 8,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 8,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -3081,6 +3384,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 8,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3095,6 +3399,7 @@
                   "value": true,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://www.dfrobot.com/category-81.html",
@@ -3102,6 +3407,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://evidence.partscout.example/solar",
@@ -3148,6 +3454,7 @@
                 },
                 "evidence": [
                   {
+                    "sourceType": "web",
                     "field": "price",
                     "value": 17,
                     "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3155,6 +3462,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "stock",
                     "value": "in_stock",
                     "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3162,6 +3470,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "leadTimeDays",
                     "value": 4,
                     "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3169,6 +3478,7 @@
                     "checkedAt": "2026-10-18T09:30:00.000Z"
                   },
                   {
+                    "sourceType": "web",
                     "field": "shipsToDestination",
                     "value": true,
                     "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3198,6 +3508,7 @@
                   },
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 17,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3205,6 +3516,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3212,6 +3524,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3219,6 +3532,7 @@
                       "checkedAt": "2026-10-18T09:30:00.000Z"
                     },
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3238,6 +3552,7 @@
                   "max": 17,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "price",
                       "value": 17,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3252,6 +3567,7 @@
                   "value": "in_stock",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "stock",
                       "value": "in_stock",
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3268,6 +3584,7 @@
                   "max": 4,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "leadTimeDays",
                       "value": 4,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3282,6 +3599,7 @@
                   "value": true,
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "shipsToDestination",
                       "value": true,
                       "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
@@ -3296,6 +3614,26 @@
               "needsQuote": false
             },
             {
+              "drafts": [
+                {
+                  "supplier": "Protolabs Network",
+                  "supplierUrl": "https://www.hubs.com/3d-printing/",
+                  "subject": "PartScout RFQ: Weatherproof sensor housing (qty 1) — Protolabs Network",
+                  "body": "Hello Protolabs Network team,\n\nCould you please provide a quote for the following part?\n\nPart: Weatherproof sensor housing\nPurpose: Protect electronics without trapping heat\nQuantity: 1\n\nKey specifications:\n• protection: Rain shield\n• material: UV-resistant ASA\n\nShip to: Sydney, Australia\nNeeded by: 9 November 2026\n\nPlease include unit and total pricing, currency, taxes, shipping cost, material/process recommendations, and estimated delivery time. Let me know which drawings or files you need before confirming the quote.\n\nThank you.",
+                  "id": "local-1442e989-d248-40bc-b927-739496ab8f53",
+                  "mode": "demo",
+                  "createdAt": "2026-10-19T20:37:16.379Z"
+                },
+                {
+                  "supplier": "Xometry",
+                  "supplierUrl": "https://www.xometry.com/",
+                  "subject": "PartScout RFQ: Weatherproof sensor housing (qty 1) — Xometry",
+                  "body": "Hello Xometry team,\n\nCould you please provide a quote for the following part?\n\nPart: Weatherproof sensor housing\nPurpose: Protect electronics without trapping heat\nQuantity: 1\n\nKey specifications:\n• protection: Rain shield\n• material: UV-resistant ASA\n\nShip to: Sydney, Australia\nNeeded by: 9 November 2026\n\nPlease include unit and total pricing, currency, taxes, shipping cost, material/process recommendations, and estimated delivery time. Let me know which drawings or files you need before confirming the quote.\n\nThank you.",
+                  "id": "local-7323bc89-28c7-4d82-9075-65dadef261d0",
+                  "mode": "demo",
+                  "createdAt": "2026-10-19T20:37:16.379Z"
+                }
+              ],
               "part": {
                 "id": "enclosure",
                 "name": "Weatherproof sensor housing",
@@ -3315,6 +3653,7 @@
                   "url": "https://www.hubs.com/3d-printing/",
                   "evidence": [
                     {
+                      "sourceType": "web",
                       "field": "spec",
                       "value": "Custom fabrication services",
                       "sourceUrl": "https://www.hubs.com/3d-printing/",
@@ -3355,9 +3694,9 @@
               "needsQuote": true
             }
           ],
-          "total": 135,
-          "totalMax": 142.02,
-          "budgetRemaining": 57.98,
+          "total": 133.1,
+          "totalMax": 140.12,
+          "budgetRemaining": 59.88,
           "quoteCount": 1,
           "risks": [
             {
@@ -3392,7 +3731,7 @@
             "checkedAt": "2026-10-18T09:30:00.000Z",
             "fallback": true
           },
-          "createdAt": "2026-10-19T19:47:26.221Z",
+          "createdAt": "2026-10-19T20:37:16.379Z",
           "demo": true
         }
       }
