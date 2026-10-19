@@ -35,6 +35,7 @@ export const verifiedFieldSchema = z.object({
 });
 export const bomRowSchema = z.object({
   part: partSchema, pick: listingSchema.optional(), candidates: z.array(listingSchema),
+  purchaseQuantity: z.number().int().positive().optional(),
   suppliers: z.array(supplierSchema),
   fields: z.object({ price: verifiedFieldSchema, stock: verifiedFieldSchema, leadTimeDays: verifiedFieldSchema, shipsToDestination: verifiedFieldSchema }),
   status: statusSchema, needsQuote: z.boolean(),
