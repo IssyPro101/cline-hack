@@ -1,0 +1,4780 @@
+{
+  "version": 1,
+  "illustrative": true,
+  "events": [
+    {
+      "at": 0,
+      "event": {
+        "type": "run_started",
+        "runId": "cached-demo"
+      }
+    },
+    {
+      "at": 600,
+      "event": {
+        "type": "assumption",
+        "text": "Demo mode: replaying an illustrative fixture, not current supplier prices. Switch to Live after configuring credentials for your own build."
+      }
+    },
+    {
+      "at": 1200,
+      "event": {
+        "type": "assumption",
+        "text": "Assuming a 400 mm working reach, 300 g payload, and a fixed desktop installation."
+      }
+    },
+    {
+      "at": 1800,
+      "event": {
+        "type": "plan",
+        "parts": [
+          {
+            "id": "arm",
+            "name": "6-axis robot arm",
+            "purpose": "Move parts from tray to fixture",
+            "keySpecs": {
+              "payload": "≥ 300 g",
+              "reach": "≥ 400 mm",
+              "interface": "Serial / Wi-Fi"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          {
+            "id": "gripper",
+            "name": "Adaptive gripper",
+            "purpose": "Secure a range of plastic part shapes",
+            "keySpecs": {
+              "opening": "20–60 mm",
+              "payload": "≥ 300 g"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "camera",
+            "name": "Vision camera",
+            "purpose": "Locate parts in the picking tray",
+            "keySpecs": {
+              "resolution": "1080p",
+              "interface": "USB",
+              "focus": "Fixed"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "controller",
+            "name": "Single-board computer",
+            "purpose": "Run vision and arm control",
+            "keySpecs": {
+              "ram": "4 GB",
+              "usb": "USB 3",
+              "os": "Linux"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          {
+            "id": "power",
+            "name": "24 V power supply",
+            "purpose": "Provide regulated power to the arm",
+            "keySpecs": {
+              "output": "24 V DC",
+              "power": "150 W",
+              "protection": "Overload / short circuit"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "estop",
+            "name": "Emergency stop switch",
+            "purpose": "Allow immediate manual shutdown",
+            "keySpecs": {
+              "type": "Normally closed",
+              "mounting": "22 mm"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          {
+            "id": "cables",
+            "name": "Cables & connectors",
+            "purpose": "Connect power, controller and camera",
+            "keySpecs": {
+              "voltage": "24 V rated",
+              "length": "1 m"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "mount",
+            "name": "Custom mounting fixture",
+            "purpose": "Mount the arm and locate the workpiece",
+            "keySpecs": {
+              "material": "6061 aluminium",
+              "plate": "300 × 300 × 8 mm",
+              "tolerance": "± 0.1 mm"
+            },
+            "quantity": 1,
+            "category": "custom-fabricated",
+            "critical": false
+          }
+        ]
+      }
+    },
+    {
+      "at": 2400,
+      "event": {
+        "type": "crawler_started",
+        "partId": "arm"
+      }
+    },
+    {
+      "at": 3000,
+      "event": {
+        "type": "step",
+        "partId": "arm",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 3600,
+      "event": {
+        "type": "crawler_started",
+        "partId": "gripper"
+      }
+    },
+    {
+      "at": 4200,
+      "event": {
+        "type": "step",
+        "partId": "gripper",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 4800,
+      "event": {
+        "type": "crawler_started",
+        "partId": "camera"
+      }
+    },
+    {
+      "at": 5400,
+      "event": {
+        "type": "step",
+        "partId": "camera",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 6000,
+      "event": {
+        "type": "crawler_started",
+        "partId": "controller"
+      }
+    },
+    {
+      "at": 6600,
+      "event": {
+        "type": "step",
+        "partId": "controller",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 7200,
+      "event": {
+        "type": "crawler_started",
+        "partId": "power"
+      }
+    },
+    {
+      "at": 7800,
+      "event": {
+        "type": "step",
+        "partId": "power",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 8400,
+      "event": {
+        "type": "crawler_started",
+        "partId": "estop"
+      }
+    },
+    {
+      "at": 9000,
+      "event": {
+        "type": "step",
+        "partId": "estop",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 9600,
+      "event": {
+        "type": "crawler_started",
+        "partId": "cables"
+      }
+    },
+    {
+      "at": 10200,
+      "event": {
+        "type": "step",
+        "partId": "cables",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 10800,
+      "event": {
+        "type": "crawler_started",
+        "partId": "mount"
+      }
+    },
+    {
+      "at": 11400,
+      "event": {
+        "type": "step",
+        "partId": "mount",
+        "label": "Finding fabrication partners"
+      }
+    },
+    {
+      "at": 12000,
+      "event": {
+        "type": "step",
+        "partId": "arm",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 12600,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "arm",
+          "supplier": "Waveshare",
+          "productName": "RoArm-M3 Pro",
+          "productUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+          "productKey": "arm",
+          "price": {
+            "amount": 1699,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 7,
+          "shipsToDestination": true,
+          "specsFound": {
+            "payload": "≥ 300 g",
+            "reach": "≥ 400 mm",
+            "interface": "Serial / Wi-Fi"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 1699,
+              "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+              "quote": "Demo fixture: AUD 1699.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 7,
+              "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+              "quote": "Demo fixture: delivery in 7 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 13200,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "arm",
+          "supplier": "Waveshare",
+          "productName": "RoArm-M3 Pro",
+          "productUrl": "https://evidence.partscout.example/arm",
+          "productKey": "arm",
+          "price": {
+            "amount": 1699,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 7,
+          "shipsToDestination": true,
+          "specsFound": {
+            "payload": "≥ 300 g",
+            "reach": "≥ 400 mm",
+            "interface": "Serial / Wi-Fi"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 1699,
+              "sourceUrl": "https://evidence.partscout.example/arm",
+              "quote": "Demo fixture: AUD 1699.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/arm",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 7,
+              "sourceUrl": "https://evidence.partscout.example/arm",
+              "quote": "Demo fixture: delivery in 7 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/arm",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 13800,
+      "event": {
+        "type": "part_result",
+        "partId": "arm",
+        "row": {
+          "part": {
+            "id": "arm",
+            "name": "6-axis robot arm",
+            "purpose": "Move parts from tray to fixture",
+            "keySpecs": {
+              "payload": "≥ 300 g",
+              "reach": "≥ 400 mm",
+              "interface": "Serial / Wi-Fi"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          "pick": {
+            "partId": "arm",
+            "supplier": "Waveshare",
+            "productName": "RoArm-M3 Pro",
+            "productUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+            "productKey": "arm",
+            "price": {
+              "amount": 1699,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 7,
+            "shipsToDestination": true,
+            "specsFound": {
+              "payload": "≥ 300 g",
+              "reach": "≥ 400 mm",
+              "interface": "Serial / Wi-Fi"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 1699,
+                "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                "quote": "Demo fixture: AUD 1699.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 7,
+                "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                "quote": "Demo fixture: delivery in 7 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "arm",
+              "supplier": "Waveshare",
+              "productName": "RoArm-M3 Pro",
+              "productUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+              "productKey": "arm",
+              "price": {
+                "amount": 1699,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 7,
+              "shipsToDestination": true,
+              "specsFound": {
+                "payload": "≥ 300 g",
+                "reach": "≥ 400 mm",
+                "interface": "Serial / Wi-Fi"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 1699,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: AUD 1699.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "arm",
+              "supplier": "Waveshare",
+              "productName": "RoArm-M3 Pro",
+              "productUrl": "https://evidence.partscout.example/arm",
+              "productKey": "arm",
+              "price": {
+                "amount": 1699,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 7,
+              "shipsToDestination": true,
+              "specsFound": {
+                "payload": "≥ 300 g",
+                "reach": "≥ 400 mm",
+                "interface": "Serial / Wi-Fi"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 1699,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: AUD 1699.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 1699,
+              "min": 1699,
+              "max": 1699,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 1699,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: AUD 1699.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 1699,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: AUD 1699.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 7,
+              "min": 7,
+              "max": 7,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/arm",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 14400,
+      "event": {
+        "type": "step",
+        "partId": "gripper",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 15000,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "gripper",
+          "supplier": "RobotShop",
+          "productName": "Adaptive parallel gripper",
+          "productUrl": "https://www.robotshop.com/collections/robot-grippers",
+          "productKey": "gripper",
+          "price": {
+            "amount": 149,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 5,
+          "shipsToDestination": true,
+          "specsFound": {
+            "opening": "20–60 mm",
+            "payload": "≥ 300 g"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 149,
+              "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+              "quote": "Demo fixture: AUD 149.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 5,
+              "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+              "quote": "Demo fixture: delivery in 5 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 15600,
+      "event": {
+        "type": "part_result",
+        "partId": "gripper",
+        "row": {
+          "part": {
+            "id": "gripper",
+            "name": "Adaptive gripper",
+            "purpose": "Secure a range of plastic part shapes",
+            "keySpecs": {
+              "opening": "20–60 mm",
+              "payload": "≥ 300 g"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "gripper",
+            "supplier": "RobotShop",
+            "productName": "Adaptive parallel gripper",
+            "productUrl": "https://www.robotshop.com/collections/robot-grippers",
+            "productKey": "gripper",
+            "price": {
+              "amount": 149,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 5,
+            "shipsToDestination": true,
+            "specsFound": {
+              "opening": "20–60 mm",
+              "payload": "≥ 300 g"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 149,
+                "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                "quote": "Demo fixture: AUD 149.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 5,
+                "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                "quote": "Demo fixture: delivery in 5 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "gripper",
+              "supplier": "RobotShop",
+              "productName": "Adaptive parallel gripper",
+              "productUrl": "https://www.robotshop.com/collections/robot-grippers",
+              "productKey": "gripper",
+              "price": {
+                "amount": 149,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 5,
+              "shipsToDestination": true,
+              "specsFound": {
+                "opening": "20–60 mm",
+                "payload": "≥ 300 g"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 149,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: AUD 149.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "single_source",
+              "value": 149,
+              "min": 149,
+              "max": 149,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 149,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: AUD 149.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "stock": {
+              "status": "single_source",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "leadTimeDays": {
+              "status": "single_source",
+              "value": 5,
+              "min": 5,
+              "max": 5,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "shipsToDestination": {
+              "status": "single_source",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            }
+          },
+          "status": "single_source",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 16200,
+      "event": {
+        "type": "step",
+        "partId": "camera",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 16800,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "camera",
+          "supplier": "Arducam",
+          "productName": "USB 1080p camera module",
+          "productUrl": "https://www.arducam.com/usb-camera/",
+          "productKey": "camera",
+          "price": {
+            "amount": 89,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 6,
+          "shipsToDestination": true,
+          "specsFound": {
+            "resolution": "1080p",
+            "interface": "USB",
+            "focus": "Fixed"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 89,
+              "sourceUrl": "https://www.arducam.com/usb-camera/",
+              "quote": "Demo fixture: AUD 89.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.arducam.com/usb-camera/",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 6,
+              "sourceUrl": "https://www.arducam.com/usb-camera/",
+              "quote": "Demo fixture: delivery in 6 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.arducam.com/usb-camera/",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 17400,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "camera",
+          "supplier": "Arducam",
+          "productName": "USB 1080p camera module",
+          "productUrl": "https://evidence.partscout.example/camera",
+          "productKey": "camera",
+          "price": {
+            "amount": 105.02,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 6,
+          "shipsToDestination": true,
+          "specsFound": {
+            "resolution": "1080p",
+            "interface": "USB",
+            "focus": "Fixed"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 105.02,
+              "sourceUrl": "https://evidence.partscout.example/camera",
+              "quote": "Demo fixture: AUD 105.02 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/camera",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 6,
+              "sourceUrl": "https://evidence.partscout.example/camera",
+              "quote": "Demo fixture: delivery in 6 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/camera",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 18000,
+      "event": {
+        "type": "part_result",
+        "partId": "camera",
+        "row": {
+          "part": {
+            "id": "camera",
+            "name": "Vision camera",
+            "purpose": "Locate parts in the picking tray",
+            "keySpecs": {
+              "resolution": "1080p",
+              "interface": "USB",
+              "focus": "Fixed"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "camera",
+            "supplier": "Arducam",
+            "productName": "USB 1080p camera module",
+            "productUrl": "https://www.arducam.com/usb-camera/",
+            "productKey": "camera",
+            "price": {
+              "amount": 89,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 6,
+            "shipsToDestination": true,
+            "specsFound": {
+              "resolution": "1080p",
+              "interface": "USB",
+              "focus": "Fixed"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 89,
+                "sourceUrl": "https://www.arducam.com/usb-camera/",
+                "quote": "Demo fixture: AUD 89.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.arducam.com/usb-camera/",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 6,
+                "sourceUrl": "https://www.arducam.com/usb-camera/",
+                "quote": "Demo fixture: delivery in 6 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.arducam.com/usb-camera/",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "camera",
+              "supplier": "Arducam",
+              "productName": "USB 1080p camera module",
+              "productUrl": "https://www.arducam.com/usb-camera/",
+              "productKey": "camera",
+              "price": {
+                "amount": 89,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 6,
+              "shipsToDestination": true,
+              "specsFound": {
+                "resolution": "1080p",
+                "interface": "USB",
+                "focus": "Fixed"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 89,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: AUD 89.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 6,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: delivery in 6 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "camera",
+              "supplier": "Arducam",
+              "productName": "USB 1080p camera module",
+              "productUrl": "https://evidence.partscout.example/camera",
+              "productKey": "camera",
+              "price": {
+                "amount": 105.02,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 6,
+              "shipsToDestination": true,
+              "specsFound": {
+                "resolution": "1080p",
+                "interface": "USB",
+                "focus": "Fixed"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 105.02,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: AUD 105.02 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 6,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: delivery in 6 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "conflicting",
+              "value": 89,
+              "min": 89,
+              "max": 105.02,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 89,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: AUD 89.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 105.02,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: AUD 105.02 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 6,
+              "min": 6,
+              "max": 6,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 6,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: delivery in 6 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 6,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: delivery in 6 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.arducam.com/usb-camera/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/camera",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "conflicting",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 18600,
+      "event": {
+        "type": "step",
+        "partId": "controller",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 19200,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "controller",
+          "supplier": "Core Electronics",
+          "productName": "Raspberry Pi 5 · 4 GB",
+          "productUrl": "https://core-electronics.com.au/raspberry-pi.html",
+          "productKey": "controller",
+          "price": {
+            "amount": 135,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "low",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "ram": "4 GB",
+            "usb": "USB 3",
+            "os": "Linux"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 135,
+              "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+              "quote": "Demo fixture: AUD 135.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "low",
+              "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+              "quote": "Demo fixture: limited stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 19800,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "controller",
+          "supplier": "Core Electronics",
+          "productName": "Raspberry Pi 5 · 4 GB",
+          "productUrl": "https://evidence.partscout.example/controller",
+          "productKey": "controller",
+          "price": {
+            "amount": 135,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "low",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "ram": "4 GB",
+            "usb": "USB 3",
+            "os": "Linux"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 135,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: AUD 135.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "low",
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: limited stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 20400,
+      "event": {
+        "type": "part_result",
+        "partId": "controller",
+        "row": {
+          "part": {
+            "id": "controller",
+            "name": "Single-board computer",
+            "purpose": "Run vision and arm control",
+            "keySpecs": {
+              "ram": "4 GB",
+              "usb": "USB 3",
+              "os": "Linux"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          "pick": {
+            "partId": "controller",
+            "supplier": "Core Electronics",
+            "productName": "Raspberry Pi 5 · 4 GB",
+            "productUrl": "https://core-electronics.com.au/raspberry-pi.html",
+            "productKey": "controller",
+            "price": {
+              "amount": 135,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "low",
+            "leadTimeDays": 4,
+            "shipsToDestination": true,
+            "specsFound": {
+              "ram": "4 GB",
+              "usb": "USB 3",
+              "os": "Linux"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 135,
+                "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                "quote": "Demo fixture: AUD 135.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "low",
+                "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                "quote": "Demo fixture: limited stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 4,
+                "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                "quote": "Demo fixture: delivery in 4 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "controller",
+              "supplier": "Core Electronics",
+              "productName": "Raspberry Pi 5 · 4 GB",
+              "productUrl": "https://core-electronics.com.au/raspberry-pi.html",
+              "productKey": "controller",
+              "price": {
+                "amount": 135,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "low",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "ram": "4 GB",
+                "usb": "USB 3",
+                "os": "Linux"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 135,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: AUD 135.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "controller",
+              "supplier": "Core Electronics",
+              "productName": "Raspberry Pi 5 · 4 GB",
+              "productUrl": "https://evidence.partscout.example/controller",
+              "productKey": "controller",
+              "price": {
+                "amount": 135,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "low",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "ram": "4 GB",
+                "usb": "USB 3",
+                "os": "Linux"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 135,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: AUD 135.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 135,
+              "min": 135,
+              "max": 135,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 135,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: AUD 135.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 135,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: AUD 135.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "low",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 4,
+              "min": 4,
+              "max": 4,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 21000,
+      "event": {
+        "type": "step",
+        "partId": "power",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 21600,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "power",
+          "supplier": "Mean Well",
+          "productName": "LRS-150-24 · 150 W",
+          "productUrl": "https://www.meanwell.com/",
+          "productKey": "power",
+          "price": {
+            "amount": 64,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 3,
+          "shipsToDestination": true,
+          "specsFound": {
+            "output": "24 V DC",
+            "power": "150 W",
+            "protection": "Overload / short circuit"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 64,
+              "sourceUrl": "https://www.meanwell.com/",
+              "quote": "Demo fixture: AUD 64.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.meanwell.com/",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 3,
+              "sourceUrl": "https://www.meanwell.com/",
+              "quote": "Demo fixture: delivery in 3 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.meanwell.com/",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 22200,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "power",
+          "supplier": "Mean Well",
+          "productName": "LRS-150-24 · 150 W",
+          "productUrl": "https://evidence.partscout.example/power",
+          "productKey": "power",
+          "price": {
+            "amount": 64,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 3,
+          "shipsToDestination": true,
+          "specsFound": {
+            "output": "24 V DC",
+            "power": "150 W",
+            "protection": "Overload / short circuit"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 64,
+              "sourceUrl": "https://evidence.partscout.example/power",
+              "quote": "Demo fixture: AUD 64.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/power",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 3,
+              "sourceUrl": "https://evidence.partscout.example/power",
+              "quote": "Demo fixture: delivery in 3 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/power",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 22800,
+      "event": {
+        "type": "part_result",
+        "partId": "power",
+        "row": {
+          "part": {
+            "id": "power",
+            "name": "24 V power supply",
+            "purpose": "Provide regulated power to the arm",
+            "keySpecs": {
+              "output": "24 V DC",
+              "power": "150 W",
+              "protection": "Overload / short circuit"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "power",
+            "supplier": "Mean Well",
+            "productName": "LRS-150-24 · 150 W",
+            "productUrl": "https://www.meanwell.com/",
+            "productKey": "power",
+            "price": {
+              "amount": 64,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 3,
+            "shipsToDestination": true,
+            "specsFound": {
+              "output": "24 V DC",
+              "power": "150 W",
+              "protection": "Overload / short circuit"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 64,
+                "sourceUrl": "https://www.meanwell.com/",
+                "quote": "Demo fixture: AUD 64.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.meanwell.com/",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 3,
+                "sourceUrl": "https://www.meanwell.com/",
+                "quote": "Demo fixture: delivery in 3 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.meanwell.com/",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "power",
+              "supplier": "Mean Well",
+              "productName": "LRS-150-24 · 150 W",
+              "productUrl": "https://www.meanwell.com/",
+              "productKey": "power",
+              "price": {
+                "amount": 64,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 3,
+              "shipsToDestination": true,
+              "specsFound": {
+                "output": "24 V DC",
+                "power": "150 W",
+                "protection": "Overload / short circuit"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 64,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: AUD 64.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 3,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: delivery in 3 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "power",
+              "supplier": "Mean Well",
+              "productName": "LRS-150-24 · 150 W",
+              "productUrl": "https://evidence.partscout.example/power",
+              "productKey": "power",
+              "price": {
+                "amount": 64,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 3,
+              "shipsToDestination": true,
+              "specsFound": {
+                "output": "24 V DC",
+                "power": "150 W",
+                "protection": "Overload / short circuit"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 64,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: AUD 64.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 3,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: delivery in 3 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 64,
+              "min": 64,
+              "max": 64,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 64,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: AUD 64.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 64,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: AUD 64.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 3,
+              "min": 3,
+              "max": 3,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 3,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: delivery in 3 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 3,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: delivery in 3 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.meanwell.com/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/power",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 23400,
+      "event": {
+        "type": "step",
+        "partId": "estop",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 24000,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "estop",
+          "supplier": "RS Components",
+          "productName": "Latching mushroom E-stop",
+          "productUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+          "productKey": "estop",
+          "price": {
+            "amount": 38,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "type": "Normally closed",
+            "mounting": "22 mm"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 38,
+              "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+              "quote": "Demo fixture: AUD 38.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 24600,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "estop",
+          "supplier": "RS Components",
+          "productName": "Latching mushroom E-stop",
+          "productUrl": "https://evidence.partscout.example/estop",
+          "productKey": "estop",
+          "price": {
+            "amount": 38,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "type": "Normally closed",
+            "mounting": "22 mm"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 38,
+              "sourceUrl": "https://evidence.partscout.example/estop",
+              "quote": "Demo fixture: AUD 38.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/estop",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://evidence.partscout.example/estop",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/estop",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 25200,
+      "event": {
+        "type": "part_result",
+        "partId": "estop",
+        "row": {
+          "part": {
+            "id": "estop",
+            "name": "Emergency stop switch",
+            "purpose": "Allow immediate manual shutdown",
+            "keySpecs": {
+              "type": "Normally closed",
+              "mounting": "22 mm"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          "pick": {
+            "partId": "estop",
+            "supplier": "RS Components",
+            "productName": "Latching mushroom E-stop",
+            "productUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+            "productKey": "estop",
+            "price": {
+              "amount": 38,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 4,
+            "shipsToDestination": true,
+            "specsFound": {
+              "type": "Normally closed",
+              "mounting": "22 mm"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 38,
+                "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                "quote": "Demo fixture: AUD 38.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 4,
+                "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                "quote": "Demo fixture: delivery in 4 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "estop",
+              "supplier": "RS Components",
+              "productName": "Latching mushroom E-stop",
+              "productUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+              "productKey": "estop",
+              "price": {
+                "amount": 38,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "type": "Normally closed",
+                "mounting": "22 mm"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 38,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: AUD 38.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "estop",
+              "supplier": "RS Components",
+              "productName": "Latching mushroom E-stop",
+              "productUrl": "https://evidence.partscout.example/estop",
+              "productKey": "estop",
+              "price": {
+                "amount": 38,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "type": "Normally closed",
+                "mounting": "22 mm"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 38,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: AUD 38.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 38,
+              "min": 38,
+              "max": 38,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 38,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: AUD 38.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 38,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: AUD 38.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 4,
+              "min": 4,
+              "max": 4,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/estop",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 25800,
+      "event": {
+        "type": "step",
+        "partId": "cables",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 26400,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "cables",
+          "supplier": "Core Electronics",
+          "productName": "USB-C + DC wiring kit",
+          "productUrl": "https://core-electronics.com.au/cables.html",
+          "productKey": "cables",
+          "price": {
+            "amount": 32,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "voltage": "24 V rated",
+            "length": "1 m"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 32,
+              "sourceUrl": "https://core-electronics.com.au/cables.html",
+              "quote": "Demo fixture: AUD 32.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://core-electronics.com.au/cables.html",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://core-electronics.com.au/cables.html",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://core-electronics.com.au/cables.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 27000,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "cables",
+          "supplier": "Core Electronics",
+          "productName": "USB-C + DC wiring kit",
+          "productUrl": "https://evidence.partscout.example/cables",
+          "productKey": "cables",
+          "price": {
+            "amount": 32,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "voltage": "24 V rated",
+            "length": "1 m"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 32,
+              "sourceUrl": "https://evidence.partscout.example/cables",
+              "quote": "Demo fixture: AUD 32.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/cables",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://evidence.partscout.example/cables",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/cables",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 27600,
+      "event": {
+        "type": "part_result",
+        "partId": "cables",
+        "row": {
+          "part": {
+            "id": "cables",
+            "name": "Cables & connectors",
+            "purpose": "Connect power, controller and camera",
+            "keySpecs": {
+              "voltage": "24 V rated",
+              "length": "1 m"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "cables",
+            "supplier": "Core Electronics",
+            "productName": "USB-C + DC wiring kit",
+            "productUrl": "https://core-electronics.com.au/cables.html",
+            "productKey": "cables",
+            "price": {
+              "amount": 32,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 4,
+            "shipsToDestination": true,
+            "specsFound": {
+              "voltage": "24 V rated",
+              "length": "1 m"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 32,
+                "sourceUrl": "https://core-electronics.com.au/cables.html",
+                "quote": "Demo fixture: AUD 32.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://core-electronics.com.au/cables.html",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 4,
+                "sourceUrl": "https://core-electronics.com.au/cables.html",
+                "quote": "Demo fixture: delivery in 4 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://core-electronics.com.au/cables.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "cables",
+              "supplier": "Core Electronics",
+              "productName": "USB-C + DC wiring kit",
+              "productUrl": "https://core-electronics.com.au/cables.html",
+              "productKey": "cables",
+              "price": {
+                "amount": 32,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "voltage": "24 V rated",
+                "length": "1 m"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 32,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: AUD 32.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "cables",
+              "supplier": "Core Electronics",
+              "productName": "USB-C + DC wiring kit",
+              "productUrl": "https://evidence.partscout.example/cables",
+              "productKey": "cables",
+              "price": {
+                "amount": 32,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "voltage": "24 V rated",
+                "length": "1 m"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 32,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: AUD 32.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 32,
+              "min": 32,
+              "max": 32,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 32,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: AUD 32.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 32,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: AUD 32.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 4,
+              "min": 4,
+              "max": 4,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/cables.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/cables",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 28200,
+      "event": {
+        "type": "step",
+        "partId": "mount",
+        "label": "Custom geometry requires a quote"
+      }
+    },
+    {
+      "at": 28800,
+      "event": {
+        "type": "part_needs_quote",
+        "partId": "mount",
+        "suppliers": [
+          {
+            "name": "Protolabs Network",
+            "url": "https://www.hubs.com/cnc-machining/",
+            "evidence": [
+              {
+                "field": "spec",
+                "value": "Custom fabrication services",
+                "sourceUrl": "https://www.hubs.com/cnc-machining/",
+                "quote": "Illustrative demo supplier — contact for a custom quote.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          {
+            "name": "Xometry",
+            "url": "https://www.xometry.com/",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "at": 29400,
+      "event": {
+        "type": "part_result",
+        "partId": "mount",
+        "row": {
+          "part": {
+            "id": "mount",
+            "name": "Custom mounting fixture",
+            "purpose": "Mount the arm and locate the workpiece",
+            "keySpecs": {
+              "material": "6061 aluminium",
+              "plate": "300 × 300 × 8 mm",
+              "tolerance": "± 0.1 mm"
+            },
+            "quantity": 1,
+            "category": "custom-fabricated",
+            "critical": false
+          },
+          "candidates": [],
+          "suppliers": [
+            {
+              "name": "Protolabs Network",
+              "url": "https://www.hubs.com/cnc-machining/",
+              "evidence": [
+                {
+                  "field": "spec",
+                  "value": "Custom fabrication services",
+                  "sourceUrl": "https://www.hubs.com/cnc-machining/",
+                  "quote": "Illustrative demo supplier — contact for a custom quote.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "name": "Xometry",
+              "url": "https://www.xometry.com/",
+              "evidence": []
+            }
+          ],
+          "fields": {
+            "price": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "stock": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "leadTimeDays": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "shipsToDestination": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            }
+          },
+          "status": "unknown",
+          "needsQuote": true
+        }
+      }
+    },
+    {
+      "at": 30000,
+      "event": {
+        "type": "run_finished",
+        "bom": {
+          "runId": "cached-demo",
+          "input": {
+            "goal": "Desktop robot arm that picks 100–300 g plastic parts from a tray and places them in a fixture.",
+            "budget": 3500,
+            "currency": "AUD",
+            "shipTo": "Sydney, Australia",
+            "deadlineDays": 21,
+            "replay": false
+          },
+          "rows": [
+            {
+              "part": {
+                "id": "arm",
+                "name": "6-axis robot arm",
+                "purpose": "Move parts from tray to fixture",
+                "keySpecs": {
+                  "payload": "≥ 300 g",
+                  "reach": "≥ 400 mm",
+                  "interface": "Serial / Wi-Fi"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": true
+              },
+              "pick": {
+                "partId": "arm",
+                "supplier": "Waveshare",
+                "productName": "RoArm-M3 Pro",
+                "productUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                "productKey": "arm",
+                "price": {
+                  "amount": 1699,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 7,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "payload": "≥ 300 g",
+                  "reach": "≥ 400 mm",
+                  "interface": "Serial / Wi-Fi"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 1699,
+                    "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                    "quote": "Demo fixture: AUD 1699.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 7,
+                    "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                    "quote": "Demo fixture: delivery in 7 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "arm",
+                  "supplier": "Waveshare",
+                  "productName": "RoArm-M3 Pro",
+                  "productUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                  "productKey": "arm",
+                  "price": {
+                    "amount": 1699,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 7,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "payload": "≥ 300 g",
+                    "reach": "≥ 400 mm",
+                    "interface": "Serial / Wi-Fi"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 1699,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: AUD 1699.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "arm",
+                  "supplier": "Waveshare",
+                  "productName": "RoArm-M3 Pro",
+                  "productUrl": "https://evidence.partscout.example/arm",
+                  "productKey": "arm",
+                  "price": {
+                    "amount": 1699,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 7,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "payload": "≥ 300 g",
+                    "reach": "≥ 400 mm",
+                    "interface": "Serial / Wi-Fi"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 1699,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: AUD 1699.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 1699,
+                  "min": 1699,
+                  "max": 1699,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 1699,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: AUD 1699.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 1699,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: AUD 1699.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 7,
+                  "min": 7,
+                  "max": 7,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.waveshare.com/roarm-m3-pro.htm",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/arm",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "gripper",
+                "name": "Adaptive gripper",
+                "purpose": "Secure a range of plastic part shapes",
+                "keySpecs": {
+                  "opening": "20–60 mm",
+                  "payload": "≥ 300 g"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "gripper",
+                "supplier": "RobotShop",
+                "productName": "Adaptive parallel gripper",
+                "productUrl": "https://www.robotshop.com/collections/robot-grippers",
+                "productKey": "gripper",
+                "price": {
+                  "amount": 149,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 5,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "opening": "20–60 mm",
+                  "payload": "≥ 300 g"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 149,
+                    "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                    "quote": "Demo fixture: AUD 149.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 5,
+                    "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                    "quote": "Demo fixture: delivery in 5 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "gripper",
+                  "supplier": "RobotShop",
+                  "productName": "Adaptive parallel gripper",
+                  "productUrl": "https://www.robotshop.com/collections/robot-grippers",
+                  "productKey": "gripper",
+                  "price": {
+                    "amount": 149,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 5,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "opening": "20–60 mm",
+                    "payload": "≥ 300 g"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 149,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: AUD 149.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "single_source",
+                  "value": 149,
+                  "min": 149,
+                  "max": 149,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 149,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: AUD 149.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "stock": {
+                  "status": "single_source",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "leadTimeDays": {
+                  "status": "single_source",
+                  "value": 5,
+                  "min": 5,
+                  "max": 5,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "shipsToDestination": {
+                  "status": "single_source",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.robotshop.com/collections/robot-grippers",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                }
+              },
+              "status": "single_source",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "camera",
+                "name": "Vision camera",
+                "purpose": "Locate parts in the picking tray",
+                "keySpecs": {
+                  "resolution": "1080p",
+                  "interface": "USB",
+                  "focus": "Fixed"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "camera",
+                "supplier": "Arducam",
+                "productName": "USB 1080p camera module",
+                "productUrl": "https://www.arducam.com/usb-camera/",
+                "productKey": "camera",
+                "price": {
+                  "amount": 89,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 6,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "resolution": "1080p",
+                  "interface": "USB",
+                  "focus": "Fixed"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 89,
+                    "sourceUrl": "https://www.arducam.com/usb-camera/",
+                    "quote": "Demo fixture: AUD 89.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.arducam.com/usb-camera/",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 6,
+                    "sourceUrl": "https://www.arducam.com/usb-camera/",
+                    "quote": "Demo fixture: delivery in 6 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.arducam.com/usb-camera/",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "camera",
+                  "supplier": "Arducam",
+                  "productName": "USB 1080p camera module",
+                  "productUrl": "https://www.arducam.com/usb-camera/",
+                  "productKey": "camera",
+                  "price": {
+                    "amount": 89,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 6,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "resolution": "1080p",
+                    "interface": "USB",
+                    "focus": "Fixed"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 89,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: AUD 89.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 6,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: delivery in 6 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "camera",
+                  "supplier": "Arducam",
+                  "productName": "USB 1080p camera module",
+                  "productUrl": "https://evidence.partscout.example/camera",
+                  "productKey": "camera",
+                  "price": {
+                    "amount": 105.02,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 6,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "resolution": "1080p",
+                    "interface": "USB",
+                    "focus": "Fixed"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 105.02,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: AUD 105.02 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 6,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: delivery in 6 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "conflicting",
+                  "value": 89,
+                  "min": 89,
+                  "max": 105.02,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 89,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: AUD 89.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 105.02,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: AUD 105.02 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 6,
+                  "min": 6,
+                  "max": 6,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 6,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: delivery in 6 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 6,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: delivery in 6 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.arducam.com/usb-camera/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/camera",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "conflicting",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "controller",
+                "name": "Single-board computer",
+                "purpose": "Run vision and arm control",
+                "keySpecs": {
+                  "ram": "4 GB",
+                  "usb": "USB 3",
+                  "os": "Linux"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": true
+              },
+              "pick": {
+                "partId": "controller",
+                "supplier": "Core Electronics",
+                "productName": "Raspberry Pi 5 · 4 GB",
+                "productUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                "productKey": "controller",
+                "price": {
+                  "amount": 135,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "low",
+                "leadTimeDays": 4,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "ram": "4 GB",
+                  "usb": "USB 3",
+                  "os": "Linux"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 135,
+                    "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                    "quote": "Demo fixture: AUD 135.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "low",
+                    "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                    "quote": "Demo fixture: limited stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 4,
+                    "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                    "quote": "Demo fixture: delivery in 4 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "controller",
+                  "supplier": "Core Electronics",
+                  "productName": "Raspberry Pi 5 · 4 GB",
+                  "productUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                  "productKey": "controller",
+                  "price": {
+                    "amount": 135,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "low",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "ram": "4 GB",
+                    "usb": "USB 3",
+                    "os": "Linux"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 135,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: AUD 135.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "controller",
+                  "supplier": "Core Electronics",
+                  "productName": "Raspberry Pi 5 · 4 GB",
+                  "productUrl": "https://evidence.partscout.example/controller",
+                  "productKey": "controller",
+                  "price": {
+                    "amount": 135,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "low",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "ram": "4 GB",
+                    "usb": "USB 3",
+                    "os": "Linux"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 135,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: AUD 135.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 135,
+                  "min": 135,
+                  "max": 135,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 135,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: AUD 135.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 135,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: AUD 135.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "low",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 4,
+                  "min": 4,
+                  "max": 4,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/raspberry-pi.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "power",
+                "name": "24 V power supply",
+                "purpose": "Provide regulated power to the arm",
+                "keySpecs": {
+                  "output": "24 V DC",
+                  "power": "150 W",
+                  "protection": "Overload / short circuit"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "power",
+                "supplier": "Mean Well",
+                "productName": "LRS-150-24 · 150 W",
+                "productUrl": "https://www.meanwell.com/",
+                "productKey": "power",
+                "price": {
+                  "amount": 64,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 3,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "output": "24 V DC",
+                  "power": "150 W",
+                  "protection": "Overload / short circuit"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 64,
+                    "sourceUrl": "https://www.meanwell.com/",
+                    "quote": "Demo fixture: AUD 64.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.meanwell.com/",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 3,
+                    "sourceUrl": "https://www.meanwell.com/",
+                    "quote": "Demo fixture: delivery in 3 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.meanwell.com/",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "power",
+                  "supplier": "Mean Well",
+                  "productName": "LRS-150-24 · 150 W",
+                  "productUrl": "https://www.meanwell.com/",
+                  "productKey": "power",
+                  "price": {
+                    "amount": 64,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 3,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "output": "24 V DC",
+                    "power": "150 W",
+                    "protection": "Overload / short circuit"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 64,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: AUD 64.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 3,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: delivery in 3 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "power",
+                  "supplier": "Mean Well",
+                  "productName": "LRS-150-24 · 150 W",
+                  "productUrl": "https://evidence.partscout.example/power",
+                  "productKey": "power",
+                  "price": {
+                    "amount": 64,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 3,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "output": "24 V DC",
+                    "power": "150 W",
+                    "protection": "Overload / short circuit"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 64,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: AUD 64.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 3,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: delivery in 3 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 64,
+                  "min": 64,
+                  "max": 64,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 64,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: AUD 64.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 64,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: AUD 64.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 3,
+                  "min": 3,
+                  "max": 3,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 3,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: delivery in 3 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 3,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: delivery in 3 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.meanwell.com/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/power",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "estop",
+                "name": "Emergency stop switch",
+                "purpose": "Allow immediate manual shutdown",
+                "keySpecs": {
+                  "type": "Normally closed",
+                  "mounting": "22 mm"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": true
+              },
+              "pick": {
+                "partId": "estop",
+                "supplier": "RS Components",
+                "productName": "Latching mushroom E-stop",
+                "productUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                "productKey": "estop",
+                "price": {
+                  "amount": 38,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 4,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "type": "Normally closed",
+                  "mounting": "22 mm"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 38,
+                    "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                    "quote": "Demo fixture: AUD 38.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 4,
+                    "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                    "quote": "Demo fixture: delivery in 4 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "estop",
+                  "supplier": "RS Components",
+                  "productName": "Latching mushroom E-stop",
+                  "productUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                  "productKey": "estop",
+                  "price": {
+                    "amount": 38,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "type": "Normally closed",
+                    "mounting": "22 mm"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 38,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: AUD 38.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "estop",
+                  "supplier": "RS Components",
+                  "productName": "Latching mushroom E-stop",
+                  "productUrl": "https://evidence.partscout.example/estop",
+                  "productKey": "estop",
+                  "price": {
+                    "amount": 38,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "type": "Normally closed",
+                    "mounting": "22 mm"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 38,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: AUD 38.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 38,
+                  "min": 38,
+                  "max": 38,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 38,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: AUD 38.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 38,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: AUD 38.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 4,
+                  "min": 4,
+                  "max": 4,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://au.rs-online.com/web/c/switches/emergency-stop-push-buttons/",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/estop",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "cables",
+                "name": "Cables & connectors",
+                "purpose": "Connect power, controller and camera",
+                "keySpecs": {
+                  "voltage": "24 V rated",
+                  "length": "1 m"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "cables",
+                "supplier": "Core Electronics",
+                "productName": "USB-C + DC wiring kit",
+                "productUrl": "https://core-electronics.com.au/cables.html",
+                "productKey": "cables",
+                "price": {
+                  "amount": 32,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 4,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "voltage": "24 V rated",
+                  "length": "1 m"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 32,
+                    "sourceUrl": "https://core-electronics.com.au/cables.html",
+                    "quote": "Demo fixture: AUD 32.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://core-electronics.com.au/cables.html",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 4,
+                    "sourceUrl": "https://core-electronics.com.au/cables.html",
+                    "quote": "Demo fixture: delivery in 4 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://core-electronics.com.au/cables.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "cables",
+                  "supplier": "Core Electronics",
+                  "productName": "USB-C + DC wiring kit",
+                  "productUrl": "https://core-electronics.com.au/cables.html",
+                  "productKey": "cables",
+                  "price": {
+                    "amount": 32,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "voltage": "24 V rated",
+                    "length": "1 m"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 32,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: AUD 32.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "cables",
+                  "supplier": "Core Electronics",
+                  "productName": "USB-C + DC wiring kit",
+                  "productUrl": "https://evidence.partscout.example/cables",
+                  "productKey": "cables",
+                  "price": {
+                    "amount": 32,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "voltage": "24 V rated",
+                    "length": "1 m"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 32,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: AUD 32.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 32,
+                  "min": 32,
+                  "max": 32,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 32,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: AUD 32.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 32,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: AUD 32.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 4,
+                  "min": 4,
+                  "max": 4,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/cables.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/cables",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "mount",
+                "name": "Custom mounting fixture",
+                "purpose": "Mount the arm and locate the workpiece",
+                "keySpecs": {
+                  "material": "6061 aluminium",
+                  "plate": "300 × 300 × 8 mm",
+                  "tolerance": "± 0.1 mm"
+                },
+                "quantity": 1,
+                "category": "custom-fabricated",
+                "critical": false
+              },
+              "candidates": [],
+              "suppliers": [
+                {
+                  "name": "Protolabs Network",
+                  "url": "https://www.hubs.com/cnc-machining/",
+                  "evidence": [
+                    {
+                      "field": "spec",
+                      "value": "Custom fabrication services",
+                      "sourceUrl": "https://www.hubs.com/cnc-machining/",
+                      "quote": "Illustrative demo supplier — contact for a custom quote.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "name": "Xometry",
+                  "url": "https://www.xometry.com/",
+                  "evidence": []
+                }
+              ],
+              "fields": {
+                "price": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "stock": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "leadTimeDays": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "shipsToDestination": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                }
+              },
+              "status": "unknown",
+              "needsQuote": true
+            }
+          ],
+          "total": 2206,
+          "totalMax": 2222.02,
+          "budgetRemaining": 1277.98,
+          "quoteCount": 1,
+          "risks": [
+            {
+              "partId": "camera",
+              "severity": "warning",
+              "message": "Vision camera: sources disagree on price. The subtotal shows the full range."
+            },
+            {
+              "partId": "controller",
+              "severity": "warning",
+              "message": "Single-board computer: limited stock. Confirm availability."
+            },
+            {
+              "partId": "mount",
+              "severity": "info",
+              "message": "Custom mounting fixture: needs a supplier quote; excluded from the subtotal."
+            },
+            {
+              "severity": "info",
+              "message": "Currency conversions use a fixed fallback table, not live rates. Subtotals are estimates; shipping and unknown tax are excluded."
+            }
+          ],
+          "exchange": {
+            "base": "AUD",
+            "rates": {
+              "USD": 1.5384615384615383,
+              "AUD": 1,
+              "EUR": 1.6615384615384616,
+              "GBP": 1.9538461538461538
+            },
+            "source": "Illustrative demo · Fixed fallback FX table (USD: AUD 0.65, EUR 1.08, GBP 1.27); estimates, not live rates",
+            "checkedAt": "2026-10-18T09:30:00.000Z",
+            "fallback": true
+          },
+          "createdAt": "2026-10-19T19:47:26.205Z",
+          "demo": true
+        }
+      }
+    }
+  ]
+}

@@ -8,11 +8,13 @@ import { plan } from "./planner";
 import { exchangeRates } from "./exchange";
 import { rankPart } from "./ranker";
 import { report } from "./reporter";
+import { replay } from "./replay";
 import { emit, type Run } from "./store";
 export async function startRun(run: Run) {
   if (run.started) return;
   run.started = true;
-  if (config().MOCK === "1" || run.input.replay) {
+  if (run.input.replay) { await replay(run); return; }
+  if (config().MOCK === "1") {
     for (const event of mockEvents(run.id, run.input)) {
       await new Promise((resolve) => setTimeout(resolve, event.type === "part_result" ? 450 : event.type === "listing" ? 100 : 170));
       emit(run, event);

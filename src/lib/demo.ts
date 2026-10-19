@@ -1,7 +1,9 @@
 import type { AgentEvent, Bom, BomRow, CandidateListing, Evidence, PartRequirement, RunInput, VerifiedField } from "./schema";
+import { rankPart } from "../server/ranker";
+import { report } from "../server/reporter";
+import { exchangeRates } from "../server/exchange";
+export { ROBOT_GOAL, WEATHER_GOAL } from "./examples";
 
-export const ROBOT_GOAL = "Desktop robot arm that picks 100–300 g plastic parts from a tray and places them in a fixture.";
-export const WEATHER_GOAL = "A solar-powered weather station that measures temperature, humidity and rainfall, with Wi-Fi, for A$200.";
 export const DEMO_CHECKED_AT = "2026-10-18T09:30:00.000Z";
 type DemoPart = [string, string, string, string, number, number | null, number, string, string, Record<string, string>];
 const robot: DemoPart[] = [
@@ -66,7 +68,13 @@ export function demoBom(runId: string, input: RunInput, rows: BomRow[]): Bom {
 }
 export function mockEvents(runId: string, input: RunInput): AgentEvent[] {
   const parts = demoParts(input);
-  const rows = parts.map((p) => demoRow(p, input));
+  const exchange = exchangeRates(input.currency);
+  exchange.source = "Illustrative demo · " + exchange.source;
+  exchange.checkedAt = DEMO_CHECKED_AT;
+  const rows = parts.map((p) => {
+    const fixture = demoRow(p, input);
+    return rankPart(p, fixture.candidates, fixture.suppliers, input, exchange);
+  });
   return [
     { type: "run_started", runId },
     { type: "assumption", text: "Demo mode: replaying an illustrative fixture, not current supplier prices. Switch to Live after configuring credentials for your own build." },
@@ -79,6 +87,6 @@ export function mockEvents(runId: string, input: RunInput): AgentEvent[] {
       ...(row.needsQuote ? [{ type: "part_needs_quote" as const, partId: row.part.id, suppliers: row.suppliers }] : []),
       { type: "part_result", partId: row.part.id, row },
     ]),
-    { type: "run_finished", bom: demoBom(runId, input, rows) },
+    { type: "run_finished", bom: report(runId, input, rows, exchange, true) },
   ];
 }

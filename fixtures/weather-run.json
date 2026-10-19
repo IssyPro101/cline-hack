@@ -1,0 +1,3401 @@
+{
+  "version": 1,
+  "illustrative": true,
+  "events": [
+    {
+      "at": 0,
+      "event": {
+        "type": "run_started",
+        "runId": "cached-demo"
+      }
+    },
+    {
+      "at": 600,
+      "event": {
+        "type": "assumption",
+        "text": "Demo mode: replaying an illustrative fixture, not current supplier prices. Switch to Live after configuring credentials for your own build."
+      }
+    },
+    {
+      "at": 1200,
+      "event": {
+        "type": "assumption",
+        "text": "Assuming a fixed outdoor installation with Wi-Fi coverage and solar charging."
+      }
+    },
+    {
+      "at": 1800,
+      "event": {
+        "type": "plan",
+        "parts": [
+          {
+            "id": "controller",
+            "name": "Wi-Fi microcontroller",
+            "purpose": "Read sensors and publish weather data",
+            "keySpecs": {
+              "connectivity": "Wi-Fi 2.4 GHz",
+              "voltage": "3.3 V"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          {
+            "id": "sensor",
+            "name": "Temperature & humidity sensor",
+            "purpose": "Measure ambient temperature and humidity",
+            "keySpecs": {
+              "interface": "I²C",
+              "temperature": "± 0.3 °C"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "rain",
+            "name": "Tipping-bucket rain gauge",
+            "purpose": "Measure cumulative precipitation",
+            "keySpecs": {
+              "output": "Reed switch",
+              "mounting": "Outdoor"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "solar",
+            "name": "Solar panel & charger",
+            "purpose": "Recharge the station in daylight",
+            "keySpecs": {
+              "panel": "6 V / 3 W",
+              "battery": "Protected Li-ion"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "battery",
+            "name": "Rechargeable battery",
+            "purpose": "Power the station overnight",
+            "keySpecs": {
+              "voltage": "3.7 V",
+              "capacity": "2600 mAh"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          {
+            "id": "enclosure",
+            "name": "Weatherproof sensor housing",
+            "purpose": "Protect electronics without trapping heat",
+            "keySpecs": {
+              "protection": "Rain shield",
+              "material": "UV-resistant ASA"
+            },
+            "quantity": 1,
+            "category": "custom-fabricated",
+            "critical": false
+          }
+        ]
+      }
+    },
+    {
+      "at": 2400,
+      "event": {
+        "type": "crawler_started",
+        "partId": "controller"
+      }
+    },
+    {
+      "at": 3000,
+      "event": {
+        "type": "step",
+        "partId": "controller",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 3600,
+      "event": {
+        "type": "crawler_started",
+        "partId": "sensor"
+      }
+    },
+    {
+      "at": 4200,
+      "event": {
+        "type": "step",
+        "partId": "sensor",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 4800,
+      "event": {
+        "type": "crawler_started",
+        "partId": "rain"
+      }
+    },
+    {
+      "at": 5400,
+      "event": {
+        "type": "step",
+        "partId": "rain",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 6000,
+      "event": {
+        "type": "crawler_started",
+        "partId": "solar"
+      }
+    },
+    {
+      "at": 6600,
+      "event": {
+        "type": "step",
+        "partId": "solar",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 7200,
+      "event": {
+        "type": "crawler_started",
+        "partId": "battery"
+      }
+    },
+    {
+      "at": 7800,
+      "event": {
+        "type": "step",
+        "partId": "battery",
+        "label": "Searching 4 supplier queries"
+      }
+    },
+    {
+      "at": 8400,
+      "event": {
+        "type": "crawler_started",
+        "partId": "enclosure"
+      }
+    },
+    {
+      "at": 9000,
+      "event": {
+        "type": "step",
+        "partId": "enclosure",
+        "label": "Finding fabrication partners"
+      }
+    },
+    {
+      "at": 9600,
+      "event": {
+        "type": "step",
+        "partId": "controller",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 10200,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "controller",
+          "supplier": "Core Electronics",
+          "productName": "ESP32 development board",
+          "productUrl": "https://core-electronics.com.au/esp32.html",
+          "productKey": "controller",
+          "price": {
+            "amount": 19,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "low",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "connectivity": "Wi-Fi 2.4 GHz",
+            "voltage": "3.3 V"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 19,
+              "sourceUrl": "https://core-electronics.com.au/esp32.html",
+              "quote": "Demo fixture: AUD 19.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "low",
+              "sourceUrl": "https://core-electronics.com.au/esp32.html",
+              "quote": "Demo fixture: limited stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://core-electronics.com.au/esp32.html",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://core-electronics.com.au/esp32.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 10800,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "controller",
+          "supplier": "Core Electronics",
+          "productName": "ESP32 development board",
+          "productUrl": "https://evidence.partscout.example/controller",
+          "productKey": "controller",
+          "price": {
+            "amount": 19,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "low",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "connectivity": "Wi-Fi 2.4 GHz",
+            "voltage": "3.3 V"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 19,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: AUD 19.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "low",
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: limited stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/controller",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 11400,
+      "event": {
+        "type": "part_result",
+        "partId": "controller",
+        "row": {
+          "part": {
+            "id": "controller",
+            "name": "Wi-Fi microcontroller",
+            "purpose": "Read sensors and publish weather data",
+            "keySpecs": {
+              "connectivity": "Wi-Fi 2.4 GHz",
+              "voltage": "3.3 V"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": true
+          },
+          "pick": {
+            "partId": "controller",
+            "supplier": "Core Electronics",
+            "productName": "ESP32 development board",
+            "productUrl": "https://core-electronics.com.au/esp32.html",
+            "productKey": "controller",
+            "price": {
+              "amount": 19,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "low",
+            "leadTimeDays": 4,
+            "shipsToDestination": true,
+            "specsFound": {
+              "connectivity": "Wi-Fi 2.4 GHz",
+              "voltage": "3.3 V"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 19,
+                "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                "quote": "Demo fixture: AUD 19.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "low",
+                "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                "quote": "Demo fixture: limited stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 4,
+                "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                "quote": "Demo fixture: delivery in 4 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "controller",
+              "supplier": "Core Electronics",
+              "productName": "ESP32 development board",
+              "productUrl": "https://core-electronics.com.au/esp32.html",
+              "productKey": "controller",
+              "price": {
+                "amount": 19,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "low",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "connectivity": "Wi-Fi 2.4 GHz",
+                "voltage": "3.3 V"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 19,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: AUD 19.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "controller",
+              "supplier": "Core Electronics",
+              "productName": "ESP32 development board",
+              "productUrl": "https://evidence.partscout.example/controller",
+              "productKey": "controller",
+              "price": {
+                "amount": 19,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "low",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "connectivity": "Wi-Fi 2.4 GHz",
+                "voltage": "3.3 V"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 19,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: AUD 19.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 19,
+              "min": 19,
+              "max": 19,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 19,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: AUD 19.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 19,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: AUD 19.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "low",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "low",
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: limited stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 4,
+              "min": 4,
+              "max": 4,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/controller",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 12000,
+      "event": {
+        "type": "step",
+        "partId": "sensor",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 12600,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "sensor",
+          "supplier": "Adafruit",
+          "productName": "SHT31-D sensor breakout",
+          "productUrl": "https://www.adafruit.com/product/2857",
+          "productKey": "sensor",
+          "price": {
+            "amount": 24,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 5,
+          "shipsToDestination": true,
+          "specsFound": {
+            "interface": "I²C",
+            "temperature": "± 0.3 °C"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 24,
+              "sourceUrl": "https://www.adafruit.com/product/2857",
+              "quote": "Demo fixture: AUD 24.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.adafruit.com/product/2857",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 5,
+              "sourceUrl": "https://www.adafruit.com/product/2857",
+              "quote": "Demo fixture: delivery in 5 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.adafruit.com/product/2857",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 13200,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "sensor",
+          "supplier": "Adafruit",
+          "productName": "SHT31-D sensor breakout",
+          "productUrl": "https://evidence.partscout.example/sensor",
+          "productKey": "sensor",
+          "price": {
+            "amount": 24,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 5,
+          "shipsToDestination": true,
+          "specsFound": {
+            "interface": "I²C",
+            "temperature": "± 0.3 °C"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 24,
+              "sourceUrl": "https://evidence.partscout.example/sensor",
+              "quote": "Demo fixture: AUD 24.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/sensor",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 5,
+              "sourceUrl": "https://evidence.partscout.example/sensor",
+              "quote": "Demo fixture: delivery in 5 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/sensor",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 13800,
+      "event": {
+        "type": "part_result",
+        "partId": "sensor",
+        "row": {
+          "part": {
+            "id": "sensor",
+            "name": "Temperature & humidity sensor",
+            "purpose": "Measure ambient temperature and humidity",
+            "keySpecs": {
+              "interface": "I²C",
+              "temperature": "± 0.3 °C"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "sensor",
+            "supplier": "Adafruit",
+            "productName": "SHT31-D sensor breakout",
+            "productUrl": "https://www.adafruit.com/product/2857",
+            "productKey": "sensor",
+            "price": {
+              "amount": 24,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 5,
+            "shipsToDestination": true,
+            "specsFound": {
+              "interface": "I²C",
+              "temperature": "± 0.3 °C"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 24,
+                "sourceUrl": "https://www.adafruit.com/product/2857",
+                "quote": "Demo fixture: AUD 24.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.adafruit.com/product/2857",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 5,
+                "sourceUrl": "https://www.adafruit.com/product/2857",
+                "quote": "Demo fixture: delivery in 5 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.adafruit.com/product/2857",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "sensor",
+              "supplier": "Adafruit",
+              "productName": "SHT31-D sensor breakout",
+              "productUrl": "https://www.adafruit.com/product/2857",
+              "productKey": "sensor",
+              "price": {
+                "amount": 24,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 5,
+              "shipsToDestination": true,
+              "specsFound": {
+                "interface": "I²C",
+                "temperature": "± 0.3 °C"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 24,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: AUD 24.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "sensor",
+              "supplier": "Adafruit",
+              "productName": "SHT31-D sensor breakout",
+              "productUrl": "https://evidence.partscout.example/sensor",
+              "productKey": "sensor",
+              "price": {
+                "amount": 24,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 5,
+              "shipsToDestination": true,
+              "specsFound": {
+                "interface": "I²C",
+                "temperature": "± 0.3 °C"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 24,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: AUD 24.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 24,
+              "min": 24,
+              "max": 24,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 24,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: AUD 24.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 24,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: AUD 24.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 5,
+              "min": 5,
+              "max": 5,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 5,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: delivery in 5 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.adafruit.com/product/2857",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/sensor",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 14400,
+      "event": {
+        "type": "step",
+        "partId": "rain",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 15000,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "rain",
+          "supplier": "SparkFun",
+          "productName": "Weather meter rain gauge",
+          "productUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+          "productKey": "rain",
+          "price": {
+            "amount": 39,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 7,
+          "shipsToDestination": true,
+          "specsFound": {
+            "output": "Reed switch",
+            "mounting": "Outdoor"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 39,
+              "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+              "quote": "Demo fixture: AUD 39.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 7,
+              "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+              "quote": "Demo fixture: delivery in 7 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 15600,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "rain",
+          "supplier": "SparkFun",
+          "productName": "Weather meter rain gauge",
+          "productUrl": "https://evidence.partscout.example/rain",
+          "productKey": "rain",
+          "price": {
+            "amount": 46.019999999999996,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 7,
+          "shipsToDestination": true,
+          "specsFound": {
+            "output": "Reed switch",
+            "mounting": "Outdoor"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 46.019999999999996,
+              "sourceUrl": "https://evidence.partscout.example/rain",
+              "quote": "Demo fixture: AUD 46.02 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/rain",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 7,
+              "sourceUrl": "https://evidence.partscout.example/rain",
+              "quote": "Demo fixture: delivery in 7 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/rain",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 16200,
+      "event": {
+        "type": "part_result",
+        "partId": "rain",
+        "row": {
+          "part": {
+            "id": "rain",
+            "name": "Tipping-bucket rain gauge",
+            "purpose": "Measure cumulative precipitation",
+            "keySpecs": {
+              "output": "Reed switch",
+              "mounting": "Outdoor"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "rain",
+            "supplier": "SparkFun",
+            "productName": "Weather meter rain gauge",
+            "productUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+            "productKey": "rain",
+            "price": {
+              "amount": 39,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 7,
+            "shipsToDestination": true,
+            "specsFound": {
+              "output": "Reed switch",
+              "mounting": "Outdoor"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 39,
+                "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                "quote": "Demo fixture: AUD 39.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 7,
+                "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                "quote": "Demo fixture: delivery in 7 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "rain",
+              "supplier": "SparkFun",
+              "productName": "Weather meter rain gauge",
+              "productUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+              "productKey": "rain",
+              "price": {
+                "amount": 39,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 7,
+              "shipsToDestination": true,
+              "specsFound": {
+                "output": "Reed switch",
+                "mounting": "Outdoor"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 39,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: AUD 39.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "rain",
+              "supplier": "SparkFun",
+              "productName": "Weather meter rain gauge",
+              "productUrl": "https://evidence.partscout.example/rain",
+              "productKey": "rain",
+              "price": {
+                "amount": 46.019999999999996,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 7,
+              "shipsToDestination": true,
+              "specsFound": {
+                "output": "Reed switch",
+                "mounting": "Outdoor"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 46.019999999999996,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: AUD 46.02 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "conflicting",
+              "value": 39,
+              "min": 39,
+              "max": 46.019999999999996,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 39,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: AUD 39.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 46.019999999999996,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: AUD 46.02 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 7,
+              "min": 7,
+              "max": 7,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 7,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: delivery in 7 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/rain",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "conflicting",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 16800,
+      "event": {
+        "type": "step",
+        "partId": "solar",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 17400,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "solar",
+          "supplier": "DFRobot",
+          "productName": "6 V solar power kit",
+          "productUrl": "https://www.dfrobot.com/category-81.html",
+          "productKey": "solar",
+          "price": {
+            "amount": 36,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 8,
+          "shipsToDestination": true,
+          "specsFound": {
+            "panel": "6 V / 3 W",
+            "battery": "Protected Li-ion"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 36,
+              "sourceUrl": "https://www.dfrobot.com/category-81.html",
+              "quote": "Demo fixture: AUD 36.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://www.dfrobot.com/category-81.html",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 8,
+              "sourceUrl": "https://www.dfrobot.com/category-81.html",
+              "quote": "Demo fixture: delivery in 8 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://www.dfrobot.com/category-81.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 18000,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "solar",
+          "supplier": "DFRobot",
+          "productName": "6 V solar power kit",
+          "productUrl": "https://evidence.partscout.example/solar",
+          "productKey": "solar",
+          "price": {
+            "amount": 36,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 8,
+          "shipsToDestination": true,
+          "specsFound": {
+            "panel": "6 V / 3 W",
+            "battery": "Protected Li-ion"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 36,
+              "sourceUrl": "https://evidence.partscout.example/solar",
+              "quote": "Demo fixture: AUD 36.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://evidence.partscout.example/solar",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 8,
+              "sourceUrl": "https://evidence.partscout.example/solar",
+              "quote": "Demo fixture: delivery in 8 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://evidence.partscout.example/solar",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 18600,
+      "event": {
+        "type": "part_result",
+        "partId": "solar",
+        "row": {
+          "part": {
+            "id": "solar",
+            "name": "Solar panel & charger",
+            "purpose": "Recharge the station in daylight",
+            "keySpecs": {
+              "panel": "6 V / 3 W",
+              "battery": "Protected Li-ion"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "solar",
+            "supplier": "DFRobot",
+            "productName": "6 V solar power kit",
+            "productUrl": "https://www.dfrobot.com/category-81.html",
+            "productKey": "solar",
+            "price": {
+              "amount": 36,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 8,
+            "shipsToDestination": true,
+            "specsFound": {
+              "panel": "6 V / 3 W",
+              "battery": "Protected Li-ion"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 36,
+                "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                "quote": "Demo fixture: AUD 36.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 8,
+                "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                "quote": "Demo fixture: delivery in 8 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "solar",
+              "supplier": "DFRobot",
+              "productName": "6 V solar power kit",
+              "productUrl": "https://www.dfrobot.com/category-81.html",
+              "productKey": "solar",
+              "price": {
+                "amount": 36,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 8,
+              "shipsToDestination": true,
+              "specsFound": {
+                "panel": "6 V / 3 W",
+                "battery": "Protected Li-ion"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 36,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: AUD 36.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 8,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: delivery in 8 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "partId": "solar",
+              "supplier": "DFRobot",
+              "productName": "6 V solar power kit",
+              "productUrl": "https://evidence.partscout.example/solar",
+              "productKey": "solar",
+              "price": {
+                "amount": 36,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 8,
+              "shipsToDestination": true,
+              "specsFound": {
+                "panel": "6 V / 3 W",
+                "battery": "Protected Li-ion"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 36,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: AUD 36.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 8,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: delivery in 8 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "agreed",
+              "value": 36,
+              "min": 36,
+              "max": 36,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 36,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: AUD 36.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "price",
+                  "value": 36,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: AUD 36.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "stock": {
+              "status": "agreed",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "leadTimeDays": {
+              "status": "agreed",
+              "value": 8,
+              "min": 8,
+              "max": 8,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 8,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: delivery in 8 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 8,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: delivery in 8 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            },
+            "shipsToDestination": {
+              "status": "agreed",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://evidence.partscout.example/solar",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 2
+            }
+          },
+          "status": "agreed",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 19200,
+      "event": {
+        "type": "step",
+        "partId": "battery",
+        "label": "Comparing independent sources"
+      }
+    },
+    {
+      "at": 19800,
+      "event": {
+        "type": "listing",
+        "listing": {
+          "partId": "battery",
+          "supplier": "Core Electronics",
+          "productName": "Protected 18650 · 2600 mAh",
+          "productUrl": "https://core-electronics.com.au/power-batteries.html",
+          "productKey": "battery",
+          "price": {
+            "amount": 17,
+            "currency": "AUD",
+            "qty": 1
+          },
+          "stock": "in_stock",
+          "leadTimeDays": 4,
+          "shipsToDestination": true,
+          "specsFound": {
+            "voltage": "3.7 V",
+            "capacity": "2600 mAh"
+          },
+          "evidence": [
+            {
+              "field": "price",
+              "value": 17,
+              "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+              "quote": "Demo fixture: AUD 17.00 per unit.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "stock",
+              "value": "in_stock",
+              "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+              "quote": "Demo fixture: in stock.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "leadTimeDays",
+              "value": 4,
+              "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+              "quote": "Demo fixture: delivery in 4 calendar days.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            },
+            {
+              "field": "shipsToDestination",
+              "value": true,
+              "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+              "quote": "Demo fixture: ships to Australia.",
+              "checkedAt": "2026-10-18T09:30:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": 20400,
+      "event": {
+        "type": "part_result",
+        "partId": "battery",
+        "row": {
+          "part": {
+            "id": "battery",
+            "name": "Rechargeable battery",
+            "purpose": "Power the station overnight",
+            "keySpecs": {
+              "voltage": "3.7 V",
+              "capacity": "2600 mAh"
+            },
+            "quantity": 1,
+            "category": "off-the-shelf",
+            "critical": false
+          },
+          "pick": {
+            "partId": "battery",
+            "supplier": "Core Electronics",
+            "productName": "Protected 18650 · 2600 mAh",
+            "productUrl": "https://core-electronics.com.au/power-batteries.html",
+            "productKey": "battery",
+            "price": {
+              "amount": 17,
+              "currency": "AUD",
+              "qty": 1
+            },
+            "stock": "in_stock",
+            "leadTimeDays": 4,
+            "shipsToDestination": true,
+            "specsFound": {
+              "voltage": "3.7 V",
+              "capacity": "2600 mAh"
+            },
+            "evidence": [
+              {
+                "field": "price",
+                "value": 17,
+                "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                "quote": "Demo fixture: AUD 17.00 per unit.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "stock",
+                "value": "in_stock",
+                "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                "quote": "Demo fixture: in stock.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "leadTimeDays",
+                "value": 4,
+                "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                "quote": "Demo fixture: delivery in 4 calendar days.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              },
+              {
+                "field": "shipsToDestination",
+                "value": true,
+                "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                "quote": "Demo fixture: ships to Australia.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "partId": "battery",
+              "supplier": "Core Electronics",
+              "productName": "Protected 18650 · 2600 mAh",
+              "productUrl": "https://core-electronics.com.au/power-batteries.html",
+              "productKey": "battery",
+              "price": {
+                "amount": 17,
+                "currency": "AUD",
+                "qty": 1
+              },
+              "stock": "in_stock",
+              "leadTimeDays": 4,
+              "shipsToDestination": true,
+              "specsFound": {
+                "voltage": "3.7 V",
+                "capacity": "2600 mAh"
+              },
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 17,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: AUD 17.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                },
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            }
+          ],
+          "purchaseQuantity": 1,
+          "suppliers": [],
+          "fields": {
+            "price": {
+              "status": "single_source",
+              "value": 17,
+              "min": 17,
+              "max": 17,
+              "evidence": [
+                {
+                  "field": "price",
+                  "value": 17,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: AUD 17.00 per unit.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "stock": {
+              "status": "single_source",
+              "value": "in_stock",
+              "evidence": [
+                {
+                  "field": "stock",
+                  "value": "in_stock",
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: in stock.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "leadTimeDays": {
+              "status": "single_source",
+              "value": 4,
+              "min": 4,
+              "max": 4,
+              "evidence": [
+                {
+                  "field": "leadTimeDays",
+                  "value": 4,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: delivery in 4 calendar days.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            },
+            "shipsToDestination": {
+              "status": "single_source",
+              "value": true,
+              "evidence": [
+                {
+                  "field": "shipsToDestination",
+                  "value": true,
+                  "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "quote": "Demo fixture: ships to Australia.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ],
+              "sourceCount": 1
+            }
+          },
+          "status": "single_source",
+          "needsQuote": false
+        }
+      }
+    },
+    {
+      "at": 21000,
+      "event": {
+        "type": "step",
+        "partId": "enclosure",
+        "label": "Custom geometry requires a quote"
+      }
+    },
+    {
+      "at": 21600,
+      "event": {
+        "type": "part_needs_quote",
+        "partId": "enclosure",
+        "suppliers": [
+          {
+            "name": "Protolabs Network",
+            "url": "https://www.hubs.com/3d-printing/",
+            "evidence": [
+              {
+                "field": "spec",
+                "value": "Custom fabrication services",
+                "sourceUrl": "https://www.hubs.com/3d-printing/",
+                "quote": "Illustrative demo supplier — contact for a custom quote.",
+                "checkedAt": "2026-10-18T09:30:00.000Z"
+              }
+            ]
+          },
+          {
+            "name": "Xometry",
+            "url": "https://www.xometry.com/",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "at": 22200,
+      "event": {
+        "type": "part_result",
+        "partId": "enclosure",
+        "row": {
+          "part": {
+            "id": "enclosure",
+            "name": "Weatherproof sensor housing",
+            "purpose": "Protect electronics without trapping heat",
+            "keySpecs": {
+              "protection": "Rain shield",
+              "material": "UV-resistant ASA"
+            },
+            "quantity": 1,
+            "category": "custom-fabricated",
+            "critical": false
+          },
+          "candidates": [],
+          "suppliers": [
+            {
+              "name": "Protolabs Network",
+              "url": "https://www.hubs.com/3d-printing/",
+              "evidence": [
+                {
+                  "field": "spec",
+                  "value": "Custom fabrication services",
+                  "sourceUrl": "https://www.hubs.com/3d-printing/",
+                  "quote": "Illustrative demo supplier — contact for a custom quote.",
+                  "checkedAt": "2026-10-18T09:30:00.000Z"
+                }
+              ]
+            },
+            {
+              "name": "Xometry",
+              "url": "https://www.xometry.com/",
+              "evidence": []
+            }
+          ],
+          "fields": {
+            "price": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "stock": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "leadTimeDays": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            },
+            "shipsToDestination": {
+              "status": "unknown",
+              "evidence": [],
+              "sourceCount": 0
+            }
+          },
+          "status": "unknown",
+          "needsQuote": true
+        }
+      }
+    },
+    {
+      "at": 22800,
+      "event": {
+        "type": "run_finished",
+        "bom": {
+          "runId": "cached-demo",
+          "input": {
+            "goal": "A solar-powered weather station that measures temperature, humidity and rainfall, with Wi-Fi, for A$200.",
+            "budget": 200,
+            "currency": "AUD",
+            "shipTo": "Sydney, Australia",
+            "deadlineDays": 21,
+            "replay": false
+          },
+          "rows": [
+            {
+              "part": {
+                "id": "controller",
+                "name": "Wi-Fi microcontroller",
+                "purpose": "Read sensors and publish weather data",
+                "keySpecs": {
+                  "connectivity": "Wi-Fi 2.4 GHz",
+                  "voltage": "3.3 V"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": true
+              },
+              "pick": {
+                "partId": "controller",
+                "supplier": "Core Electronics",
+                "productName": "ESP32 development board",
+                "productUrl": "https://core-electronics.com.au/esp32.html",
+                "productKey": "controller",
+                "price": {
+                  "amount": 19,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "low",
+                "leadTimeDays": 4,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "connectivity": "Wi-Fi 2.4 GHz",
+                  "voltage": "3.3 V"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 19,
+                    "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                    "quote": "Demo fixture: AUD 19.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "low",
+                    "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                    "quote": "Demo fixture: limited stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 4,
+                    "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                    "quote": "Demo fixture: delivery in 4 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "controller",
+                  "supplier": "Core Electronics",
+                  "productName": "ESP32 development board",
+                  "productUrl": "https://core-electronics.com.au/esp32.html",
+                  "productKey": "controller",
+                  "price": {
+                    "amount": 19,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "low",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "connectivity": "Wi-Fi 2.4 GHz",
+                    "voltage": "3.3 V"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 19,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: AUD 19.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "controller",
+                  "supplier": "Core Electronics",
+                  "productName": "ESP32 development board",
+                  "productUrl": "https://evidence.partscout.example/controller",
+                  "productKey": "controller",
+                  "price": {
+                    "amount": 19,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "low",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "connectivity": "Wi-Fi 2.4 GHz",
+                    "voltage": "3.3 V"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 19,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: AUD 19.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 19,
+                  "min": 19,
+                  "max": 19,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 19,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: AUD 19.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 19,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: AUD 19.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "low",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "low",
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: limited stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 4,
+                  "min": 4,
+                  "max": 4,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/esp32.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/controller",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "sensor",
+                "name": "Temperature & humidity sensor",
+                "purpose": "Measure ambient temperature and humidity",
+                "keySpecs": {
+                  "interface": "I²C",
+                  "temperature": "± 0.3 °C"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "sensor",
+                "supplier": "Adafruit",
+                "productName": "SHT31-D sensor breakout",
+                "productUrl": "https://www.adafruit.com/product/2857",
+                "productKey": "sensor",
+                "price": {
+                  "amount": 24,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 5,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "interface": "I²C",
+                  "temperature": "± 0.3 °C"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 24,
+                    "sourceUrl": "https://www.adafruit.com/product/2857",
+                    "quote": "Demo fixture: AUD 24.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.adafruit.com/product/2857",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 5,
+                    "sourceUrl": "https://www.adafruit.com/product/2857",
+                    "quote": "Demo fixture: delivery in 5 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.adafruit.com/product/2857",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "sensor",
+                  "supplier": "Adafruit",
+                  "productName": "SHT31-D sensor breakout",
+                  "productUrl": "https://www.adafruit.com/product/2857",
+                  "productKey": "sensor",
+                  "price": {
+                    "amount": 24,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 5,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "interface": "I²C",
+                    "temperature": "± 0.3 °C"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 24,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: AUD 24.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "sensor",
+                  "supplier": "Adafruit",
+                  "productName": "SHT31-D sensor breakout",
+                  "productUrl": "https://evidence.partscout.example/sensor",
+                  "productKey": "sensor",
+                  "price": {
+                    "amount": 24,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 5,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "interface": "I²C",
+                    "temperature": "± 0.3 °C"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 24,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: AUD 24.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 24,
+                  "min": 24,
+                  "max": 24,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 24,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: AUD 24.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 24,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: AUD 24.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 5,
+                  "min": 5,
+                  "max": 5,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 5,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: delivery in 5 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.adafruit.com/product/2857",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/sensor",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "rain",
+                "name": "Tipping-bucket rain gauge",
+                "purpose": "Measure cumulative precipitation",
+                "keySpecs": {
+                  "output": "Reed switch",
+                  "mounting": "Outdoor"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "rain",
+                "supplier": "SparkFun",
+                "productName": "Weather meter rain gauge",
+                "productUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                "productKey": "rain",
+                "price": {
+                  "amount": 39,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 7,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "output": "Reed switch",
+                  "mounting": "Outdoor"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 39,
+                    "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                    "quote": "Demo fixture: AUD 39.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 7,
+                    "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                    "quote": "Demo fixture: delivery in 7 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "rain",
+                  "supplier": "SparkFun",
+                  "productName": "Weather meter rain gauge",
+                  "productUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                  "productKey": "rain",
+                  "price": {
+                    "amount": 39,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 7,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "output": "Reed switch",
+                    "mounting": "Outdoor"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 39,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: AUD 39.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "rain",
+                  "supplier": "SparkFun",
+                  "productName": "Weather meter rain gauge",
+                  "productUrl": "https://evidence.partscout.example/rain",
+                  "productKey": "rain",
+                  "price": {
+                    "amount": 46.019999999999996,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 7,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "output": "Reed switch",
+                    "mounting": "Outdoor"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 46.019999999999996,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: AUD 46.02 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "conflicting",
+                  "value": 39,
+                  "min": 39,
+                  "max": 46.019999999999996,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 39,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: AUD 39.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 46.019999999999996,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: AUD 46.02 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 7,
+                  "min": 7,
+                  "max": 7,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 7,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: delivery in 7 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.sparkfun.com/weather-meter-kit.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/rain",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "conflicting",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "solar",
+                "name": "Solar panel & charger",
+                "purpose": "Recharge the station in daylight",
+                "keySpecs": {
+                  "panel": "6 V / 3 W",
+                  "battery": "Protected Li-ion"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "solar",
+                "supplier": "DFRobot",
+                "productName": "6 V solar power kit",
+                "productUrl": "https://www.dfrobot.com/category-81.html",
+                "productKey": "solar",
+                "price": {
+                  "amount": 36,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 8,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "panel": "6 V / 3 W",
+                  "battery": "Protected Li-ion"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 36,
+                    "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                    "quote": "Demo fixture: AUD 36.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 8,
+                    "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                    "quote": "Demo fixture: delivery in 8 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "solar",
+                  "supplier": "DFRobot",
+                  "productName": "6 V solar power kit",
+                  "productUrl": "https://www.dfrobot.com/category-81.html",
+                  "productKey": "solar",
+                  "price": {
+                    "amount": 36,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 8,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "panel": "6 V / 3 W",
+                    "battery": "Protected Li-ion"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 36,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: AUD 36.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 8,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: delivery in 8 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "partId": "solar",
+                  "supplier": "DFRobot",
+                  "productName": "6 V solar power kit",
+                  "productUrl": "https://evidence.partscout.example/solar",
+                  "productKey": "solar",
+                  "price": {
+                    "amount": 36,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 8,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "panel": "6 V / 3 W",
+                    "battery": "Protected Li-ion"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 36,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: AUD 36.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 8,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: delivery in 8 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "agreed",
+                  "value": 36,
+                  "min": 36,
+                  "max": 36,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 36,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: AUD 36.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "price",
+                      "value": 36,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: AUD 36.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "stock": {
+                  "status": "agreed",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "leadTimeDays": {
+                  "status": "agreed",
+                  "value": 8,
+                  "min": 8,
+                  "max": 8,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 8,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: delivery in 8 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 8,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: delivery in 8 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                },
+                "shipsToDestination": {
+                  "status": "agreed",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://www.dfrobot.com/category-81.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://evidence.partscout.example/solar",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 2
+                }
+              },
+              "status": "agreed",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "battery",
+                "name": "Rechargeable battery",
+                "purpose": "Power the station overnight",
+                "keySpecs": {
+                  "voltage": "3.7 V",
+                  "capacity": "2600 mAh"
+                },
+                "quantity": 1,
+                "category": "off-the-shelf",
+                "critical": false
+              },
+              "pick": {
+                "partId": "battery",
+                "supplier": "Core Electronics",
+                "productName": "Protected 18650 · 2600 mAh",
+                "productUrl": "https://core-electronics.com.au/power-batteries.html",
+                "productKey": "battery",
+                "price": {
+                  "amount": 17,
+                  "currency": "AUD",
+                  "qty": 1
+                },
+                "stock": "in_stock",
+                "leadTimeDays": 4,
+                "shipsToDestination": true,
+                "specsFound": {
+                  "voltage": "3.7 V",
+                  "capacity": "2600 mAh"
+                },
+                "evidence": [
+                  {
+                    "field": "price",
+                    "value": 17,
+                    "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                    "quote": "Demo fixture: AUD 17.00 per unit.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "stock",
+                    "value": "in_stock",
+                    "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                    "quote": "Demo fixture: in stock.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "leadTimeDays",
+                    "value": 4,
+                    "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                    "quote": "Demo fixture: delivery in 4 calendar days.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  },
+                  {
+                    "field": "shipsToDestination",
+                    "value": true,
+                    "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                    "quote": "Demo fixture: ships to Australia.",
+                    "checkedAt": "2026-10-18T09:30:00.000Z"
+                  }
+                ]
+              },
+              "candidates": [
+                {
+                  "partId": "battery",
+                  "supplier": "Core Electronics",
+                  "productName": "Protected 18650 · 2600 mAh",
+                  "productUrl": "https://core-electronics.com.au/power-batteries.html",
+                  "productKey": "battery",
+                  "price": {
+                    "amount": 17,
+                    "currency": "AUD",
+                    "qty": 1
+                  },
+                  "stock": "in_stock",
+                  "leadTimeDays": 4,
+                  "shipsToDestination": true,
+                  "specsFound": {
+                    "voltage": "3.7 V",
+                    "capacity": "2600 mAh"
+                  },
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 17,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: AUD 17.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    },
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                }
+              ],
+              "purchaseQuantity": 1,
+              "suppliers": [],
+              "fields": {
+                "price": {
+                  "status": "single_source",
+                  "value": 17,
+                  "min": 17,
+                  "max": 17,
+                  "evidence": [
+                    {
+                      "field": "price",
+                      "value": 17,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: AUD 17.00 per unit.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "stock": {
+                  "status": "single_source",
+                  "value": "in_stock",
+                  "evidence": [
+                    {
+                      "field": "stock",
+                      "value": "in_stock",
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: in stock.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "leadTimeDays": {
+                  "status": "single_source",
+                  "value": 4,
+                  "min": 4,
+                  "max": 4,
+                  "evidence": [
+                    {
+                      "field": "leadTimeDays",
+                      "value": 4,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: delivery in 4 calendar days.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                },
+                "shipsToDestination": {
+                  "status": "single_source",
+                  "value": true,
+                  "evidence": [
+                    {
+                      "field": "shipsToDestination",
+                      "value": true,
+                      "sourceUrl": "https://core-electronics.com.au/power-batteries.html",
+                      "quote": "Demo fixture: ships to Australia.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ],
+                  "sourceCount": 1
+                }
+              },
+              "status": "single_source",
+              "needsQuote": false
+            },
+            {
+              "part": {
+                "id": "enclosure",
+                "name": "Weatherproof sensor housing",
+                "purpose": "Protect electronics without trapping heat",
+                "keySpecs": {
+                  "protection": "Rain shield",
+                  "material": "UV-resistant ASA"
+                },
+                "quantity": 1,
+                "category": "custom-fabricated",
+                "critical": false
+              },
+              "candidates": [],
+              "suppliers": [
+                {
+                  "name": "Protolabs Network",
+                  "url": "https://www.hubs.com/3d-printing/",
+                  "evidence": [
+                    {
+                      "field": "spec",
+                      "value": "Custom fabrication services",
+                      "sourceUrl": "https://www.hubs.com/3d-printing/",
+                      "quote": "Illustrative demo supplier — contact for a custom quote.",
+                      "checkedAt": "2026-10-18T09:30:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "name": "Xometry",
+                  "url": "https://www.xometry.com/",
+                  "evidence": []
+                }
+              ],
+              "fields": {
+                "price": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "stock": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "leadTimeDays": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                },
+                "shipsToDestination": {
+                  "status": "unknown",
+                  "evidence": [],
+                  "sourceCount": 0
+                }
+              },
+              "status": "unknown",
+              "needsQuote": true
+            }
+          ],
+          "total": 135,
+          "totalMax": 142.02,
+          "budgetRemaining": 57.98,
+          "quoteCount": 1,
+          "risks": [
+            {
+              "partId": "controller",
+              "severity": "warning",
+              "message": "Wi-Fi microcontroller: limited stock. Confirm availability."
+            },
+            {
+              "partId": "rain",
+              "severity": "warning",
+              "message": "Tipping-bucket rain gauge: sources disagree on price. The subtotal shows the full range."
+            },
+            {
+              "partId": "enclosure",
+              "severity": "info",
+              "message": "Weatherproof sensor housing: needs a supplier quote; excluded from the subtotal."
+            },
+            {
+              "severity": "info",
+              "message": "Currency conversions use a fixed fallback table, not live rates. Subtotals are estimates; shipping and unknown tax are excluded."
+            }
+          ],
+          "exchange": {
+            "base": "AUD",
+            "rates": {
+              "USD": 1.5384615384615383,
+              "AUD": 1,
+              "EUR": 1.6615384615384616,
+              "GBP": 1.9538461538461538
+            },
+            "source": "Illustrative demo · Fixed fallback FX table (USD: AUD 0.65, EUR 1.08, GBP 1.27); estimates, not live rates",
+            "checkedAt": "2026-10-18T09:30:00.000Z",
+            "fallback": true
+          },
+          "createdAt": "2026-10-19T19:47:26.221Z",
+          "demo": true
+        }
+      }
+    }
+  ]
+}
